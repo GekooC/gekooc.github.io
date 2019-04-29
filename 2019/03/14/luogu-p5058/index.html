@@ -2,24 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title> P2746 [USACO5.3]校园网Network of Schools		 - Gekoo&#39;s Notebook</title>
+<title> Luogu P5058 [ZJOI2004]嗅探器		 - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="缩点ning干">
-<meta name="keywords" content="SCC,Tarjan,图论,缩点">
+    <meta name="description" content="警惕思维江（不僵化">
+<meta name="keywords" content="图论,Dijkstra">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" P2746 [USACO5.3]校园网Network of Schools		">
-<meta property="og:url" content="https://gekoo.xyz/2019/03/07/p2746-usaco5-3-e6-a0-a1-e5-9b-ad-e7-bd-91network-of-schools/index.html">
+<meta property="og:title" content=" Luogu P5058 [ZJOI2004]嗅探器		">
+<meta property="og:url" content="https://gekoo.xyz/2019/03/14/luogu-p5058/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="缩点ning干">
+<meta property="og:description" content="警惕思维江（不僵化">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T08:46:06.243Z">
+<meta property="og:updated_time" content="2019-04-29T08:42:45.316Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" P2746 [USACO5.3]校园网Network of Schools		">
-<meta name="twitter:description" content="缩点ning干">
+<meta name="twitter:title" content=" Luogu P5058 [ZJOI2004]嗅探器		">
+<meta name="twitter:description" content="警惕思维江（不僵化">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -96,7 +96,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt=" P2746 [USACO5.3]校园网Network of Schools		" height="28">
+                <img src="/images/logo.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		" height="28">
             
             </a>
         </div>
@@ -147,7 +147,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-07T10:22:38.000Z">2019-03-07</time>
+                <time class="level-item has-text-grey" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/OI/">OI</a>
@@ -157,7 +157,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 847 个字)
+                    4 分钟 读完 (大约 674 个字)
                 </span>
                 
                 
@@ -166,85 +166,68 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 P2746 [USACO5.3]校园网Network of Schools		
+                 Luogu P5058 [ZJOI2004]嗅探器		
             
         </h1>
         <div class="content">
-            <p>缩点ning干</p>
+            <p>警惕思维江（不僵化</p>
 <a id="more"></a>
-<h1 id="P2746-USACO5-3-校园网Network-of-Schools"><a href="#P2746-USACO5-3-校园网Network-of-Schools" class="headerlink" title="P2746 [USACO5.3]校园网Network of Schools"></a><a href="https://www.luogu.org/problemnew/show/P2746" target="_blank" rel="noopener">P2746 [USACO5.3]校园网Network of Schools</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>一些学校连入一个电脑网络。那些学校已订立了协议：每个学校都会给其它的一些学校分发软件（称作“接受学校”）。注意即使 B 在 A 学校的分发列表中， A 也不一定在 B 学校的列表中。 你要写一个程序计算，根据协议，为了让网络中所有的学校都用上新软件，必须接受新软件副本的最少学校数目（子任务 A）。更进一步，我们想要确定通过给任意一个学校发送新软件，这个软件就会分发到网络中的所有学校。为了完成这个任务，我们可能必须扩展接收学校列表，使其加入新成员。计算最少需要增加几个扩展，使得不论我们给哪个学校发送新软件，它都会到达其余所有的学校（子任务 B）。一个扩展就是在一个学校的接收学校列表中引入一个新成员。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>输入文件的第一行包括一个整数 N：网络中的学校数目（2 &lt;= N &lt;= 100）。学校用前 N 个正整数标识。 接下来 N 行中每行都表示一个接收学校列表（分发列表）。第 i+1 行包括学校 i 的接收学校的标识符。每个列表用 0 结束。空列表只用一个 0 表示。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>你的程序应该在输出文件中输出两行。 第一行应该包括一个正整数：子任务 A 的解。 第二行应该包括子任务 B 的解。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>n &lt;= 100</p>
+<h1 id="Luogu-P5058-ZJOI2004-嗅探器"><a href="#Luogu-P5058-ZJOI2004-嗅探器" class="headerlink" title="Luogu P5058 [ZJOI2004]嗅探器"></a><a href="https://www.luogu.org/problemnew/show/P5058" target="_blank" rel="noopener">Luogu P5058 [ZJOI2004]嗅探器</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>某军搞信息对抗实战演习，红军成功地侵入了蓝军的内部网络，蓝军共有两个信息中心，红军计划在某台中间服务器上安装一个嗅探器，从而能够侦听到两个信息中心互相交换的所有信息，但是蓝军的网络相当的庞大，数据包从一个信息中心传到另一个信息中心可以不止有一条通路。现在需要你尽快地解决这个问题，应该把嗅探器安装在哪个中间服务器上才能保证所有的数据包都能被捕获？</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>输入文件的第一行一个整数 n，表示蓝军网络中服务器的数目。 接下来若干行是对蓝军网络的拓扑结构描述，每行是两个整数 i , j 表示编号为 i 和编号为 j 的两台服务器间存在连接（显然连接是双向的），服务器的编号从 1 开始，一行两个 0 表示网络的拓补结构描述结束，再接下来是两个整数 a , b 分别表示两个中心服务器的编号。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出编号。如果有多个解输出编号最小的一个，如果找不到任何解，输出 No solution</p>
 <hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>缩点ning干(逃 先缩点,记录一下入度和出度.显然,问题A的答案就是入度为0的点的个数. 问题B的答案也比较显然,是入度为0和出度为0的点的个数的较大值. 注意特判,当缩成只有一个点的时候问题B答案为0.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>求出一个点使得删去他后起点和终点不连通. 最开始我是打算求一下割点，然后枚举删割点. 之后郭老师提醒了我数据范围…&lt;100,Tarjan你horse呢QAQ 直接枚举删点跑Dijkstra,不能联通直接输出点,最后输出No Solution.</p>
 <hr>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 5000005
+#define N 10005
 
 namespace Gekoo {
-    struct Edge {int to, nxt;} e[N], c[N];
+    struct Edge {int to, nxt, val;} e[N &lt;&lt; 1];
 
-    int ecnt, ccnt, hc[N], head[N], ind[N], outd[N], n, Aans, Bans;
-    int dfn[N], low[N], s[N], id[N], num, p, cnt;
+    int head[N], ecnt, n, st, ed, dis[N];
     bool vis[N];
 
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+    inline void Add(int f, int to) {e[ecnt].val = 1, e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
 
-    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;
-        s[++p] = x, vis[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-            } else if (vis[y])
-                low[x] = std::min(low[x], dfn[y]);
+    bool Dijkstra(int ban) {
+        memset(dis, 0x3f, sizeof(dis));
+        memset(vis, 0, sizeof(vis));
+        std::priority_queue &lt;std::pair&lt;int, int&gt; &gt; q;
+        dis[st] = 0;
+        q.push(std::make_pair(0, st));
+        while (!q.empty()) {
+            int u = q.top().second;
+            q.pop();
+            if (vis[u]) continue;
+            vis[u] = 1;
+            for (int i = head[u]; i; i = e[i].nxt) {
+                int v = e[i].to, val = e[i].val;
+                if (v == ban) continue;
+                if (dis[v] &gt; dis[u] + val) {
+                    dis[v] = dis[u] + val;
+                    if (!vis[v]) {
+                        q.push(std::make_pair(-dis[v], v));
+                    }
+                }
+            }
         }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = s[p--], vis[y] = 0;
-                id[y] = cnt;
-            } while (x != y);
-        }
+        return (dis[ed] == 0x3f3f3f3f) ? 0 : 1;
     }
 
     signed QAQ() {
-        //Input
         scanf(&quot;%d&quot;, &amp;n);
-        for (int u = 1, v; u &lt;= n; u++) {
-            while (1) {
-                scanf(&quot;%d&quot;, &amp;v);
-                if (!v) break;
-                Add(u, v);
-            }
-        } 
-        //Shrink
-        for (int i = 1; i &lt;= n; i++)
-            if (!dfn[i]) Tarjan(i);
-        for (int u = 1; u &lt;= n; u++) {
-            for (int i = head[u]; i; i = e[i].nxt) {
-                int v = e[i].to;
-                if (id[u] == id[v]) continue;
-                AddC(id[u], id[v]);
-                ind[id[v]]++, outd[id[u]]++;
-            }
+        int i, j;
+        while (1) {
+            scanf(&quot;%d%d&quot;, &amp;i, &amp;j);
+            if (!i &amp;&amp; !j) break;
+            Add(i, j), Add(j, i);
         }
-        //Task A
-        for (int i = 1; i &lt;= cnt; i++) 
-            if (!ind[i]) Aans++;
-        //Task B
-        for (int i = 1; i &lt;= cnt; i++)
-            if (!outd[i]) Bans++;
-        Bans = std::max(Bans, Aans);
-        if (cnt == 1) Bans = 0;
-        //Output
-        printf(&quot;%d\n%d\n&quot;, Aans, Bans);
-        return 0;
+        scanf(&quot;%d%d&quot;, &amp;st, &amp;ed);
+        for (int i = 1; i &lt;= n; i++) {
+            if (i == st || i == ed) continue;
+            if (!Dijkstra(i)) return !printf(&quot;%d\n&quot;, i);
+        }
+        return !printf(&quot;No solution\n&quot;);
     }
 }
 
@@ -258,7 +241,7 @@ signed main() {
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/SCC/">SCC</a>, <a class="has-link-grey -link" href="/tags/Tarjan/">Tarjan</a>, <a class="has-link-grey -link" href="/tags/图论/">图论</a>, <a class="has-link-grey -link" href="/tags/缩点/">缩点</a>
+                    <a class="has-link-grey -link" href="/tags/Dijkstra/">Dijkstra</a>, <a class="has-link-grey -link" href="/tags/图论/">图论</a>
                 </div>
             </div>
         </div>
@@ -310,16 +293,16 @@ signed main() {
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/08/luogu-p3627-apio2009-e6-8a-a2-e6-8e-a0-e8-ae-a1-e5-88-92/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P3627 [APIO2009]抢掠计划		</span>
+                <span class="level-item"> Luogu P2055 [ZJOI2009]假期的宿舍		</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/07/luogu-p3387-e3-80-90-e6-a8-a1-e6-9d-bf-e3-80-91-e7-bc-a9-e7-82-b9/">
-                <span class="level-item"> Luogu P3387 【模板】缩点		</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/13/luogu-p2860-usaco06jan-e5-86-97-e4-bd-99-e8-b7-af-e5-be-84redundant-paths/">
+                <span class="level-item"> Luogu P2860 [USACO06JAN]冗余路径Redundant Paths		</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -1185,7 +1168,7 @@ signed main() {
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt=" P2746 [USACO5.3]校园网Network of Schools		" height="28">
+                    <img src="/images/logo.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		" height="28">
                 
                 </a>
                 <p class="is-size-7">

@@ -19,6 +19,8 @@
 <meta name="twitter:title" content="Gekoo&#39;s Notebook">
 <meta name="twitter:description" content="Note down my life.">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
+<meta name="twitter:creator" content="@GekooC">
+<meta name="twitter:site" content="https://twitter.com/GekooC">
 
 
 
@@ -164,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 610 个字)
+                    4 分钟 读完 (大约 611 个字)
                 </span>
                 
                 
@@ -178,68 +180,16 @@
         </h1>
         <div class="content">
             <p>poi~~~</p>
-<h1 id="Luogu-P3469-POI2008-BLO-Blockade"><a href="#Luogu-P3469-POI2008-BLO-Blockade" class="headerlink" title="Luogu P3469 [POI2008]BLO-Blockade"></a><a href="https://www.luogu.org/problemnew/show/P3469" target="_blank" rel="noopener">Luogu P3469 [POI2008]BLO-Blockade</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目LYD翻译版"><a href="#题目LYD翻译版" class="headerlink" title="题目LYD翻译版:"></a>题目LYD翻译版:</h4><p>Byteotia 城市有 n 个城镇, m 条双向道路, 其中 $ n \le 10 ^ 5, m \le 5 * 10 ^ 5$.每条道路连接两个不同的城镇,没有重复的道路,所有城镇联通.把城镇看作节点,把道路看作边.容易发现,整个城市构成一张无向图. 你需要输出 n 个整数,其中第 i 个整数表示把与节点 i 关联的所有边去掉之后(不去掉节点 i 本身),无向图中有多少有序点对 (x, y), 满足 x 和 y 不联通.</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行读入n，m，分别是城镇数目和道路数目 城镇编号1~n 接下来m行每行两个数字a,b，表示a和b之间有一条无向边</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出n行，每行一个数字，为第i个城镇被锁时不能发生的访问的数量。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>$ 1\le n\le 100,000, 1\le m\le 500,000 $.</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>首先,如果 i 是割点,去掉 i 后其余城市仍然联通, <code>ans[i] = 2 * (i - 1)</code>.(点对是有序的) 若 i 不是割点,显然,原图会裂成多个联通块. 1.i自己就是一个联通块 2.i的子树上的联通块 3.不在i子树的联通块 分开求和即可. 但分别去求复杂度过高,无法承受.可以在Tarjan过程中求出每个子树的大小,计算时直接使用. 注释里还有丶东西</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 500005
-#define ll long long
-
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N &lt;&lt; 1];
-
-    int ecnt, head[N], n, m, num, cnt;
-    int dfn[N], low[N], size[N];
-    ll ans[N];
-    bool cut[N];
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num, size[x] = 1;
-        int flg = 0, vis = 0;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-                size[x] += size[y]; //计算子树大小
-                if (low[y] &gt;= dfn[x]) {
-                    ans[x] += (ll) size[y] * (n - size[y]); 
-                    vis += size[y];
-                    if (++flg &gt; 1 || x != 1) cut[x] = 1;
-                }
-            }
-            else low[x] = std::min(low[x], dfn[y]);
-        }
-        if (!cut[x]) ans[x] = 2 * (n - 1);//是割点QwQ
-        else ans[x] += (ll) (n - vis - 1) * (vis + 1) + n - 1; //不在子树上的联通块和自身的联通块 
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1, a, b; i &lt;= m; i++) {
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            Add(a, b), Add(b, a);
-        }
-        Tarjan(1);
-        for (int i =1; i &lt;= n; i++) {
-            printf(&quot;%lld\n&quot;, ans[i]);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/06/luogu-p3469-poi2008blo-blockade/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -268,7 +218,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 765 个字)
+                    5 分钟 读完 (大约 766 个字)
                 </span>
                 
                 
@@ -282,76 +232,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>车 万 厨 大 欢 喜</p>
-<h1 id="Luogu-P1726-上白泽慧音"><a href="#Luogu-P1726-上白泽慧音" class="headerlink" title="Luogu P1726 上白泽慧音"></a><a href="https://www.luogu.org/problemnew/show/P1726" target="_blank" rel="noopener">Luogu P1726 上白泽慧音</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>在幻想乡，上白泽慧音是以知识渊博闻名的老师。春雪异变导致人间之里的很多道路都被大雪堵塞，使有的学生不能顺利地到达慧音所在的村庄。因此慧音决定换一个能够聚集最多人数的村庄作为新的教学地点。人间之里由N个村庄（编号为1..N）和M条道路组成，道路分为两种一种为单向通行的，一种为双向通行的，分别用1和2来标记。如果存在由村庄A到达村庄B的通路，那么我们认为可以从村庄A到达村庄B，记为(A,B)。当(A,B)和(B,A)同时满足时，我们认为A,B是绝对连通的，记为&lt;A,B&gt;。绝对连通区域是指一个村庄的集合，在这个集合中任意两个村庄X,Y都满足&lt;X,Y&gt;。现在你的任务是，找出最大的绝对连通区域，并将这个绝对连通区域的村庄按编号依次输出。若存在两个最大的，输出字典序最小的，比如当存在1,3,4和2,5,6这两个最大连通区域时，输出的是1,3,4。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第1行：两个正整数N,M 第2..M+1行：每行三个正整数a,b,t, t = 1表示存在从村庄a到b的单向道路，t = 2表示村庄a,b之间存在双向通行的道路。保证每条道路只出现一次。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>第1行： 1个整数，表示最大的绝对连通区域包含的村庄个数。 第2行：若干个整数，依次输出最大的绝对连通区域所包含的村庄编号。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于60%的数据：N &lt;= 200且M &lt;= 10,000 对于100%的数据：N &lt;= 5,000且M &lt;= 50,000</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>求图中最大SCC. 基本就是板子((((</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 50005
-
-namespace Gekoo {
-    struct Edge { int to, nxt; } e[N &lt;&lt; 1];
-
-    int head[N], dfn[N], low[N], c[N], s[N &lt;&lt; 1], ecnt, n, m, num, p, cnt, ans = 1;
-    bool vis[N];
-    std::vector &lt;int&gt; scc[N];
-
-    void Add(int f, int to) { e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt; }
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;    
-        s[++p] = x, vis[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int v = e[i].to;
-            if (!dfn[v]) {
-                Tarjan(v);
-                low[x] = std::min(low[x], low[v]);
-            } else if (vis[v]) {
-                low[x] = std::min(low[x], dfn[v]);
-            }
-        }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = s[p--], vis[y] = 0;
-                c[y] = cnt;
-                scc[cnt].push_back(y);
-            } while (x != y);
-        }
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1; i &lt;= m; i++) {
-            int a, b, t;
-            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;t);
-            Add(a, b);
-            if (t == 2) Add(b, a);
-        }
-        for (int i = 1; i &lt;= n; i++) {
-            if (!dfn[i]) Tarjan(i);
-        }
-        for (int i = 1; i &lt;= cnt; i++) {
-            if (scc[i].size() &gt; scc[ans].size()) ans = i;
-        }
-        printf(&quot;%d\n&quot;, (int) scc[ans].size());
-        std::sort(scc[ans].begin(), scc[ans].end());
-        for (std::vector&lt;int&gt;::iterator it = scc[ans].begin(); it != scc[ans].end(); ++it) {
-            printf(&quot;%d &quot;, *it);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/05/luogu-p1726-e4-b8-8a-e7-99-bd-e6-b3-bd-e6-85-a7-e9-9f-b3/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -380,7 +270,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 288 个字)
+                    2 分钟 读完 (大约 289 个字)
                 </span>
                 
                 
@@ -394,79 +284,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>Floyd求最小环</p>
-<h1 id="POJ-1734-Sightseeing-trip"><a href="#POJ-1734-Sightseeing-trip" class="headerlink" title="POJ 1734 Sightseeing trip"></a><a href="http://poj.org/problem?id=1734" target="_blank" rel="noopener">POJ 1734 Sightseeing trip</a></h1><h2 id="题面人话ver："><a href="#题面人话ver：" class="headerlink" title="题面人话ver："></a>题面人话ver：</h2><p>给一无向图，求最小环。</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>Floyd求最小环板子（（（ 没啥好多说的zzz</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#define INF 0x3f3f3f3f
-
-namespace Gekoo {
-    int n, m, mp[105][105], dis[105][105], pre[105][105], mincircle = INF;
-    std::vector&lt;int&gt; path;
-
-    void GetPath(int x, int y) {
-        if(pre[x][y] == 0) return ;
-        GetPath(x, pre[x][y]);
-        path.push_back(pre[x][y]);
-        GetPath(pre[x][y], y);
-    }
-
-    void Floyd() {
-        for (int k = 1; k &lt;= n; k++) {
-            for (int i = 1; i &lt; k; i++) {
-                for (int j = i + 1; j &lt; k; j++) {
-                    if ((long long)dis[i][j] + mp[i][k] + mp[k][j] &lt; mincircle) {
-                        mincircle = dis[i][j] + mp[i][k] + mp[k][j];
-                        path.clear();
-                        path.push_back(i);
-                        GetPath(i, j);
-                        path.push_back(j);
-                        path.push_back(k);
-                    }
-                }
-            }
-            for (int i = 1; i &lt;= n; i++) {
-                for (int j = 1; j &lt;= n; j++) {
-                    if (dis[i][j] &gt; dis[i][k] + dis[k][j]) {
-                        dis[i][j] = dis[i][k] + dis[k][j];
-                        pre[i][j] = k;
-                    }
-                }
-            }
-        }
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        memset(mp, 0x3f, sizeof(mp));
-        memset(dis, 0x3f, sizeof(dis));
-        for (int i = 1; i &lt;= n; i++) mp[i][i] = 0;
-        for (int i = 1, a, b ,c; i &lt;= m; i++) {
-            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b ,&amp;c);
-            mp[a][b] = mp[b][a] = dis[a][b] = dis[b][a] = std::min(mp[a][b], c);
-        }
-        Floyd();
-        if (mincircle == INF) {
-            puts(&quot;No solution.&quot;);
-            return 0;
-        }
-        for (std::vector&lt;int&gt;::iterator it = path.begin(); it != path.end(); ++it) {
-            printf(&quot;%d &quot;, *it);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/04/poj-1734-sightseeing-trip/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -495,7 +322,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 826 个字)
+                    6 分钟 读完 (大约 827 个字)
                 </span>
                 
                 
@@ -509,75 +336,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>Floyd变种，水题赛T3</p>
-<h1 id="Luogu-P1841-JSOI2007-重要的城市"><a href="#Luogu-P1841-JSOI2007-重要的城市" class="headerlink" title="Luogu P1841 [JSOI2007] 重要的城市"></a><a href="https://www.luogu.org/problemnew/show/P1841" target="_blank" rel="noopener">Luogu P1841 [JSOI2007] 重要的城市</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>参加 JSOI 冬令营的同学最近发现，由于南航校内修路截断了原来通向计算中心的路，导致去的路程比原先增加了近一公里。而食堂门前施工虽然也截断了原来通向计算中心的路，却没有使路程增加，因为可以找到同样长度的路作替代。其实，问题的关键在于，路截断的地方是交通要点。 同样的情况也出现在城市间的交通中。某些城市如果出了问题，可能会引起其他很多城市的交通不便。另一些城市则影响不到别的城市的交通。jsoi冬令营的同学发现这是一个有趣的问题，于是决定研究这个问题。 他们认为这样的城市是重要的：如果一个城市c被破坏后，存在两个不同的城市a和b（a, b均不等于c），a到b的最短距离增长了（或不通），则城市c是重要的。 JSOI冬令营的同学面对着一张教练组交给他们的城市间交通图，他们希望能找出所有重要的城市。现在就请你来解决这个问题。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行两个整数N,M,N为城市数，M为道路数 接下来M行，每行三个整数，表示两个城市之间的无向边，以及之间的路的长度</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>一行，按递增次序输出若干的数，表示重要的城市。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>30%的数据：N ≤ 20； 60%的数据：N ≤ 100； 100%的数据：N ≤ 200,M ≤ N × (N − 1) / 2, 0 &lt; c ≤ 10000。c即路的长度。 保证不出现重边和自环 如果没有点的话需要输出一行 “No important cities.” 去掉引号</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>日常翻译： 若u，v最短路上一点去掉后最短路长度改变，则该点为重要点，输出重要点。 N ≤ 200，无脑Floyd（逃 显然在Floyd过程中若进行了一次松弛,则k为<code>f[i][j]</code>对应的一个关键点.若出现<code>f[i][j]=f[i][k]+f[k][j]</code>,说明该关键点无效,删去.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;cstdio&gt;
-#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;utility&gt;
-#include &lt;cstdlib&gt;
-#include &lt;cctype&gt;
-#include &lt;queue&gt;
-#define N 205
-
-namespace Gekoo {
-    int f[N][N], n, m, imp[N][N];
-    bool used[N], flg;
-
-    signed QAQ() {
-        freopen(&quot;city.in&quot;, &quot;r&quot;, stdin);
-        freopen(&quot;city.out&quot;, &quot;w&quot;, stdout);
-        memset(f, 0x3f, sizeof(f));
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1; i &lt;= m; i++) {
-            int a, b, c;
-            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
-            f[a][b] = f[b][a] = std::min(f[a][b], c);
-        }
-        for (int k = 1; k &lt;= n; k++) {
-            for (int i = 1; i &lt;= n; i++) {
-                for (int j = 1; j &lt;= n; j++) {
-                    if (i == k || j == i || j == k) continue;
-                    if (f[i][j] &gt; f[i][k] + f[k][j]) {
-                        f[i][j] = f[i][k] + f[k][j];
-                        imp[i][j] = k;
-                    } else if (f[i][j] == f[i][k] + f[k][j]) {
-                        imp[i][j] = 0;
-                    }
-                }
-            }
-        }
-        for (int i = 1; i &lt;= n; i++) {
-            for (int j = 1; j &lt;= n; j++) {
-                if (imp[i][j]) {
-                    flg = 1;    
-                    used[imp[i][j]] = 1;
-                }
-            }
-        }
-        if (!flg) {
-            puts(&quot;No important cities.&quot;);
-            return 0;
-        }
-        for (int i = 1; i &lt;= n; i++) {
-            if (used[i]) printf(&quot;%d &quot;, i);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/04/luogu-p1841-jsoi2007-e9-87-8d-e8-a6-81-e7-9a-84-e5-9f-8e-e5-b8-82/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -606,7 +374,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1238 个字)
+                    8 分钟 读完 (大约 1239 个字)
                 </span>
                 
                 
@@ -620,85 +388,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>虚假的Dijkstra</p>
-<h1 id="Luogu-P1073-最优贸易"><a href="#Luogu-P1073-最优贸易" class="headerlink" title="Luogu P1073 最优贸易"></a><a href="https://www.luogu.org/problemnew/show/P1073" target="_blank" rel="noopener">Luogu P1073 最优贸易</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>C 国有 n 个大城市和 m 条道路，每条道路连接这 n 个城市中的某两个城市。任意两个城市之间最多只有一条道路直接相连。这 m 条道路中有一部分为单向通行的道路，一部分为双向通行的道路，双向通行的道路在统计条数时也计为 1 条。 C 国幅员辽阔，各地的资源分布情况各不相同，这就导致了同一种商品在不同城市的价格不一定相同。但是，同一种商品在同一个城市的买入价和卖出价始终是相同的。 商人阿龙来到 C 国旅游。当他得知同一种商品在不同城市的价格可能会不同这一信息之后，便决定在旅游的同时，利用商品在不同城市中的差价赚回一点旅费。设 C 国 n 个城市的标号从 1~ n，阿龙决定从 1 号城市出发，并最终在 n 号城市结束自己的旅行。在旅游的过程中，任何城市可以重复经过多次，但不要求经过所有 n 个城市。阿龙通过这样的贸易方式赚取旅费：他会选择一个经过的城市买入他最喜欢的商品――水晶球，并在之后经过的另一个城市卖出这个水晶球，用赚取的差价当做旅费。由于阿龙主要是来 C 国旅游，他决定这个贸易只进行最多一次，当然，在赚不到差价的情况下他就无需进行贸易。 现在给出 n 个城市的水晶球价格，m 条道路的信息（每条道路所连接的两个城市的编号以及该条道路的通行情况）。请你告诉阿龙，他最多能赚取多少旅费。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行包含 2 个正整n 和 m ，中间用一个空格隔开，分别表示城市的数目和道路的数目。 第二行 n 个正整数，每两个整数之间用一个空格隔开，按标号顺序分别表示这 n 个城市的商品价格。 接下来 m 行，每行有 3 个正整数 x, y, z，每两个整数之间用一个空格隔开。如果 = 1，表示这条道路是城市 x 到城市 y 之间的单向道路；如果 z = 2，表示这条道路为城市 x 和城市 y 之间的双向道路。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>一个整数，表示最多能赚取的旅费。如果没有进行贸易，则输出 0。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>输入数据保证 1 号城市可以到达 n 号城市。 对于 10% 的数据，1 ≤ n ≤ 6。 对于 30% 的数据，1 ≤ n ≤ 100。 对于 50% 的数据，不存在一条旅游路线，可以从一个城市出发，再回到这个城市。 对于 100% 的数据，1 ≤ n ≤ 100000，1 ≤ m ≤ 500000，1 ≤ x, y ≤ n，1 ≤ z ≤ 2，1 ≤ 各城市 水晶球价格 ≤ 100.</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>问题转化为求1-n的一条路径使得途径点的最大点权与最小点权的差最大. 建原图和反图，先在正图上跑“Dijkstra”得到1到各点最小值，再在反图上跑“Dijkstra”得到n到各点最大值。 枚举1 - n，维护$ans=max(ans,E[i]-G[i])$.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 500005
-
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N &lt;&lt; 1], g[N &lt;&lt; 1];
-
-    int ecnt, gcnt, ehead[N], ghead[N], n, m, p[N], E[N], G[N], ans;
-    bool vis[N];
-
-    inline void AddE(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = ehead[f], ehead[f] = ecnt;}
-
-    inline void AddG(int f, int to) {g[++gcnt].to = to, g[gcnt].nxt = ghead[f], ghead[f] = gcnt;}
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1; i &lt;= n; i++) scanf(&quot;%d&quot;, &amp;p[i]);
-        for (int i = 1; i &lt;= m; i++) {
-            int x , y , z;
-            scanf(&quot;%d%d%d&quot;, &amp;x, &amp;y, &amp;z);
-            AddE(x, y);
-            AddG(y, x);
-            if (z == 2) { AddE(y, x); AddG(x, y); }
-        }
-
-        //Dijkstra
-        memset(vis, 0, sizeof(vis));
-        memset(E, 0x3f, sizeof(E));
-        std::priority_queue&lt; std::pair&lt;int, int&gt; &gt; q;
-        q.push(std::make_pair(-p[1], 1));
-        E[1] = p[1];
-        while (!q.empty()) {
-            int u = q.top().second;
-            q.pop();
-            if (vis[u]) continue;
-            vis[u] = 1;
-            for (int i = ehead[u]; i; i = e[i].nxt) {
-                int v = e[i].to;
-                E[v] = std::min(E[u], p[v]);
-                q.push(std::make_pair(-E[v], v));
-            }
-        } 
-
-        memset(G, -0x3f, sizeof(G));
-        memset(vis, 0, sizeof(vis));
-        std::priority_queue&lt; std::pair&lt;int, int&gt; &gt; Q;
-        Q.push(std::make_pair(p[n], n));
-        G[n] = p[n];
-        while (!Q.empty()) {
-            int u = Q.top().second;
-            Q.pop();
-            if (vis[u]) continue;
-            vis[u] = 1;
-            for (int i = ghead[u]; i; i = g[i].nxt) {
-                int v = g[i].to;
-                G[v] = std::max(G[u], p[v]);
-                Q.push(std::make_pair(G[v], v));
-            }
-        }
-
-        //枚举节点
-        for (int i = 1; i &lt;= n; i++) ans = std::max(ans, G[i] - E[i]);
-        printf(&quot;%d\n&quot;, ans);
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/01/luogu-p1073-e6-9c-80-e4-bc-98-e8-b4-b8-e6-98-93/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -727,7 +426,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 471 个字)
+                    3 分钟 读完 (大约 472 个字)
                 </span>
                 
                 
@@ -741,113 +440,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>最短路</p>
-<h1 id="POJ1135-Domino-Effect"><a href="#POJ1135-Domino-Effect" class="headerlink" title="POJ1135 Domino Effect"></a><a href="http://poj.org/problem?id=1135" target="_blank" rel="noopener">POJ1135 Domino Effect</a></h1><h2 id="人话版题面："><a href="#人话版题面：" class="headerlink" title="人话版题面："></a>人话版题面：</h2><p>给一无向图,从节点1开始推骨牌,骨牌运动速度为1m/s,求出最后一个骨牌的落地时间.</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>先求最短路,找出最短路中最大值,即为落在节点上的最长时间. 再枚举落在边上的最长时间,画图手推可得,落在边$(u,v)$上的时间为$\frac{dis(u)+dis(v)+val}{2}$. 最后比较一下大小对应输出. 由于我不良的代码习惯导致一直WA,我忏悔</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;cstdio&gt;
-#include &lt;cstdlib&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;bitset&gt;
-#include &lt;deque&gt;
-#include &lt;iostream&gt;
-#include &lt;map&gt;
-#include &lt;queue&gt;
-#include &lt;set&gt;
-#include &lt;stack&gt;
-#include &lt;utility&gt;
-#include &lt;vector&gt;
-#define N 500005
-
-namespace Gekoo {
-    struct Edge {
-        int to, nxt, val;
-    }e[N &lt;&lt; 1];
-
-    int n, m, ecnt, head[N], dis[N], cnt;
-    bool vis[N];
-
-    inline void AddEdge(int f, int to, int val) {
-        e[++ecnt].to = to, e[ecnt].val = val, e[ecnt].nxt = head[f], head[f] = ecnt;
-    }
-
-    void Dijkstra(int s) {
-        memset(dis, 0x3f, sizeof(dis));
-        memset(vis, 0, sizeof(vis));
-        std::priority_queue&lt; std::pair&lt;int, int&gt; &gt; q;
-        q.push(std::make_pair(0, 1));
-        dis[1] = 0;
-        while (!q.empty()) {
-            int u = q.top().second;
-            q.pop();
-            if (vis[u]) continue;
-            vis[u] = 1;
-            for (int i = head[u]; i; i = e[i].nxt) {
-                int v = e[i].to, val = e[i].val;
-                if (dis[v] &gt; dis[u] + val) {
-                    dis[v] = dis[u] + val;
-                    q.push(std::make_pair(-dis[v], v));
-                }
-            }
-        }
-    }
-
-    void init() {
-        ecnt = 0;
-        memset(e, 0, sizeof(e));
-        memset(head, 0, sizeof(head));
-    }
-
-    signed QAQ() {
-        while (1) {
-            scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-            if (!n &amp;&amp; !m) break;
-            init();
-            for (int i = 1; i &lt;= m; i++) {
-                int a, b, l;
-                scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;l);
-                AddEdge(a, b, l);
-                AddEdge(b, a, l);
-            }
-            Dijkstra(1);
-            double mx_pt = 0.0;
-            int pt = 0;
-            for (int i = 1; i &lt;= n; i++) {
-                if (dis[i] &gt;= mx_pt) {
-                    mx_pt = dis[i];
-                    pt = i;
-                }
-            }
-            double mx_e = 0.0;
-            int lpt = 0, rpt = 0;
-            for (int u = 1; u &lt;= n; u++) {
-                for (int i = head[u]; i; i = e[i].nxt) {
-                    int v = e[i].to, val = e[i].val;
-                    if (mx_e &lt;= (double) (dis[u] + dis[v] + val) / 2.0) {
-                        mx_e = (double) (dis[u] + dis[v] + val) / 2.0;
-                        lpt = std::min(u, v), rpt = std::max(u, v);
-                    }
-                }
-            }
-            printf(&quot;System #%d\n&quot;, ++cnt);
-            if (mx_pt &gt;= mx_e) {
-                printf(&quot;The last domino falls after %.1f seconds, at key domino %d.\n&quot;, mx_pt, pt);
-            } else {
-                printf(&quot;The last domino falls after %.1f seconds, between key dominoes %d and %d.\n&quot;, mx_e, lpt, rpt);
-            }
-            puts(&quot;&quot;);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/02/28/poj1135-domino-effect/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -876,7 +478,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 463 个字)
+                    3 分钟 读完 (大约 464 个字)
                 </span>
                 
                 
@@ -890,115 +492,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>最短路与次短路</p>
-<h1 id="POJ3463-Sightseeing"><a href="#POJ3463-Sightseeing" class="headerlink" title="POJ3463 Sightseeing"></a><a href="http://poj.org/problem?id=3463" target="_blank" rel="noopener">POJ3463 Sightseeing</a></h1><h2 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h2><p>求图中最短路和比最短路长度大1的路径数总和</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>先求出最短路数和次短路数，如果次短路长度 = 最短路长度，那么输出路径数和，否则输出最短路数。 求次短路数也非常简单，在Dijkstra过程中分类讨论即可。</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;cctype&gt;
-#include &lt;cmath&gt;
-#include &lt;cstdio&gt;
-#include &lt;cstdlib&gt;
-#include &lt;cstring&gt;
-#include &lt;ctime&gt;
-#include &lt;algorithm&gt;
-#include &lt;bitset&gt;
-#include &lt;deque&gt;
-#include &lt;iostream&gt;
-#include &lt;map&gt;
-#include &lt;queue&gt;
-#include &lt;set&gt;
-#include &lt;stack&gt;
-#include &lt;string&gt;
-#include &lt;utility&gt;
-#include &lt;vector&gt;
-#define N 100005
-
-namespace Gekoo {
-    struct Edge {
-        int to, nxt, val;
-    }e[N];
-
-    struct Node {
-        int val, u, is_first;
-        Node(int a, int b, int c) {u = a, val = b, is_first = c;}
-        bool operator &lt;(const Node &amp;a) const {
-            return val &gt; a.val;
-        } 
-    };
-
-    int ecnt, head[N], T, dis[N][2], cnt[N][2];
-    bool vis[N][2];
-
-    void AddEdge(int f, int to, int val) {
-        e[++ecnt].to = to;
-        e[ecnt].val = val;
-        e[ecnt].nxt = head[f];
-        head[f] = ecnt;
-    }
-
-    void Dijkstra(int s) {
-        memset(dis, 0x3f, sizeof(dis));
-        memset(vis, 0, sizeof(vis));
-        memset(cnt, 0, sizeof(cnt));
-        dis[s][0] = dis[s][1] = 0;
-        cnt[s][0] = cnt[s][1] = 1;
-        std::priority_queue&lt;Node&gt; q;
-        q.push(Node(s, 0, 0));
-        while (!q.empty()) {
-            int u = q.top().u, is_f = q.top().is_first;
-            q.pop();
-            if (vis[u][is_f]) continue;
-            vis[u][is_f] = 1;
-            for (int i = head[u]; i; i = e[i].nxt) {
-                int v = e[i].to, val = e[i].val;
-                if (val + dis[u][is_f] &lt; dis[v][0]) {
-                    dis[v][1] = dis[v][0];
-                    dis[v][0] = val + dis[u][is_f];
-                    cnt[v][1] = cnt[v][0];
-                    cnt[v][0] = cnt[u][is_f];
-                    q.push(Node(v, dis[v][0], 0));
-                    q.push(Node(v, dis[v][1], 1));
-                } else if (val + dis[u][is_f] == dis[v][0]) {
-                    cnt[v][0] += cnt[u][is_f];
-                } else if (val + dis[u][is_f] &gt; dis[v][0] &amp;&amp; val + dis[u][is_f] &lt; dis[v][1]) {
-                    dis[v][1] = val + dis[u][is_f];
-                    cnt[v][1] = cnt[u][is_f];
-                    q.push(Node(v, dis[v][1], 1));
-                } else if (val + dis[u][is_f] == dis[v][1]) {
-                    cnt[v][1] += cnt[u][is_f];
-                }
-            }
-        }
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d&quot;, &amp;T);
-        while (T--) {
-            ecnt = 0;
-            memset(e, 0, sizeof(e));
-            memset(head, 0, sizeof(head));
-            int n, m, s, f;
-            scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-            for (int i = 1; i &lt;= m; i++) {
-                int a, b, l;
-                scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;l);
-                AddEdge(a, b, l);
-            }
-            scanf(&quot;%d%d&quot;, &amp;s, &amp;f);
-            Dijkstra(s);
-            if (dis[f][1] == dis[f][0] + 1) cnt[f][0] += cnt[f][1];
-            printf(&quot;%d\n&quot;, cnt[f][0]);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/02/28/poj3463-sightseeing/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -1027,7 +530,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 983 个字)
+                    7 分钟 读完 (大约 984 个字)
                 </span>
                 
                 
@@ -1041,149 +544,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>可怕的普及组</p>
-<h1 id="Luogu-P1967-货车运输"><a href="#Luogu-P1967-货车运输" class="headerlink" title="Luogu P1967 货车运输"></a><a href="https://www.luogu.org/problemnew/show/P1967" target="_blank" rel="noopener">Luogu P1967 货车运输</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>A国有n座城市,编号从1到n,城市之间有m条双向道路.每一条道路对车辆都有重量限制,简称限重.现在有q辆货车在运输货物,司机们想知道每辆车在不超过车辆限重的情况下,最多能运多重的货物.</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行有两个用一个空格隔开的整数n,m,表示A国有n座城市和m条道路。 接下来m行每行3个整数 x,y,z 每两个整数之间用一个空格隔开,表示从x号城市到y号城市有一条限重为z的道路.注意: <strong>x$\ne$y,两座城市之间可能有多条道路</strong>. 接下来一行有一个整数,表示有q辆货车需要运货. 接下来q行,每行两个整数x,y,之间用一个空格隔开,表示一辆货车需要从x城市运输货物到y城市,注意:<strong>x$\ne$y</strong> .</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>共有q行,每行一个整数,表示对于每一辆货车,它的最大载重是多少.如果货车不能到达目的地,输出−1.</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于30%的数据,0 &lt; n &lt; 1,000, 0 &lt; m &lt; 10,000, 0 &lt; q&lt; 1,000； 对于60%的数据,0 &lt; n &lt; 1,000, 0 &lt; m &lt; 50,000, 0 &lt; q&lt; 1,000； 对于100%的数据,0 &lt; n &lt; 10,000, 0 &lt; m &lt; 50,000, 0 &lt; q&lt; 30,000, 0 ≤ z ≤ 100,000.</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>这题真难,居然是普及组…(我差点被普及组的题卡了 首先,沟通每个城市之间的道路若想边权最大,必定形成了一棵最大生成树,这个可以通过Kruskal完成.但这题还有一个坑,最后树不一定是一棵,可能是树林. 之后就不用管图了,研究树就行了.沟通两个城市之间的道路可以通过LCA实现,求最大载重就是求这几条边的最大值,通过ST表实现.ST表和LCA的初始化可以放一块进行. 当两个城市不在同一棵树上时,货车无法到达.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-using namespace std;
-#define N 100005
-
-namespace Gekoo {
-    inline int read () {
-        int a = 1, b = 0;
-        char c;
-        do{c = getchar(); if (c == &apos;-&apos;) a = -1;} while (c &lt; &apos;0&apos; || c &gt; &apos;9&apos;);
-        do{b = b * 10 + c - &apos;0&apos;; c = getchar();} while (c &gt;= &apos;0&apos; &amp;&amp; c &lt;=&apos;9&apos;);
-        return a * b;
-    }
-
-    struct Edge {
-        int from, to, nxt, val;
-    }e[1000005];
-
-    struct Tree {
-        int x, y, z;
-        bool operator &lt; (const Tree &amp;x) {
-            return z &gt; x.z;
-        }
-    }t[1000005];
-
-    int ecnt, head[N], n, m, fa[N], q, f[N][25], w[N][25], dep[N], tcnt, s;
-    bool vis[N];
-
-    void Add_Edge (int f, int to, int v) {
-        e[++ecnt].to = to;
-        e[ecnt].val = v;
-        e[ecnt].nxt = head[f];
-        head[f] = ecnt;
-    }
-
-    int Get (int x) {
-        if (x == fa[x]) return x;
-        return fa[x] = Get(fa[x]);
-    }
-
-    void Tree_data (int u) {
-        vis[u] = 1;
-        for (int i = head[u]; i; i = e[i].nxt) {
-            int v = e[i].to;
-            if (!dep[v]) {
-                dep[v] = dep[u] + 1;
-                f[v][0] = u;
-                w[v][0] = e[i].val;
-                Tree_data(v);
-            }
-        }
-        return ;
-    }
-
-    void init () {
-        for (int j = 1; (1 &lt;&lt; j) &lt;= tcnt; j++) {
-            for (int i = 1; i &lt;=tcnt; i++) {
-                f[i][j] = f[ f[i][j-1] ][j-1];
-                w[i][j] = min(w[i][j-1], w[ f[i][j-1] ][j-1]);
-            }
-        }
-    }
-
-    void LCA (int a, int b) {
-        if (Get(a) != Get(b)) {
-            printf(&quot;-1\n&quot;);
-            return ;
-        }
-        int ans = (1 &lt;&lt; 30);
-        if (dep[a] &lt; dep[b])
-            swap(a, b);
-        int i = 0;
-        for (; (1 &lt;&lt; i) &lt;= dep[a]; i++);
-        for (int j = i; j &gt;= 0; j--) {
-            if (dep[a] - (1 &lt;&lt; j) &gt;= dep[b]){
-                ans = min(ans, w[a][j]);
-                a = f[a][j];                
-            }
-        }
-        if (a == b) {
-            printf(&quot;%d\n&quot;,ans);
-            return ;
-        }
-        for (int j = i; j &gt;= 0; j--) {
-            if (f[a][j] &amp;&amp; f[a][j] != f[b][j]) {
-                ans = min(ans, min(w[a][j], w[b][j]));
-                a = f[a][j], b = f[b][j];
-            }
-        }
-        ans = min(ans, min(w[a][0], w[b][0]));
-        printf(&quot;%d\n&quot;,ans);
-        return ;
-    }
-
-    void main() {
-        n = read(), m = read();
-        for (int i = 1; i &lt;=n; i++) {
-            fa[i] = i;
-        }
-        for (int i = 1, x, y, z; i &lt;= m; i++) {
-            x = read(), y = read(), z = read();
-            t[++tcnt].x = x, t[tcnt].y = y, t[tcnt].z = z;
-            t[++tcnt].x = y, t[tcnt].y = x, t[tcnt].z = z;
-        }
-        //Kruskal
-        sort(t + 1, t + 1 + tcnt);
-        for (int i = 1; i &lt;= tcnt; i++) {
-            int x = t[i].x, y = t[i].y, z = t[i].z;
-            if (Get(x) != Get(y)) {
-                Add_Edge(x, y, z);
-                Add_Edge(y, x, z);
-                fa[Get(x)] = Get(y);
-            }
-        }
-        for (int i = 1; i &lt;= n; i++) { //树林!被坑过一次QAQ
-            if (!vis[i]) {
-                dep[i] = 1;
-                f[1][0] = 1;
-                Tree_data(i);
-                w[i][0] = (1 &lt;&lt; 30);
-            }
-        }
-        init();
-        q = read();
-        for (int i = 1; i &lt;= q; i++) {
-            LCA(read(), read());
-        }
-    }
-}
-
-signed main() {
-    Gekoo::main();
-    return 0;
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/02/28/luogu-p1967-e8-b4-a7-e8-bd-a6-e8-bf-90-e8-be-93/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -1230,22 +600,22 @@ signed main() {
             <div class="level-item has-text-centered">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                        <img class="image is-128x128 has-mb-6" src="https://www.gravatar.com/avatar/4adaa4f33e8e1d180be005b567f86ef6?s=128" alt="Gekoo">
                     
                     
                     <p class="is-size-4 is-block">
-                        Your name
+                        Gekoo
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        Your title
+                        蒟蒻Orz
                     </p>
                     
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Your location</span>
+                        <span>Taiyuan, Shanxi, China</span>
                     </p>
                     
                 </div>
@@ -1258,7 +628,7 @@ signed main() {
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        32
+                        28
                     </p>
                 </div>
             </div>
@@ -1268,7 +638,7 @@ signed main() {
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        1
                     </p>
                 </div>
             </div>
@@ -1284,34 +654,22 @@ signed main() {
             </div>
         </nav>
         <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+            <a class="level-item button is-link is-rounded" href="https://twitter.com/GekooC" target="_blank">
                 关注我</a>
         </div>
         
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ppoffice">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/GekooC">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/GekooC">
                 
                 <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
                 
             </a>
             
@@ -1376,28 +734,12 @@ signed main() {
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/Nothing/">
-            <span class="level-start">
-                <span class="level-item">Nothing</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/OI/">
             <span class="level-start">
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">28</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Thinking/">
-            <span class="level-start">
-                <span class="level-item">Thinking</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -1428,44 +770,6 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/04/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
-                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
@@ -1485,7 +789,7 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/03/14/125/" class="media-left">
+            <a href="/2019/03/14/luogu-p5058/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
                 </p>
@@ -1494,7 +798,7 @@ signed main() {
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
-                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <a href="/2019/03/14/luogu-p5058/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/OI/">OI</a>
                     </p>
@@ -1521,6 +825,44 @@ signed main() {
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2783 有机化学之神偶尔会做作弊		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T10:25:49.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="has-link-black-ter is-size-6"> Luogu P2783 有机化学之神偶尔会做作弊		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P3225 [HNOI2012]矿场搭建		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-09T09:24:29.000Z">2019-03-09</time></div>
+                    <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="has-link-black-ter is-size-6"> Luogu P3225 [HNOI2012]矿场搭建		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -1534,23 +876,12 @@ signed main() {
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1561,7 +892,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
@@ -1779,44 +1110,6 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/04/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
-                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
@@ -1836,7 +1129,7 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/03/14/125/" class="media-left">
+            <a href="/2019/03/14/luogu-p5058/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
                 </p>
@@ -1845,7 +1138,7 @@ signed main() {
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
-                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <a href="/2019/03/14/luogu-p5058/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/OI/">OI</a>
                     </p>
@@ -1872,6 +1165,44 @@ signed main() {
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2783 有机化学之神偶尔会做作弊		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T10:25:49.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="has-link-black-ter is-size-6"> Luogu P2783 有机化学之神偶尔会做作弊		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P3225 [HNOI2012]矿场搭建		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-09T09:24:29.000Z">2019-03-09</time></div>
+                    <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="has-link-black-ter is-size-6"> Luogu P3225 [HNOI2012]矿场搭建		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -1885,23 +1216,12 @@ signed main() {
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1912,7 +1232,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

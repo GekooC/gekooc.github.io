@@ -19,6 +19,8 @@
 <meta name="twitter:title" content="Gekoo&#39;s Notebook">
 <meta name="twitter:description" content="Note down my life.">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
+<meta name="twitter:creator" content="@GekooC">
+<meta name="twitter:site" content="https://twitter.com/GekooC">
 
 
 
@@ -164,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1045 个字)
+                    7 分钟 读完 (大约 1046 个字)
                 </span>
                 
                 
@@ -178,93 +180,16 @@
         </h1>
         <div class="content">
             <p>ning干</p>
-<h1 id="Luogu-P1262-间谍网络"><a href="#Luogu-P1262-间谍网络" class="headerlink" title="Luogu P1262 间谍网络"></a><a href="https://www.luogu.org/problemnew/show/P1262" target="_blank" rel="noopener">Luogu P1262 间谍网络</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>由于外国间谍的大量渗入，国家安全正处于高度的危机之中。如果A间谍手中掌握着关于B间谍的犯罪证据，则称A可以揭发B。有些间谍收受贿赂，只要给他们一定数量的美元，他们就愿意交出手中掌握的全部情报。所以，如果我们能够收买一些间谍的话，我们就可能控制间谍网中的每一分子。因为一旦我们逮捕了一个间谍，他手中掌握的情报都将归我们所有，这样就有可能逮捕新的间谍，掌握新的情报。 我们的反间谍机关提供了一份资料，包括所有已知的受贿的间谍，以及他们愿意收受的具体数额。同时我们还知道哪些间谍手中具体掌握了哪些间谍的资料。假设总共有n个间谍(n不超过3000)，每个间谍分别用1到3000的整数来标识。 请根据这份资料，判断我们是否有可能控制全部的间谍，如果可以，求出我们所需要支付的最少资金。否则，输出不能被控制的一个间谍。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行只有一个整数n。 第二行是整数p。表示愿意被收买的人数，1≤p≤n。 接下来的p行，每行有两个整数，第一个数是一个愿意被收买的间谍的编号，第二个数表示他将会被收买的数额。这个数额不超过20000。 紧跟着一行只有一个整数r，1≤r≤8000。然后r行，每行两个正整数，表示数对(A, B)，A间谍掌握B间谍的证据。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>如果可以控制所有间谍，第一行输出YES，并在第二行输出所需要支付的贿金最小值。否则输出NO，并在第二行输出不能控制的间谍中，编号最小的间谍编号。</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>显然,同一个SCC里的间谍会互相出卖.因此,先缩点,记录每个SCC里的最小特工编号和贿赂费用. 思考后可以发现,只要我们控制了所有入度为0的特工,整个图就都可以被控制. 直接寻找一下所有入度为0的点,如果该点不能被贿赂,就无法控制所有间谍,此时记录编号最小的间谍,反之将贿金加给ans.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 10005
-
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N], c[N];
-
-    int ecnt, ccnt, head[N], hc[N], p, n, m, MO, num, cnt, ans = 0, cant = 0x3f3f3f3f;
-    int stack[N], dfn[N], low[N], id[N], ind[N], val[N];
-    int mn[N], cost[N];
-    bool ins[N], flg;
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;
-        stack[++p] = x, ins[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-            } else if (ins[y])
-                low[x] = std::min(low[x], dfn[y]);
-        }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = stack[p--], ins[y] = 0;
-                id[y] = cnt;
-                if (cost[y] &gt; 0) val[cnt] = std::min(val[cnt], cost[y]);
-                mn[cnt] = std::min(mn[cnt], y);
-            } while (x != y);
-        }
-    }
-
-    signed QAQ() {
-        memset(val, 0x3f, sizeof(val));
-        memset(mn, 0x3f, sizeof(mn));
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1, a, b; i &lt;= m; i++) {
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            cost[a] = b; 
-        }
-        int r;
-        scanf(&quot;%d&quot;, &amp;r);
-        for (int i = 1; i &lt;= r; i++) {
-            int a, b;
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            Add(a, b);
-        }
-        for (int i = 1; i &lt;= n; i++)
-            if (!dfn[i]) Tarjan(i);
-        for (int u = 1; u &lt;= n; u++) {
-            for (int i = head[u]; i; i = e[i].nxt) {
-                int v = e[i].to;
-                if (id[u] != id[v]) AddC(id[u], id[v]), ind[id[v]]++;
-            }
-        }
-        for (int i = 1; i &lt;= cnt; i++) {
-            if (!ind[i]) {
-                if (val[i] == 0x3f3f3f3f) {
-                    flg = 1;
-                    cant = std::min(cant, mn[i]);
-                } else {
-                    ans += val[i];
-                }
-            }
-        }
-        if (!flg) return !printf(&quot;YES\n%d\n&quot;, ans);
-        else return !printf(&quot;NO\n%d\n&quot;, cant);
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/09/luogu-p1262-e9-97-b4-e8-b0-8d-e7-bd-91-e7-bb-9c/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -293,7 +218,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1027 个字)
+                    7 分钟 读完 (大约 1028 个字)
                 </span>
                 
                 
@@ -307,113 +232,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>Tarjan总是和DAGDP紧密结合呢</p>
-<h1 id="Luogu-P2272-ZJOI2007-最大半连通子图"><a href="#Luogu-P2272-ZJOI2007-最大半连通子图" class="headerlink" title="Luogu P2272 [ZJOI2007]最大半连通子图"></a><a href="https://www.luogu.org/problemnew/show/P2272" target="_blank" rel="noopener">Luogu P2272 [ZJOI2007]最大半连通子图</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>一个有向图G=(V,E)称为半连通的(Semi-Connected)，如果满足：?u,v∈V，满足u→v或v→u，即对于图中任意两点u，v,存在一条u到v的有向路径或者从v到u的有向路径。若G’=(V’,E’)满足V’?V，E’是E中所有跟V’有关的边，则称G’是G的一个导出子图。若G’是G的导出子图，且G’半连通，则称G’为G的半连通子图。若G’是G所有半连通子图中包含节点数最多的，则称G’是G的最大半连通子图。给定一个有向图G，请求出G的最大半连通子图拥有的节点数K，以及不同的最大半连通子图的数目C。由于C可能比较大，仅要求输出C对X的余数。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行包含两个整数N，M，X。N，M分别表示图G的点数与边数，X的意义如上文所述接下来M行，每行两个正整数a, b，表示一条有向边(a, b)。图中的每个点将编号为1,2,3…N，保证输入中同一个(a,b)不会出现两次。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>应包含两行，第一行包含一个整数K。第二行包含整数C Mod X.</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于100%的数据，$N \le 100000, M \le 1000000, X \le 10^8$</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>简化题意:给定一个有向图，若u，v两点，只要u-v可达或者v-u可达，则称u，v半联通.求半联通子图中点数最多的个数和方案数. 显然又是DAGDP…先跑Tarjan缩点,记录一下每个连通块的大小,再拓扑跑DP. 问题主要在第二问,缩点会有重边,势必会影响方案数统计.所以要去重边. 如何去重? 开一边集数组,先记录所有缩点后的边,再按起始点sort一下.建图时检查一下,如果<code>E[i].from == E[i - 1].from &amp;&amp; E[i].to == E[i - 1].to</code>,说明为重边,直接continue. 其他没什么了.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define M 1000005
-
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N], c[N];
-
-    struct EdgeC {
-        int from, to;
-
-        bool operator &lt;(const EdgeC &amp;a) const {
-            return (from == a.from) ? to &lt; a.to : from &lt; a.from;
-        }
-    }EDGE[N];
-
-    int ecnt, ccnt, head[N], hc[N], p, n, m, MO, num, scc, cnt, t,  ans = -114514, ans2;
-    int stack[N], dfn[N], low[N], id[N], ind[N], val[N], f[N], g[N];
-    bool ins[N];
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;
-        stack[++p] = x, ins[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-            } else if (ins[y])
-                low[x] = std::min(low[x], dfn[y]);
-        }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = stack[p--], ins[y] = 0;
-                id[y] = cnt;
-                val[cnt]++;
-            } while (x != y);
-        }
-    }
-
-    void TopSort() {
-        std::queue&lt;int&gt; q;
-        for (int i = 1; i &lt;= cnt; i++) 
-            if (!ind[i]) q.push(i), f[i] = val[i], g[i] = 1;
-        while (!q.empty()) {
-            int u = q.front();
-            q.pop();
-            for (int i = hc[u]; i; i = c[i].nxt) {
-                int v = c[i].to;
-                if (f[v] &lt; f[u] + val[v]) {
-                    f[v] = f[u] + val[v];
-                    g[v] = g[u];
-                } else if (f[v] == f[u] + val[v]) {
-                    g[v] = (g[v] + g[u]) % MO;
-                }
-                if (!(--ind[v])) {
-                    q.push(v);
-                }
-            }
-        }
-        for (int i = 1; i &lt;= cnt; i++)
-            if (f[i] &gt; ans) ans = f[i];
-        for (int i = 1; i &lt;= cnt; i++)
-            if (f[i] == ans) ans2 = (ans2 + g[i]) % MO;
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;MO);
-        for (int i = 1, a, b; i &lt;= m; i++) {
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            Add(a, b);
-        }
-        for (int i = 1; i &lt;= n; i++)
-            if (!dfn[i]) Tarjan(i);
-        for (int x = 1; x &lt;= n; x++) {
-            for (int i = head[x]; i; i = e[i].nxt) {
-                int y = e[i].to;
-                if (id[x] != id[y]) EDGE[++t].from = id[x], EDGE[t].to = id[y];            
-            }
-        }
-        std::sort(EDGE + 1, EDGE + t + 1);
-        for (int i = 1; i &lt;= t; i++) {
-            if (EDGE[i].from == EDGE[i - 1].from &amp;&amp; EDGE[i].to == EDGE[i - 1].to) continue;
-            AddC(EDGE[i].from, EDGE[i].to), ++ind[EDGE[i].to];
-        }
-        TopSort();
-        printf(&quot;%d\n%d\n&quot;, ans, ans2);
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/09/luogu-p2272-zjoi2007-e6-9c-80-e5-a4-a7-e5-8d-8a-e8-bf-9e-e9-80-9a-e5-ad-90-e5-9b-be/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -442,7 +270,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1259 个字)
+                    8 分钟 读完 (大约 1260 个字)
                 </span>
                 
                 
@@ -456,102 +284,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>与缩点模板题惊人的相似…</p>
-<h1 id="Luogu-P3627-APIO2009-抢掠计划"><a href="#Luogu-P3627-APIO2009-抢掠计划" class="headerlink" title="Luogu P3627 [APIO2009]抢掠计划"></a><a href="https://www.luogu.org/problemnew/show/P3627" target="_blank" rel="noopener">Luogu P3627 [APIO2009]抢掠计划</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>Siruseri 城中的道路都是单向的。不同的道路由路口连接。按照法律的规定， 在每个路口都设立了一个 Siruseri 银行的 ATM 取款机。令人奇怪的是，Siruseri 的酒吧也都设在路口，虽然并不是每个路口都设有酒吧。 Banditji 计划实施 Siruseri 有史以来最惊天动地的 ATM 抢劫。他将从市中心 出发，沿着单向道路行驶，抢劫所有他途径的 ATM 机，最终他将在一个酒吧庆 祝他的胜利。 使用高超的黑客技术，他获知了每个 ATM 机中可以掠取的现金数额。他希 望你帮助他计算从市中心出发最后到达某个酒吧时最多能抢劫的现金总数。他可 以经过同一路口或道路任意多次。但只要他抢劫过某个 ATM 机后，该 ATM 机 里面就不会再有钱了。 例如，假设该城中有 6 个路口，道路的连接情况如下图所示： <img src="https://cdn.luogu.org/upload/pic/4396.png" alt="示例"> 市中心在路口 1，由一个入口符号→来标识，那些有酒吧的路口用双圈来表示。每个 ATM 机中可取的钱数标在了路口的上方。在这个例子中，Banditji 能抢 劫的现金总数为 47，实施的抢劫路线是：1-2-4-1-2-3-5。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行包含两个整数 N、M。N 表示路口的个数，M 表示道路条数。接下来 M 行，每行两个整数，这两个整数都在 1 到 N 之间，第 i+1 行的两个整数表示第 i 条道路的起点和终点的路口编号。接下来 N 行，每行一个整数，按顺序表示每 个路口处的 ATM 机中的钱数。接下来一行包含两个整数 S、P，S 表示市中心的 编号，也就是出发的路口。P 表示酒吧数目。接下来的一行中有 P 个整数，表示 P 个有酒吧的路口的编号。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出一个整数，表示 Banditji 从市中心开始到某个酒吧结束所能抢劫的最多 的现金总数。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>50%的输入保证 N, M&lt;=3000。所有的输入保证 N, M&lt;=500000。每个 ATM 机中可取的钱数为一个非负整数且不超过 4000。 输入数据保证你可以从市中心 沿着 Siruseri 的单向的道路到达其中的至少一个酒吧。</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>此题是要在图中求经过点权最大的路径所经过的点权和. 然后我们就可以发现它与缩点模板题惊人的相似… 我们可以先缩点,将图转化为DAG,之后在DAG上拓扑跑DP即可. 本题有一大坑!(图片来自洛谷评论区) <img src="https://cdn.luogu.org/upload/pic/47931.png" alt="QAQ"> 当出现如图这种情况,若1为起点,5的入度为2,在拓扑过程中由于4不可达,5无法入队.我们可以发现,只需要研究可达的点就够了.所以在跑Tarjan和建新图的时候都只需要跑与起点联通的点.Tarjan只需要从起点跑,建图是特判dfn是否等于0. #3#11卡WA了解一下?</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 500005
-
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N &lt;&lt; 1], c[N &lt;&lt; 1];
-
-    int ecnt, ccnt, head[N], hc[N], p, n, m, num, scc, cnt, ans = -114514, S, P, SPlace;
-    int stack[N], dfn[N], low[N], id[N], ind[N], pv[N], val[N], f[N];
-    bool bridge[N], vis[N], bar[N], Bar[N];
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;
-        stack[++p] = x, vis[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-            } else if (vis[y])
-                low[x] = std::min(low[x], dfn[y]);
-        }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = stack[p--], vis[y] = 0;
-                id[y] = cnt;
-                val[cnt] += pv[y];
-                if (bar[y]) Bar[cnt] = 1;
-                if (y == S) SPlace = cnt;
-            } while (x != y);
-        }
-    }
-
-    void TopSort() {
-        std::queue&lt;int&gt; q;
-        q.push(id[S]);
-        f[id[S]] = val[SPlace];
-        while (!q.empty()) {
-            int u = q.front();
-            q.pop();
-            for (int i = hc[u]; i; i = c[i].nxt) {
-                int v = c[i].to;
-                f[v] = std::max(f[v], f[u] + val[v]);
-                if (!(--ind[v])) {
-                    q.push(v);
-                }
-            }
-        }
-        for (int i = 1; i &lt;= cnt; i++) 
-            if (Bar[i]) ans = std::max(ans, f[i]);
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1, a, b; i &lt;= m; i++) {
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            Add(a, b);
-        }
-        for (int i = 1; i &lt;= n; i++) 
-            scanf(&quot;%d&quot;, &amp;pv[i]);
-        scanf(&quot;%d%d&quot;, &amp;S, &amp;P);
-        for (int i = 1, x; i &lt;= P; i++)
-            scanf(&quot;%d&quot;, &amp;x), bar[x] = 1; 
-        Tarjan(S);
-        for (int x = 1; x &lt;= n; x++) {
-            if (!dfn[x]) continue;
-            for (int i = head[x]; i; i = e[i].nxt) {
-                int y = e[i].to;
-                if (id[x] == id[y]) continue;
-                AddC(id[x], id[y]);
-                ind[id[y]]++;                
-            }
-        }
-        TopSort();
-        printf(&quot;%d\n&quot;, ans);
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/08/luogu-p3627-apio2009-e6-8a-a2-e6-8e-a0-e8-ae-a1-e5-88-92/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -580,7 +322,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 846 个字)
+                    6 分钟 读完 (大约 847 个字)
                 </span>
                 
                 
@@ -594,88 +336,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>缩点ning干</p>
-<h1 id="P2746-USACO5-3-校园网Network-of-Schools"><a href="#P2746-USACO5-3-校园网Network-of-Schools" class="headerlink" title="P2746 [USACO5.3]校园网Network of Schools"></a><a href="https://www.luogu.org/problemnew/show/P2746" target="_blank" rel="noopener">P2746 [USACO5.3]校园网Network of Schools</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>一些学校连入一个电脑网络。那些学校已订立了协议：每个学校都会给其它的一些学校分发软件（称作“接受学校”）。注意即使 B 在 A 学校的分发列表中， A 也不一定在 B 学校的列表中。 你要写一个程序计算，根据协议，为了让网络中所有的学校都用上新软件，必须接受新软件副本的最少学校数目（子任务 A）。更进一步，我们想要确定通过给任意一个学校发送新软件，这个软件就会分发到网络中的所有学校。为了完成这个任务，我们可能必须扩展接收学校列表，使其加入新成员。计算最少需要增加几个扩展，使得不论我们给哪个学校发送新软件，它都会到达其余所有的学校（子任务 B）。一个扩展就是在一个学校的接收学校列表中引入一个新成员。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>输入文件的第一行包括一个整数 N：网络中的学校数目（2 &lt;= N &lt;= 100）。学校用前 N 个正整数标识。 接下来 N 行中每行都表示一个接收学校列表（分发列表）。第 i+1 行包括学校 i 的接收学校的标识符。每个列表用 0 结束。空列表只用一个 0 表示。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>你的程序应该在输出文件中输出两行。 第一行应该包括一个正整数：子任务 A 的解。 第二行应该包括子任务 B 的解。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>n &lt;= 100</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>缩点ning干(逃 先缩点,记录一下入度和出度.显然,问题A的答案就是入度为0的点的个数. 问题B的答案也比较显然,是入度为0和出度为0的点的个数的较大值. 注意特判,当缩成只有一个点的时候问题B答案为0.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 5000005
-
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N], c[N];
-
-    int ecnt, ccnt, hc[N], head[N], ind[N], outd[N], n, Aans, Bans;
-    int dfn[N], low[N], s[N], id[N], num, p, cnt;
-    bool vis[N];
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;
-        s[++p] = x, vis[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-            } else if (vis[y])
-                low[x] = std::min(low[x], dfn[y]);
-        }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = s[p--], vis[y] = 0;
-                id[y] = cnt;
-            } while (x != y);
-        }
-    }
-
-    signed QAQ() {
-        //Input
-        scanf(&quot;%d&quot;, &amp;n);
-        for (int u = 1, v; u &lt;= n; u++) {
-            while (1) {
-                scanf(&quot;%d&quot;, &amp;v);
-                if (!v) break;
-                Add(u, v);
-            }
-        } 
-        //Shrink
-        for (int i = 1; i &lt;= n; i++)
-            if (!dfn[i]) Tarjan(i);
-        for (int u = 1; u &lt;= n; u++) {
-            for (int i = head[u]; i; i = e[i].nxt) {
-                int v = e[i].to;
-                if (id[u] == id[v]) continue;
-                AddC(id[u], id[v]);
-                ind[id[v]]++, outd[id[u]]++;
-            }
-        }
-        //Task A
-        for (int i = 1; i &lt;= cnt; i++) 
-            if (!ind[i]) Aans++;
-        //Task B
-        for (int i = 1; i &lt;= cnt; i++)
-            if (!outd[i]) Bans++;
-        Bans = std::max(Bans, Aans);
-        if (cnt == 1) Bans = 0;
-        //Output
-        printf(&quot;%d\n%d\n&quot;, Aans, Bans);
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/07/p2746-usaco5-3-e6-a0-a1-e5-9b-ad-e7-bd-91network-of-schools/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -704,7 +374,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 612 个字)
+                    4 分钟 读完 (大约 613 个字)
                 </span>
                 
                 
@@ -718,96 +388,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>为什么缩点模板还有DAGDP(半恼</p>
-<h1 id="Luogu-P3387-【模板】缩点"><a href="#Luogu-P3387-【模板】缩点" class="headerlink" title="Luogu P3387 【模板】缩点"></a><a href="https://www.luogu.org/problemnew/show/P3387" target="_blank" rel="noopener">Luogu P3387 【模板】缩点</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>给定一个n个点m条边有向图，每个点有一个权值，求一条路径，使路径经过的点权值之和最大。你只需要求出这个权值和。 允许多次经过一条边或者一个点，但是，重复经过的点，权值只计算一次。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行，n,m 第二行，n个整数，依次代表点权 第三至m+2行，每行两个整数u,v，表示u-&gt;v有一条有向边</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>共一行，最大的点权之和。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>n&lt;=10^4,m&lt;=10^5,点权&lt;=1000</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>首先先求出scc,之后缩点 (缩点板子要缩点不是显然 缩点后可以得到一个DAG,求最大点权的转移方程显然:<code>f[v] = max(f[v], f[u] + val[v])</code>. 但是有后效性.为了解决后效性,进行一次拓扑排序,在拓扑排序过程中DP.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 500005
-
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N &lt;&lt; 1], c[N &lt;&lt; 1];
-
-    int ecnt, ccnt, head[N], hc[N], p, n, m, num, scc, cnt, ans = -114514;
-    int stack[N], dfn[N], low[N], id[N], ind[N], pv[N], val[N], f[N];
-    bool bridge[N], vis[N];
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;
-        stack[++p] = x, vis[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-            } else if (vis[y])
-                low[x] = std::min(low[x], dfn[y]);
-        }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = stack[p--], vis[y] = 0;
-                id[y] = cnt;
-                val[cnt] += pv[y];
-            } while (x != y);
-        }
-    }
-
-    void TopSort() {
-        std::queue&lt;int&gt; q;
-        for (int i = 1; i &lt;= cnt; i++) 
-            if(!ind[i]) f[i] = val[i], q.push(i);
-        while (!q.empty()) {
-            int u = q.front();
-            q.pop();
-            for (int i = hc[u]; i; i = c[i].nxt) {
-                int v = c[i].to;
-                f[v] = std::max(f[v], f[u] + val[v]);
-                if (!(--ind[v])) {
-                    q.push(v);
-                }
-            }
-        }
-        for (int i = 1; i &lt;= cnt; i++) ans = std::max(ans, f[i]);
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1; i &lt;= n; i++) 
-            scanf(&quot;%d&quot;, &amp;pv[i]);
-        for (int i = 1, a, b; i &lt;= m; i++) {
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            Add(a, b);
-        }
-        for (int i = 1; i &lt;= n; i++)
-            if (!dfn[i]) Tarjan(i);
-        for (int x = 1; x &lt;= n; x++) {
-            for (int i = head[x]; i; i = e[i].nxt) {
-                int y = e[i].to;
-                if (id[x] == id[y]) continue;
-                AddC(id[x], id[y]);
-                ind[id[y]]++;                
-            }
-        }
-        TopSort();
-        printf(&quot;%d\n&quot;, ans);
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/07/luogu-p3387-e3-80-90-e6-a8-a1-e6-9d-bf-e3-80-91-e7-bc-a9-e7-82-b9/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -836,7 +426,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 765 个字)
+                    5 分钟 读完 (大约 766 个字)
                 </span>
                 
                 
@@ -850,76 +440,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>车 万 厨 大 欢 喜</p>
-<h1 id="Luogu-P1726-上白泽慧音"><a href="#Luogu-P1726-上白泽慧音" class="headerlink" title="Luogu P1726 上白泽慧音"></a><a href="https://www.luogu.org/problemnew/show/P1726" target="_blank" rel="noopener">Luogu P1726 上白泽慧音</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>在幻想乡，上白泽慧音是以知识渊博闻名的老师。春雪异变导致人间之里的很多道路都被大雪堵塞，使有的学生不能顺利地到达慧音所在的村庄。因此慧音决定换一个能够聚集最多人数的村庄作为新的教学地点。人间之里由N个村庄（编号为1..N）和M条道路组成，道路分为两种一种为单向通行的，一种为双向通行的，分别用1和2来标记。如果存在由村庄A到达村庄B的通路，那么我们认为可以从村庄A到达村庄B，记为(A,B)。当(A,B)和(B,A)同时满足时，我们认为A,B是绝对连通的，记为&lt;A,B&gt;。绝对连通区域是指一个村庄的集合，在这个集合中任意两个村庄X,Y都满足&lt;X,Y&gt;。现在你的任务是，找出最大的绝对连通区域，并将这个绝对连通区域的村庄按编号依次输出。若存在两个最大的，输出字典序最小的，比如当存在1,3,4和2,5,6这两个最大连通区域时，输出的是1,3,4。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第1行：两个正整数N,M 第2..M+1行：每行三个正整数a,b,t, t = 1表示存在从村庄a到b的单向道路，t = 2表示村庄a,b之间存在双向通行的道路。保证每条道路只出现一次。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>第1行： 1个整数，表示最大的绝对连通区域包含的村庄个数。 第2行：若干个整数，依次输出最大的绝对连通区域所包含的村庄编号。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于60%的数据：N &lt;= 200且M &lt;= 10,000 对于100%的数据：N &lt;= 5,000且M &lt;= 50,000</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>求图中最大SCC. 基本就是板子((((</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 50005
-
-namespace Gekoo {
-    struct Edge { int to, nxt; } e[N &lt;&lt; 1];
-
-    int head[N], dfn[N], low[N], c[N], s[N &lt;&lt; 1], ecnt, n, m, num, p, cnt, ans = 1;
-    bool vis[N];
-    std::vector &lt;int&gt; scc[N];
-
-    void Add(int f, int to) { e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt; }
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;    
-        s[++p] = x, vis[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int v = e[i].to;
-            if (!dfn[v]) {
-                Tarjan(v);
-                low[x] = std::min(low[x], low[v]);
-            } else if (vis[v]) {
-                low[x] = std::min(low[x], dfn[v]);
-            }
-        }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = s[p--], vis[y] = 0;
-                c[y] = cnt;
-                scc[cnt].push_back(y);
-            } while (x != y);
-        }
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1; i &lt;= m; i++) {
-            int a, b, t;
-            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;t);
-            Add(a, b);
-            if (t == 2) Add(b, a);
-        }
-        for (int i = 1; i &lt;= n; i++) {
-            if (!dfn[i]) Tarjan(i);
-        }
-        for (int i = 1; i &lt;= cnt; i++) {
-            if (scc[i].size() &gt; scc[ans].size()) ans = i;
-        }
-        printf(&quot;%d\n&quot;, (int) scc[ans].size());
-        std::sort(scc[ans].begin(), scc[ans].end());
-        for (std::vector&lt;int&gt;::iterator it = scc[ans].begin(); it != scc[ans].end(); ++it) {
-            printf(&quot;%d &quot;, *it);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/05/luogu-p1726-e4-b8-8a-e7-99-bd-e6-b3-bd-e6-85-a7-e9-9f-b3/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -947,22 +477,22 @@ signed main() {
             <div class="level-item has-text-centered">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                        <img class="image is-128x128 has-mb-6" src="https://www.gravatar.com/avatar/4adaa4f33e8e1d180be005b567f86ef6?s=128" alt="Gekoo">
                     
                     
                     <p class="is-size-4 is-block">
-                        Your name
+                        Gekoo
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        Your title
+                        蒟蒻Orz
                     </p>
                     
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Your location</span>
+                        <span>Taiyuan, Shanxi, China</span>
                     </p>
                     
                 </div>
@@ -975,7 +505,7 @@ signed main() {
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        32
+                        28
                     </p>
                 </div>
             </div>
@@ -985,7 +515,7 @@ signed main() {
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        1
                     </p>
                 </div>
             </div>
@@ -1001,34 +531,22 @@ signed main() {
             </div>
         </nav>
         <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+            <a class="level-item button is-link is-rounded" href="https://twitter.com/GekooC" target="_blank">
                 关注我</a>
         </div>
         
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ppoffice">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/GekooC">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/GekooC">
                 
                 <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
                 
             </a>
             
@@ -1093,28 +611,12 @@ signed main() {
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/Nothing/">
-            <span class="level-start">
-                <span class="level-item">Nothing</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/OI/">
             <span class="level-start">
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">28</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Thinking/">
-            <span class="level-start">
-                <span class="level-item">Thinking</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -1145,44 +647,6 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/04/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
-                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
@@ -1202,7 +666,7 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/03/14/125/" class="media-left">
+            <a href="/2019/03/14/luogu-p5058/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
                 </p>
@@ -1211,7 +675,7 @@ signed main() {
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
-                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <a href="/2019/03/14/luogu-p5058/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/OI/">OI</a>
                     </p>
@@ -1238,6 +702,44 @@ signed main() {
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2783 有机化学之神偶尔会做作弊		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T10:25:49.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="has-link-black-ter is-size-6"> Luogu P2783 有机化学之神偶尔会做作弊		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P3225 [HNOI2012]矿场搭建		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-09T09:24:29.000Z">2019-03-09</time></div>
+                    <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="has-link-black-ter is-size-6"> Luogu P3225 [HNOI2012]矿场搭建		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -1251,23 +753,12 @@ signed main() {
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1278,7 +769,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
@@ -1496,44 +987,6 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/04/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
-                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
@@ -1553,7 +1006,7 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/03/14/125/" class="media-left">
+            <a href="/2019/03/14/luogu-p5058/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
                 </p>
@@ -1562,7 +1015,7 @@ signed main() {
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
-                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <a href="/2019/03/14/luogu-p5058/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/OI/">OI</a>
                     </p>
@@ -1589,6 +1042,44 @@ signed main() {
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2783 有机化学之神偶尔会做作弊		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T10:25:49.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="has-link-black-ter is-size-6"> Luogu P2783 有机化学之神偶尔会做作弊		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P3225 [HNOI2012]矿场搭建		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-09T09:24:29.000Z">2019-03-09</time></div>
+                    <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="has-link-black-ter is-size-6"> Luogu P3225 [HNOI2012]矿场搭建		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -1602,23 +1093,12 @@ signed main() {
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1629,7 +1109,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

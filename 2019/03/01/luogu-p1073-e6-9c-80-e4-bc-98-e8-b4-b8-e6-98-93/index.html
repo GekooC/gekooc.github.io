@@ -7,20 +7,22 @@
 
 
 
-    <meta name="description" content="虚假的Dijkstra Luogu P1073 最优贸易题面：题目描述C 国有 n 个大城市和 m 条道路，每条道路连接这 n 个城市中的某两个城市。任意两个城市之间最多只有一条道路直接相连。这 m 条道路中有一部分为单向通行的道路，一部分为双向通行的道路，双向通行的道路在统计条数时也计为 1 条。 C 国幅员辽阔，各地的资源分布情况各不相同，这就导致了同一种商品在不同城市的价格不一定相同。但是，">
+    <meta name="description" content="虚假的Dijkstra">
 <meta name="keywords" content="图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" Luogu P1073 最优贸易		">
 <meta property="og:url" content="https://gekoo.xyz/2019/03/01/luogu-p1073-e6-9c-80-e4-bc-98-e8-b4-b8-e6-98-93/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="虚假的Dijkstra Luogu P1073 最优贸易题面：题目描述C 国有 n 个大城市和 m 条道路，每条道路连接这 n 个城市中的某两个城市。任意两个城市之间最多只有一条道路直接相连。这 m 条道路中有一部分为单向通行的道路，一部分为双向通行的道路，双向通行的道路在统计条数时也计为 1 条。 C 国幅员辽阔，各地的资源分布情况各不相同，这就导致了同一种商品在不同城市的价格不一定相同。但是，">
+<meta property="og:description" content="虚假的Dijkstra">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T08:25:44.079Z">
+<meta property="og:updated_time" content="2019-04-29T08:41:02.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1073 最优贸易		">
-<meta name="twitter:description" content="虚假的Dijkstra Luogu P1073 最优贸易题面：题目描述C 国有 n 个大城市和 m 条道路，每条道路连接这 n 个城市中的某两个城市。任意两个城市之间最多只有一条道路直接相连。这 m 条道路中有一部分为单向通行的道路，一部分为双向通行的道路，双向通行的道路在统计条数时也计为 1 条。 C 国幅员辽阔，各地的资源分布情况各不相同，这就导致了同一种商品在不同城市的价格不一定相同。但是，">
+<meta name="twitter:description" content="虚假的Dijkstra">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
+<meta name="twitter:creator" content="@GekooC">
+<meta name="twitter:site" content="https://twitter.com/GekooC">
 
 
 
@@ -155,7 +157,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1238 个字)
+                    8 分钟 读完 (大约 1239 个字)
                 </span>
                 
                 
@@ -169,6 +171,7 @@
         </h1>
         <div class="content">
             <p>虚假的Dijkstra</p>
+<a id="more"></a>
 <h1 id="Luogu-P1073-最优贸易"><a href="#Luogu-P1073-最优贸易" class="headerlink" title="Luogu P1073 最优贸易"></a><a href="https://www.luogu.org/problemnew/show/P1073" target="_blank" rel="noopener">Luogu P1073 最优贸易</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>C 国有 n 个大城市和 m 条道路，每条道路连接这 n 个城市中的某两个城市。任意两个城市之间最多只有一条道路直接相连。这 m 条道路中有一部分为单向通行的道路，一部分为双向通行的道路，双向通行的道路在统计条数时也计为 1 条。 C 国幅员辽阔，各地的资源分布情况各不相同，这就导致了同一种商品在不同城市的价格不一定相同。但是，同一种商品在同一个城市的买入价和卖出价始终是相同的。 商人阿龙来到 C 国旅游。当他得知同一种商品在不同城市的价格可能会不同这一信息之后，便决定在旅游的同时，利用商品在不同城市中的差价赚回一点旅费。设 C 国 n 个城市的标号从 1~ n，阿龙决定从 1 号城市出发，并最终在 n 号城市结束自己的旅行。在旅游的过程中，任何城市可以重复经过多次，但不要求经过所有 n 个城市。阿龙通过这样的贸易方式赚取旅费：他会选择一个经过的城市买入他最喜欢的商品――水晶球，并在之后经过的另一个城市卖出这个水晶球，用赚取的差价当做旅费。由于阿龙主要是来 C 国旅游，他决定这个贸易只进行最多一次，当然，在赚不到差价的情况下他就无需进行贸易。 现在给出 n 个城市的水晶球价格，m 条道路的信息（每条道路所连接的两个城市的编号以及该条道路的通行情况）。请你告诉阿龙，他最多能赚取多少旅费。</p>
 <h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行包含 2 个正整n 和 m ，中间用一个空格隔开，分别表示城市的数目和道路的数目。 第二行 n 个正整数，每两个整数之间用一个空格隔开，按标号顺序分别表示这 n 个城市的商品价格。 接下来 m 行，每行有 3 个正整数 x, y, z，每两个整数之间用一个空格隔开。如果 = 1，表示这条道路是城市 x 到城市 y 之间的单向道路；如果 z = 2，表示这条道路为城市 x 和城市 y 之间的双向道路。</p>
 <h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>一个整数，表示最多能赚取的旅费。如果没有进行贸易，则输出 0。</p>
@@ -337,22 +340,22 @@ signed main() {
             <div class="level-item has-text-centered">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                        <img class="image is-128x128 has-mb-6" src="https://www.gravatar.com/avatar/4adaa4f33e8e1d180be005b567f86ef6?s=128" alt="Gekoo">
                     
                     
                     <p class="is-size-4 is-block">
-                        Your name
+                        Gekoo
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        Your title
+                        蒟蒻Orz
                     </p>
                     
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Your location</span>
+                        <span>Taiyuan, Shanxi, China</span>
                     </p>
                     
                 </div>
@@ -365,7 +368,7 @@ signed main() {
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        32
+                        28
                     </p>
                 </div>
             </div>
@@ -375,7 +378,7 @@ signed main() {
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        1
                     </p>
                 </div>
             </div>
@@ -391,34 +394,22 @@ signed main() {
             </div>
         </nav>
         <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+            <a class="level-item button is-link is-rounded" href="https://twitter.com/GekooC" target="_blank">
                 关注我</a>
         </div>
         
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ppoffice">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/GekooC">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/GekooC">
                 
                 <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
                 
             </a>
             
@@ -483,28 +474,12 @@ signed main() {
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/Nothing/">
-            <span class="level-start">
-                <span class="level-item">Nothing</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/OI/">
             <span class="level-start">
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">28</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Thinking/">
-            <span class="level-start">
-                <span class="level-item">Thinking</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -535,44 +510,6 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/04/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
-                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
@@ -592,7 +529,7 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/03/14/125/" class="media-left">
+            <a href="/2019/03/14/luogu-p5058/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
                 </p>
@@ -601,7 +538,7 @@ signed main() {
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
-                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <a href="/2019/03/14/luogu-p5058/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/OI/">OI</a>
                     </p>
@@ -628,6 +565,44 @@ signed main() {
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2783 有机化学之神偶尔会做作弊		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T10:25:49.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="has-link-black-ter is-size-6"> Luogu P2783 有机化学之神偶尔会做作弊		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P3225 [HNOI2012]矿场搭建		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-09T09:24:29.000Z">2019-03-09</time></div>
+                    <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="has-link-black-ter is-size-6"> Luogu P3225 [HNOI2012]矿场搭建		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -641,23 +616,12 @@ signed main() {
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -668,7 +632,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
@@ -886,44 +850,6 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/04/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
-                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
@@ -943,7 +869,7 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/03/14/125/" class="media-left">
+            <a href="/2019/03/14/luogu-p5058/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
                 </p>
@@ -952,7 +878,7 @@ signed main() {
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
-                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <a href="/2019/03/14/luogu-p5058/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/OI/">OI</a>
                     </p>
@@ -979,6 +905,44 @@ signed main() {
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2783 有机化学之神偶尔会做作弊		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T10:25:49.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="has-link-black-ter is-size-6"> Luogu P2783 有机化学之神偶尔会做作弊		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P3225 [HNOI2012]矿场搭建		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-09T09:24:29.000Z">2019-03-09</time></div>
+                    <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="has-link-black-ter is-size-6"> Luogu P3225 [HNOI2012]矿场搭建		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -992,23 +956,12 @@ signed main() {
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1019,7 +972,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

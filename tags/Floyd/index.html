@@ -19,6 +19,8 @@
 <meta name="twitter:title" content="Gekoo&#39;s Notebook">
 <meta name="twitter:description" content="Note down my life.">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
+<meta name="twitter:creator" content="@GekooC">
+<meta name="twitter:site" content="https://twitter.com/GekooC">
 
 
 
@@ -164,7 +166,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 288 个字)
+                    2 分钟 读完 (大约 289 个字)
                 </span>
                 
                 
@@ -178,79 +180,16 @@
         </h1>
         <div class="content">
             <p>Floyd求最小环</p>
-<h1 id="POJ-1734-Sightseeing-trip"><a href="#POJ-1734-Sightseeing-trip" class="headerlink" title="POJ 1734 Sightseeing trip"></a><a href="http://poj.org/problem?id=1734" target="_blank" rel="noopener">POJ 1734 Sightseeing trip</a></h1><h2 id="题面人话ver："><a href="#题面人话ver：" class="headerlink" title="题面人话ver："></a>题面人话ver：</h2><p>给一无向图，求最小环。</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>Floyd求最小环板子（（（ 没啥好多说的zzz</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;cstdio&gt;
-#include &lt;algorithm&gt;
-#include &lt;cstring&gt;
-#include &lt;vector&gt;
-#define INF 0x3f3f3f3f
-
-namespace Gekoo {
-    int n, m, mp[105][105], dis[105][105], pre[105][105], mincircle = INF;
-    std::vector&lt;int&gt; path;
-
-    void GetPath(int x, int y) {
-        if(pre[x][y] == 0) return ;
-        GetPath(x, pre[x][y]);
-        path.push_back(pre[x][y]);
-        GetPath(pre[x][y], y);
-    }
-
-    void Floyd() {
-        for (int k = 1; k &lt;= n; k++) {
-            for (int i = 1; i &lt; k; i++) {
-                for (int j = i + 1; j &lt; k; j++) {
-                    if ((long long)dis[i][j] + mp[i][k] + mp[k][j] &lt; mincircle) {
-                        mincircle = dis[i][j] + mp[i][k] + mp[k][j];
-                        path.clear();
-                        path.push_back(i);
-                        GetPath(i, j);
-                        path.push_back(j);
-                        path.push_back(k);
-                    }
-                }
-            }
-            for (int i = 1; i &lt;= n; i++) {
-                for (int j = 1; j &lt;= n; j++) {
-                    if (dis[i][j] &gt; dis[i][k] + dis[k][j]) {
-                        dis[i][j] = dis[i][k] + dis[k][j];
-                        pre[i][j] = k;
-                    }
-                }
-            }
-        }
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        memset(mp, 0x3f, sizeof(mp));
-        memset(dis, 0x3f, sizeof(dis));
-        for (int i = 1; i &lt;= n; i++) mp[i][i] = 0;
-        for (int i = 1, a, b ,c; i &lt;= m; i++) {
-            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b ,&amp;c);
-            mp[a][b] = mp[b][a] = dis[a][b] = dis[b][a] = std::min(mp[a][b], c);
-        }
-        Floyd();
-        if (mincircle == INF) {
-            puts(&quot;No solution.&quot;);
-            return 0;
-        }
-        for (std::vector&lt;int&gt;::iterator it = path.begin(); it != path.end(); ++it) {
-            printf(&quot;%d &quot;, *it);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/04/poj-1734-sightseeing-trip/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -279,7 +218,7 @@ signed main() {
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 826 个字)
+                    6 分钟 读完 (大约 827 个字)
                 </span>
                 
                 
@@ -293,75 +232,16 @@ signed main() {
         </h1>
         <div class="content">
             <p>Floyd变种，水题赛T3</p>
-<h1 id="Luogu-P1841-JSOI2007-重要的城市"><a href="#Luogu-P1841-JSOI2007-重要的城市" class="headerlink" title="Luogu P1841 [JSOI2007] 重要的城市"></a><a href="https://www.luogu.org/problemnew/show/P1841" target="_blank" rel="noopener">Luogu P1841 [JSOI2007] 重要的城市</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>参加 JSOI 冬令营的同学最近发现，由于南航校内修路截断了原来通向计算中心的路，导致去的路程比原先增加了近一公里。而食堂门前施工虽然也截断了原来通向计算中心的路，却没有使路程增加，因为可以找到同样长度的路作替代。其实，问题的关键在于，路截断的地方是交通要点。 同样的情况也出现在城市间的交通中。某些城市如果出了问题，可能会引起其他很多城市的交通不便。另一些城市则影响不到别的城市的交通。jsoi冬令营的同学发现这是一个有趣的问题，于是决定研究这个问题。 他们认为这样的城市是重要的：如果一个城市c被破坏后，存在两个不同的城市a和b（a, b均不等于c），a到b的最短距离增长了（或不通），则城市c是重要的。 JSOI冬令营的同学面对着一张教练组交给他们的城市间交通图，他们希望能找出所有重要的城市。现在就请你来解决这个问题。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行两个整数N,M,N为城市数，M为道路数 接下来M行，每行三个整数，表示两个城市之间的无向边，以及之间的路的长度</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>一行，按递增次序输出若干的数，表示重要的城市。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>30%的数据：N ≤ 20； 60%的数据：N ≤ 100； 100%的数据：N ≤ 200,M ≤ N × (N − 1) / 2, 0 &lt; c ≤ 10000。c即路的长度。 保证不出现重边和自环 如果没有点的话需要输出一行 “No important cities.” 去掉引号</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>日常翻译： 若u，v最短路上一点去掉后最短路长度改变，则该点为重要点，输出重要点。 N ≤ 200，无脑Floyd（逃 显然在Floyd过程中若进行了一次松弛,则k为<code>f[i][j]</code>对应的一个关键点.若出现<code>f[i][j]=f[i][k]+f[k][j]</code>,说明该关键点无效,删去.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;cstdio&gt;
-#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;utility&gt;
-#include &lt;cstdlib&gt;
-#include &lt;cctype&gt;
-#include &lt;queue&gt;
-#define N 205
-
-namespace Gekoo {
-    int f[N][N], n, m, imp[N][N];
-    bool used[N], flg;
-
-    signed QAQ() {
-        freopen(&quot;city.in&quot;, &quot;r&quot;, stdin);
-        freopen(&quot;city.out&quot;, &quot;w&quot;, stdout);
-        memset(f, 0x3f, sizeof(f));
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1; i &lt;= m; i++) {
-            int a, b, c;
-            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
-            f[a][b] = f[b][a] = std::min(f[a][b], c);
-        }
-        for (int k = 1; k &lt;= n; k++) {
-            for (int i = 1; i &lt;= n; i++) {
-                for (int j = 1; j &lt;= n; j++) {
-                    if (i == k || j == i || j == k) continue;
-                    if (f[i][j] &gt; f[i][k] + f[k][j]) {
-                        f[i][j] = f[i][k] + f[k][j];
-                        imp[i][j] = k;
-                    } else if (f[i][j] == f[i][k] + f[k][j]) {
-                        imp[i][j] = 0;
-                    }
-                }
-            }
-        }
-        for (int i = 1; i &lt;= n; i++) {
-            for (int j = 1; j &lt;= n; j++) {
-                if (imp[i][j]) {
-                    flg = 1;    
-                    used[imp[i][j]] = 1;
-                }
-            }
-        }
-        if (!flg) {
-            puts(&quot;No important cities.&quot;);
-            return 0;
-        }
-        for (int i = 1; i &lt;= n; i++) {
-            if (used[i]) printf(&quot;%d &quot;, i);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/04/luogu-p1841-jsoi2007-e9-87-8d-e8-a6-81-e7-9a-84-e5-9f-8e-e5-b8-82/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -389,22 +269,22 @@ signed main() {
             <div class="level-item has-text-centered">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                        <img class="image is-128x128 has-mb-6" src="https://www.gravatar.com/avatar/4adaa4f33e8e1d180be005b567f86ef6?s=128" alt="Gekoo">
                     
                     
                     <p class="is-size-4 is-block">
-                        Your name
+                        Gekoo
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        Your title
+                        蒟蒻Orz
                     </p>
                     
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Your location</span>
+                        <span>Taiyuan, Shanxi, China</span>
                     </p>
                     
                 </div>
@@ -417,7 +297,7 @@ signed main() {
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        32
+                        28
                     </p>
                 </div>
             </div>
@@ -427,7 +307,7 @@ signed main() {
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        1
                     </p>
                 </div>
             </div>
@@ -443,34 +323,22 @@ signed main() {
             </div>
         </nav>
         <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+            <a class="level-item button is-link is-rounded" href="https://twitter.com/GekooC" target="_blank">
                 关注我</a>
         </div>
         
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ppoffice">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/GekooC">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/GekooC">
                 
                 <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
                 
             </a>
             
@@ -535,28 +403,12 @@ signed main() {
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/Nothing/">
-            <span class="level-start">
-                <span class="level-item">Nothing</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/OI/">
             <span class="level-start">
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">28</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Thinking/">
-            <span class="level-start">
-                <span class="level-item">Thinking</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -587,44 +439,6 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/04/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
-                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
@@ -644,7 +458,7 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/03/14/125/" class="media-left">
+            <a href="/2019/03/14/luogu-p5058/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
                 </p>
@@ -653,7 +467,7 @@ signed main() {
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
-                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <a href="/2019/03/14/luogu-p5058/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/OI/">OI</a>
                     </p>
@@ -680,6 +494,44 @@ signed main() {
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2783 有机化学之神偶尔会做作弊		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T10:25:49.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="has-link-black-ter is-size-6"> Luogu P2783 有机化学之神偶尔会做作弊		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P3225 [HNOI2012]矿场搭建		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-09T09:24:29.000Z">2019-03-09</time></div>
+                    <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="has-link-black-ter is-size-6"> Luogu P3225 [HNOI2012]矿场搭建		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -693,23 +545,12 @@ signed main() {
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -720,7 +561,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
@@ -938,44 +779,6 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/04/29/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
-                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
-                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
@@ -995,7 +798,7 @@ signed main() {
         
         <article class="media">
             
-            <a href="/2019/03/14/125/" class="media-left">
+            <a href="/2019/03/14/luogu-p5058/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
                 </p>
@@ -1004,7 +807,7 @@ signed main() {
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
-                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <a href="/2019/03/14/luogu-p5058/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/OI/">OI</a>
                     </p>
@@ -1031,6 +834,44 @@ signed main() {
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2783 有机化学之神偶尔会做作弊		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-12T10:25:49.000Z">2019-03-12</time></div>
+                    <a href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/" class="has-link-black-ter is-size-6"> Luogu P2783 有机化学之神偶尔会做作弊		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P3225 [HNOI2012]矿场搭建		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-09T09:24:29.000Z">2019-03-09</time></div>
+                    <a href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/" class="has-link-black-ter is-size-6"> Luogu P3225 [HNOI2012]矿场搭建		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -1044,23 +885,12 @@ signed main() {
         <ul class="menu-list">
         
         <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1071,7 +901,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
