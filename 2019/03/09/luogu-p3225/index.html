@@ -16,7 +16,7 @@
 <meta property="og:description" content="调了好久QAQ">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:25:59.264Z">
+<meta property="og:updated_time" content="2019-04-29T13:02:29.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P3225 [HNOI2012]矿场搭建		">
 <meta name="twitter:description" content="调了好久QAQ">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1151 个字)
+                    8 分钟 读完 (大约 1152 个字)
                 </span>
                 
                 
@@ -169,128 +169,8 @@
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>v-DCC删去一点后其内部必然仍互相连通,在一个v-DCC中最多只需要建一个出口.所以可以先缩点,缩成一棵树,记录每个节点的大小. <img src="https://i.loli.net/2019/03/09/5c838092b1600.png" alt="QAQ"> 以这个比母亲还要见得多的图(雾 为例,缩点后就变成了: <img src="https://i.loli.net/2019/03/09/5c83811e82b71.png" alt="QWQ"> 仔细观察,非叶节点不用建出口,出事了往叶子节点跑就完事了.叶子节点必须建出口,不然割点炸了就完了. 所以需要建的出口个数就是叶子节点的个数,而出口方案数,通过乘法原理,将叶子节点的大小乘起来即即可. 然而如果缩完点后就剩一个点了就不用这么多事了.显然只需要建两个点(如果一个被炸了另一个还能跑),方案数为$C_{size}^2$.</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 300005
-#define ll long long
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 300005</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt;&#125; e[N &lt;&lt; <span class="hljs-number">1</span>], c[N &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> ecnt, ccnt, head[N], hc[N], p, m, num, cnt, cas, root, n, ans1;</span><br><span class="line">    <span class="hljs-keyword">int</span> <span class="hljs-built_in">stack</span>[N], dfn[N], low[N], id[N], new_id[N], size[N];</span><br><span class="line">    <span class="hljs-keyword">bool</span> cut[N], vis[N];</span><br><span class="line">    ll ans2 = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; dcc[N], leaf;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddC</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        dfn[x] = low[x] = ++num;</span><br><span class="line">        <span class="hljs-built_in">stack</span>[++p] = x;</span><br><span class="line">        <span class="hljs-keyword">if</span> (x == root &amp;&amp; !head[x]) &#123;</span><br><span class="line">            dcc[++cnt].push_back(x);</span><br><span class="line">            <span class="hljs-keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span> flg = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!dfn[y]) &#123;</span><br><span class="line">                Tarjan(y);</span><br><span class="line">                low[x] = <span class="hljs-built_in">std</span>::min(low[x], low[y]);</span><br><span class="line">                <span class="hljs-keyword">if</span> (low[y] &gt;= dfn[x]) &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (++flg &gt; <span class="hljs-number">1</span> || x != root) cut[x] = <span class="hljs-number">1</span>;</span><br><span class="line">                    <span class="hljs-keyword">int</span> z;</span><br><span class="line">                    cnt++;</span><br><span class="line">                    <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">                        z = <span class="hljs-built_in">stack</span>[p--];</span><br><span class="line">                        dcc[cnt].push_back(z);</span><br><span class="line">                        size[cnt]++;</span><br><span class="line">                    &#125; <span class="hljs-keyword">while</span> (y != z);</span><br><span class="line">                    dcc[cnt].push_back(x);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> low[x] = <span class="hljs-built_in">std</span>::min(low[x], dfn[y]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">DFS</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> flg = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = hc[u]; i; i = c[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> v = c[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!vis[v]) &#123;</span><br><span class="line">                vis[v] = <span class="hljs-number">1</span>;</span><br><span class="line">                flg++;</span><br><span class="line">                DFS(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (!flg) leaf.push_back(u);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(e, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(e));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(c, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(c));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(head, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(head));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(hc, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(hc));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(<span class="hljs-built_in">stack</span>, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">stack</span>));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(dfn, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(dfn));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(low, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(low));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(id, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(id));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(new_id, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(new_id));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(size, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(size));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(cut, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(cut));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i  = <span class="hljs-number">1</span>; i &lt;= cnt; i++) dcc[i].clear();</span><br><span class="line">        leaf.clear();</span><br><span class="line">        ecnt = ccnt = p = n = num = cnt = root = <span class="hljs-number">0</span>;</span><br><span class="line">        ans2 = <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;</span><br><span class="line">            cas++;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;m);</span><br><span class="line">            <span class="hljs-keyword">if</span> (!m) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, s, t; i &lt;= m; i++) &#123;</span><br><span class="line">                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;s, &amp;t);</span><br><span class="line">                Add(s, t), Add(t, s);</span><br><span class="line">                n = <span class="hljs-built_in">std</span>::max(n, <span class="hljs-built_in">std</span>::max(s, t));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!dfn[i]) root = i, Tarjan(i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">int</span> t = cnt;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">                <span class="hljs-keyword">if</span> (cut[i]) new_id[i] = ++t;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= cnt; i++) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = dcc[i].begin(); it != dcc[i].end(); ++it) &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (cut[*it])</span><br><span class="line">                        AddC(i, new_id[*it]), AddC(new_id[*it], i);</span><br><span class="line">                    <span class="hljs-keyword">else</span> id[*it] = i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            DFS(<span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span> ((<span class="hljs-keyword">int</span>) leaf.size() == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> s = size[leaf[<span class="hljs-number">0</span>]] + <span class="hljs-number">1</span>;</span><br><span class="line">                ans2 = s * (s - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;</span><br><span class="line">                ans1 = <span class="hljs-number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                ans1 = leaf.size();</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = leaf.begin(); it != leaf.end(); ++it) &#123;</span><br><span class="line">                    ans2 *= size[*it];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Case %d: %d %lld\n"</span>, cas, ans1, ans2);</span><br><span class="line">            init();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Gekoo::QAQ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N &lt;&lt; 1], c[N &lt;&lt; 1];
-
-    int ecnt, ccnt, head[N], hc[N], p, m, num, cnt, cas, root, n, ans1;
-    int stack[N], dfn[N], low[N], id[N], new_id[N], size[N];
-    bool cut[N], vis[N];
-    ll ans2 = 1;
-    std::vector&lt;int&gt; dcc[N], leaf;
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;
-        stack[++p] = x;
-        if (x == root &amp;&amp; !head[x]) {
-            dcc[++cnt].push_back(x);
-            return ;
-        }
-        int flg = 0;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-                if (low[y] &gt;= dfn[x]) {
-                    if (++flg &gt; 1 || x != root) cut[x] = 1;
-                    int z;
-                    cnt++;
-                    do {
-                        z = stack[p--];
-                        dcc[cnt].push_back(z);
-                        size[cnt]++;
-                    } while (y != z);
-                    dcc[cnt].push_back(x);
-                }
-            } else low[x] = std::min(low[x], dfn[y]);
-        }
-    }
-
-    void DFS(int u) {
-        int flg = 0;
-        for (int i = hc[u]; i; i = c[i].nxt) {
-            int v = c[i].to;
-            if (!vis[v]) {
-                vis[v] = 1;
-                flg++;
-                DFS(v);
-            }
-        }
-        if (!flg) leaf.push_back(u);
-    }
-
-    void init() {
-        memset(e, 0, sizeof(e));
-        memset(c, 0, sizeof(c));
-        memset(head, 0, sizeof(head));
-        memset(hc, 0, sizeof(hc));
-        memset(stack, 0, sizeof(stack));
-        memset(dfn, 0, sizeof(dfn));
-        memset(low, 0, sizeof(low));
-        memset(id, 0, sizeof(id));
-        memset(new_id, 0, sizeof(new_id));
-        memset(size, 0, sizeof(size));
-        memset(cut, 0, sizeof(cut));
-        memset(vis, 0, sizeof(vis));
-        for (int i  = 1; i &lt;= cnt; i++) dcc[i].clear();
-        leaf.clear();
-        ecnt = ccnt = p = n = num = cnt = root = 0;
-        ans2 = 1;
-    }
-
-    signed QAQ() {
-        while (1) {
-            cas++;
-            scanf(&quot;%d&quot;, &amp;m);
-            if (!m) return 0;
-            for (int i = 1, s, t; i &lt;= m; i++) {
-                scanf(&quot;%d%d&quot;, &amp;s, &amp;t);
-                Add(s, t), Add(t, s);
-                n = std::max(n, std::max(s, t));
-            }
-            for (int i = 1; i &lt;= n; i++) {
-                if (!dfn[i]) root = i, Tarjan(i);
-            }
-            int t = cnt;
-            for (int i = 1; i &lt;= n; i++)
-                if (cut[i]) new_id[i] = ++t;
-            for (int i = 1; i &lt;= cnt; i++) {
-                for (std::vector&lt;int&gt;::iterator it = dcc[i].begin(); it != dcc[i].end(); ++it) {
-                    if (cut[*it])
-                        AddC(i, new_id[*it]), AddC(new_id[*it], i);
-                    else id[*it] = i;
-                }
-            }
-            DFS(1);
-            if ((int) leaf.size() == 1) {
-                int s = size[leaf[0]] + 1;
-                ans2 = s * (s - 1) / 2;
-                ans1 = 2;
-            }
-            else {
-                ans1 = leaf.size();
-                for (std::vector&lt;int&gt;::iterator it = leaf.begin(); it != leaf.end(); ++it) {
-                    ans2 *= size[*it];
-                }
-            }
-            printf(&quot;Case %d: %d %lld\n&quot;, cas, ans1, ans2);
-            init();
-        }
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -483,6 +363,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -499,7 +390,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="Floyd变种，水题赛T3">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:25:01.515Z">
+<meta property="og:updated_time" content="2019-04-29T12:58:38.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1841 [JSOI2007] 重要的城市		">
 <meta name="twitter:description" content="Floyd变种，水题赛T3">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 827 个字)
+                    6 分钟 读完 (大约 828 个字)
                 </span>
                 
                 
@@ -170,66 +170,8 @@
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>日常翻译： 若u，v最短路上一点去掉后最短路长度改变，则该点为重要点，输出重要点。 N ≤ 200，无脑Floyd（逃 显然在Floyd过程中若进行了一次松弛,则k为<code>f[i][j]</code>对应的一个关键点.若出现<code>f[i][j]=f[i][k]+f[k][j]</code>,说明该关键点无效,删去.</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;cstdio&gt;
-#include &lt;iostream&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;utility&gt;
-#include &lt;cstdlib&gt;
-#include &lt;cctype&gt;
-#include &lt;queue&gt;
-#define N 205
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;utility&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 205</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> f[N][N], n, m, imp[N][N];</span><br><span class="line">    <span class="hljs-keyword">bool</span> used[N], flg;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        freopen(<span class="hljs-string">"city.in"</span>, <span class="hljs-string">"r"</span>, <span class="hljs-built_in">stdin</span>);</span><br><span class="line">        freopen(<span class="hljs-string">"city.out"</span>, <span class="hljs-string">"w"</span>, <span class="hljs-built_in">stdout</span>);</span><br><span class="line">        <span class="hljs-built_in">memset</span>(f, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(f));</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a, b, c;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">            f[a][b] = f[b][a] = <span class="hljs-built_in">std</span>::min(f[a][b], c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= n; k++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (i == k || j == i || j == k) <span class="hljs-keyword">continue</span>;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (f[i][j] &gt; f[i][k] + f[k][j]) &#123;</span><br><span class="line">                        f[i][j] = f[i][k] + f[k][j];</span><br><span class="line">                        imp[i][j] = k;</span><br><span class="line">                    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (f[i][j] == f[i][k] + f[k][j]) &#123;</span><br><span class="line">                        imp[i][j] = <span class="hljs-number">0</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (imp[i][j]) &#123;</span><br><span class="line">                    flg = <span class="hljs-number">1</span>;    </span><br><span class="line">                    used[imp[i][j]] = <span class="hljs-number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (!flg) &#123;</span><br><span class="line">            <span class="hljs-built_in">puts</span>(<span class="hljs-string">"No important cities."</span>);</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (used[i]) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Gekoo::QAQ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    int f[N][N], n, m, imp[N][N];
-    bool used[N], flg;
-
-    signed QAQ() {
-        freopen(&quot;city.in&quot;, &quot;r&quot;, stdin);
-        freopen(&quot;city.out&quot;, &quot;w&quot;, stdout);
-        memset(f, 0x3f, sizeof(f));
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1; i &lt;= m; i++) {
-            int a, b, c;
-            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);
-            f[a][b] = f[b][a] = std::min(f[a][b], c);
-        }
-        for (int k = 1; k &lt;= n; k++) {
-            for (int i = 1; i &lt;= n; i++) {
-                for (int j = 1; j &lt;= n; j++) {
-                    if (i == k || j == i || j == k) continue;
-                    if (f[i][j] &gt; f[i][k] + f[k][j]) {
-                        f[i][j] = f[i][k] + f[k][j];
-                        imp[i][j] = k;
-                    } else if (f[i][j] == f[i][k] + f[k][j]) {
-                        imp[i][j] = 0;
-                    }
-                }
-            }
-        }
-        for (int i = 1; i &lt;= n; i++) {
-            for (int j = 1; j &lt;= n; j++) {
-                if (imp[i][j]) {
-                    flg = 1;    
-                    used[imp[i][j]] = 1;
-                }
-            }
-        }
-        if (!flg) {
-            puts(&quot;No important cities.&quot;);
-            return 0;
-        }
-        for (int i = 1; i &lt;= n; i++) {
-            if (used[i]) printf(&quot;%d &quot;, i);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -422,6 +364,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -438,7 +391,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

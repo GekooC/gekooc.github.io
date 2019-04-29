@@ -16,7 +16,7 @@
 <meta property="og:description" content="差分约束">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:26:03.558Z">
+<meta property="og:updated_time" content="2019-04-29T13:02:31.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P3275 [SCOI2011]糖果		">
 <meta name="twitter:description" content="差分约束">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 886 个字)
+                    6 分钟 读完 (大约 887 个字)
                 </span>
                 
                 
@@ -169,63 +169,8 @@
 <h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于 30% 的数据，保证 N≤100 对于 100% 的数据，保证 N≤100000 对于所有的数据，保证 K≤100000,1≤X≤5,1≤A,B≤N</p>
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>事一道差分约束。 差分约束就是把形如$a - b \le x$的不等式组通过三角形不等式，用SPFA等算法解决问题。 分类讨论： <em> x = 1: $a = b$.等价于 $a - b \le 0 &amp;&amp; b - a \le 0$. 建边<code>(a, b, 0),(b, a, 0)</code>. \</em> x = 2: $a &lt; b$.由于差分约束的要求，转化为$a - b \le 1$. 建边<code>(a, b, 1)</code>. * x = 3: $b \le a$.转化为 $b - a \le 0$. 建边<code>(b, a, 0)</code>. * x = 4: $a &gt; b$.由于差分约束的要求，转化为$b - a \le 1$.建边<code>(b, a, 1)</code>. * x = 5: $a \e b$.转化为$a - b \le 0$.建边<code>(a, b, 0)</code>. 注意几个点： * 读入时特判一下自相矛盾的情况.</p>
-<h2 id="数据歹毒-从0建边时反着建可有效防止T飞"><a href="#数据歹毒-从0建边时反着建可有效防止T飞" class="headerlink" title="* 数据歹毒,从0建边时反着建可有效防止T飞"></a>* 数据歹毒,从0建边时反着建可有效防止T飞</h2><h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><p>#include &lt;bits/stdc++.h&gt;</p>
-<p>#define N 500005</p>
-<p>namespace Gekoo {<br>    struct Edge {int to, nxt, val;} e[N];</p>
-<pre><code>int ecnt, head\[N\], n, k, dis\[N\];
-long long ans;
-bool vis\[N\];
-
-inline void Add(int f, int to, int val) {e\[++ecnt\].to = to, e\[ecnt\].val = val, e\[ecnt\].nxt = head\[f\], head\[f\] = ecnt;}
-
-bool SPFA(int u) {
-    vis\[u\] = 1;
-    for (int i = head\[u\]; i; i = e\[i\].nxt) {
-        int v = e\[i\].to, val = e\[i\].val;
-        if (dis\[v\] &lt; dis\[u\] + val) {
-            dis\[v\] = dis\[u\] + val;
-            if (vis\[v\] || !SPFA(v)) return 0;
-        }
-    }
-    vis\[u\] = 0;
-    return 1;
-}
-
-signed QAQ() {
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;k);
-    for (int i = 1; i &lt;= k; i++) {
-        int x, a, b;
-        scanf(&quot;%d%d%d&quot;, &amp;x, &amp;a, &amp;b);
-        switch (x) {
-            case 1: 
-                Add(a, b, 0); Add(b, a, 0);
-                break;          
-            case 2:
-                if (a == b) return !puts(&quot;-1&quot;);
-                else Add(a, b, 1);         
-                break;        
-            case 3:
-                Add(b, a, 0);
-                break; 
-            case 4:
-                if (a == b) return !puts(&quot;-1&quot;);
-                else Add(b, a, 1);
-                break; 
-            default :
-                Add(a, b, 0);
-                break; 
-        }
-    }
-    for (int i = n; i &gt;= 1; i--) Add(0, i, 1);
-    dis\[0\] = 0;
-    if (SPFA(0)) {
-        for (int i = 1; i &lt;= n; i++) ans += dis\[i\];
-        return !printf(&quot;%lld\\n&quot;, ans);
-    } else return !puts(&quot;-1&quot;);
-}
-</code></pre><p>}</p>
-<p>signed main() {<br>    return Gekoo::QAQ();<br>}</p>
-
+<h2 id="数据歹毒-从0建边时反着建可有效防止T飞"><a href="#数据歹毒-从0建边时反着建可有效防止T飞" class="headerlink" title="* 数据歹毒,从0建边时反着建可有效防止T飞"></a>* 数据歹毒,从0建边时反着建可有效防止T飞</h2><p>代码:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 500005</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt, val;&#125; e\[N\];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> ecnt, head\[N\], n, k, dis\[N\];</span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans;</span><br><span class="line">    <span class="hljs-keyword">bool</span> vis\[N\];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> val)</span> </span>&#123;e\[++ecnt\].to = to, e\[ecnt\].val = val, e\[ecnt\].nxt = head\[f\], head\[f\] = ecnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">SPFA</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">        vis\[u\] = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head\[u\]; i; i = e\[i\].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> v = e\[i\].to, val = e\[i\].val;</span><br><span class="line">            <span class="hljs-keyword">if</span> (dis\[v\] &lt; dis\[u\] + val) &#123;</span><br><span class="line">                dis\[v\] = dis\[u\] + val;</span><br><span class="line">                <span class="hljs-keyword">if</span> (vis\[v\] || !SPFA(v)) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        vis\[u\] = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> x, a, b;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;x, &amp;a, &amp;b);</span><br><span class="line">            <span class="hljs-keyword">switch</span> (x) &#123;</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: </span><br><span class="line">                    Add(a, b, <span class="hljs-number">0</span>); Add(b, a, <span class="hljs-number">0</span>);</span><br><span class="line">                    <span class="hljs-keyword">break</span>;          </span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:</span><br><span class="line">                    <span class="hljs-keyword">if</span> (a == b) <span class="hljs-keyword">return</span> !<span class="hljs-built_in">puts</span>(<span class="hljs-string">"-1"</span>);</span><br><span class="line">                    <span class="hljs-keyword">else</span> Add(a, b, <span class="hljs-number">1</span>);         </span><br><span class="line">                    <span class="hljs-keyword">break</span>;        </span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:</span><br><span class="line">                    Add(b, a, <span class="hljs-number">0</span>);</span><br><span class="line">                    <span class="hljs-keyword">break</span>; </span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:</span><br><span class="line">                    <span class="hljs-keyword">if</span> (a == b) <span class="hljs-keyword">return</span> !<span class="hljs-built_in">puts</span>(<span class="hljs-string">"-1"</span>);</span><br><span class="line">                    <span class="hljs-keyword">else</span> Add(b, a, <span class="hljs-number">1</span>);</span><br><span class="line">                    <span class="hljs-keyword">break</span>; </span><br><span class="line">                <span class="hljs-keyword">default</span> :</span><br><span class="line">                    Add(a, b, <span class="hljs-number">0</span>);</span><br><span class="line">                    <span class="hljs-keyword">break</span>; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; i--) Add(<span class="hljs-number">0</span>, i, <span class="hljs-number">1</span>);</span><br><span class="line">        dis\[<span class="hljs-number">0</span>\] = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (SPFA(<span class="hljs-number">0</span>)) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) ans += dis\[i\];</span><br><span class="line">            <span class="hljs-keyword">return</span> !<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\\n"</span>, ans);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> !<span class="hljs-built_in">puts</span>(<span class="hljs-string">"-1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Gekoo::QAQ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -418,6 +363,17 @@ signed QAQ() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -434,7 +390,7 @@ signed QAQ() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

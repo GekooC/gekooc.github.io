@@ -16,7 +16,7 @@
 <meta property="og:description" content="Tarjan总是和DAGDP紧密结合呢">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:25:33.273Z">
+<meta property="og:updated_time" content="2019-04-29T13:00:19.222Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P2272 [ZJOI2007]最大半连通子图		">
 <meta name="twitter:description" content="Tarjan总是和DAGDP紧密结合呢">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1028 个字)
+                    7 分钟 读完 (大约 1029 个字)
                 </span>
                 
                 
@@ -170,104 +170,8 @@
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>简化题意:给定一个有向图，若u，v两点，只要u-v可达或者v-u可达，则称u，v半联通.求半联通子图中点数最多的个数和方案数. 显然又是DAGDP…先跑Tarjan缩点,记录一下每个连通块的大小,再拓扑跑DP. 问题主要在第二问,缩点会有重边,势必会影响方案数统计.所以要去重边. 如何去重? 开一边集数组,先记录所有缩点后的边,再按起始点sort一下.建图时检查一下,如果<code>E[i].from == E[i - 1].from &amp;&amp; E[i].to == E[i - 1].to</code>,说明为重边,直接continue. 其他没什么了.</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define M 1000005
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> M 1000005</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt;&#125; e[N], c[N];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">EdgeC</span> &#123;</span></span><br><span class="line">        <span class="hljs-keyword">int</span> from, to;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt;(<span class="hljs-keyword">const</span> EdgeC &amp;a) <span class="hljs-keyword">const</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> (from == a.from) ? to &lt; a.to : from &lt; a.from;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;EDGE[N];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> ecnt, ccnt, head[N], hc[N], p, n, m, MO, num, scc, cnt, t,  ans = <span class="hljs-number">-114514</span>, ans2;</span><br><span class="line">    <span class="hljs-keyword">int</span> <span class="hljs-built_in">stack</span>[N], dfn[N], low[N], id[N], ind[N], val[N], f[N], g[N];</span><br><span class="line">    <span class="hljs-keyword">bool</span> ins[N];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddC</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        dfn[x] = low[x] = ++num;</span><br><span class="line">        <span class="hljs-built_in">stack</span>[++p] = x, ins[x] = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!dfn[y]) &#123;</span><br><span class="line">                Tarjan(y);</span><br><span class="line">                low[x] = <span class="hljs-built_in">std</span>::min(low[x], low[y]);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ins[y])</span><br><span class="line">                low[x] = <span class="hljs-built_in">std</span>::min(low[x], dfn[y]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (dfn[x] == low[x]) &#123;</span><br><span class="line">            cnt++; <span class="hljs-keyword">int</span> y;</span><br><span class="line">            <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">                y = <span class="hljs-built_in">stack</span>[p--], ins[y] = <span class="hljs-number">0</span>;</span><br><span class="line">                id[y] = cnt;</span><br><span class="line">                val[cnt]++;</span><br><span class="line">            &#125; <span class="hljs-keyword">while</span> (x != y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TopSort</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; q;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= cnt; i++) </span><br><span class="line">            <span class="hljs-keyword">if</span> (!ind[i]) q.push(i), f[i] = val[i], g[i] = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> u = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = hc[u]; i; i = c[i].nxt) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> v = c[i].to;</span><br><span class="line">                <span class="hljs-keyword">if</span> (f[v] &lt; f[u] + val[v]) &#123;</span><br><span class="line">                    f[v] = f[u] + val[v];</span><br><span class="line">                    g[v] = g[u];</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (f[v] == f[u] + val[v]) &#123;</span><br><span class="line">                    g[v] = (g[v] + g[u]) % MO;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!(--ind[v])) &#123;</span><br><span class="line">                    q.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= cnt; i++)</span><br><span class="line">            <span class="hljs-keyword">if</span> (f[i] &gt; ans) ans = f[i];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= cnt; i++)</span><br><span class="line">            <span class="hljs-keyword">if</span> (f[i] == ans) ans2 = (ans2 + g[i]) % MO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;MO);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, a, b; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            Add(a, b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="hljs-keyword">if</span> (!dfn[i]) Tarjan(i);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= n; x++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">                <span class="hljs-keyword">if</span> (id[x] != id[y]) EDGE[++t].from = id[x], EDGE[t].to = id[y];            </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">std</span>::sort(EDGE + <span class="hljs-number">1</span>, EDGE + t + <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= t; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (EDGE[i].from == EDGE[i - <span class="hljs-number">1</span>].from &amp;&amp; EDGE[i].to == EDGE[i - <span class="hljs-number">1</span>].to) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            AddC(EDGE[i].from, EDGE[i].to), ++ind[EDGE[i].to];</span><br><span class="line">        &#125;</span><br><span class="line">        TopSort();</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n%d\n"</span>, ans, ans2);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Gekoo::QAQ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N], c[N];
-
-    struct EdgeC {
-        int from, to;
-
-        bool operator &lt;(const EdgeC &amp;a) const {
-            return (from == a.from) ? to &lt; a.to : from &lt; a.from;
-        }
-    }EDGE[N];
-
-    int ecnt, ccnt, head[N], hc[N], p, n, m, MO, num, scc, cnt, t,  ans = -114514, ans2;
-    int stack[N], dfn[N], low[N], id[N], ind[N], val[N], f[N], g[N];
-    bool ins[N];
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;
-        stack[++p] = x, ins[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-            } else if (ins[y])
-                low[x] = std::min(low[x], dfn[y]);
-        }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = stack[p--], ins[y] = 0;
-                id[y] = cnt;
-                val[cnt]++;
-            } while (x != y);
-        }
-    }
-
-    void TopSort() {
-        std::queue&lt;int&gt; q;
-        for (int i = 1; i &lt;= cnt; i++) 
-            if (!ind[i]) q.push(i), f[i] = val[i], g[i] = 1;
-        while (!q.empty()) {
-            int u = q.front();
-            q.pop();
-            for (int i = hc[u]; i; i = c[i].nxt) {
-                int v = c[i].to;
-                if (f[v] &lt; f[u] + val[v]) {
-                    f[v] = f[u] + val[v];
-                    g[v] = g[u];
-                } else if (f[v] == f[u] + val[v]) {
-                    g[v] = (g[v] + g[u]) % MO;
-                }
-                if (!(--ind[v])) {
-                    q.push(v);
-                }
-            }
-        }
-        for (int i = 1; i &lt;= cnt; i++)
-            if (f[i] &gt; ans) ans = f[i];
-        for (int i = 1; i &lt;= cnt; i++)
-            if (f[i] == ans) ans2 = (ans2 + g[i]) % MO;
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;MO);
-        for (int i = 1, a, b; i &lt;= m; i++) {
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            Add(a, b);
-        }
-        for (int i = 1; i &lt;= n; i++)
-            if (!dfn[i]) Tarjan(i);
-        for (int x = 1; x &lt;= n; x++) {
-            for (int i = head[x]; i; i = e[i].nxt) {
-                int y = e[i].to;
-                if (id[x] != id[y]) EDGE[++t].from = id[x], EDGE[t].to = id[y];            
-            }
-        }
-        std::sort(EDGE + 1, EDGE + t + 1);
-        for (int i = 1; i &lt;= t; i++) {
-            if (EDGE[i].from == EDGE[i - 1].from &amp;&amp; EDGE[i].to == EDGE[i - 1].to) continue;
-            AddC(EDGE[i].from, EDGE[i].to), ++ind[EDGE[i].to];
-        }
-        TopSort();
-        printf(&quot;%d\n%d\n&quot;, ans, ans2);
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -460,6 +364,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -476,7 +391,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

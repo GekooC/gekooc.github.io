@@ -16,7 +16,7 @@
 <meta property="og:description" content="并查集">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:25:12.046Z">
+<meta property="og:updated_time" content="2019-04-29T12:49:10.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P2024 [NOI2001]食物链		">
 <meta name="twitter:description" content="并查集">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 630 个字)
+                    4 分钟 读完 (大约 631 个字)
                 </span>
                 
                 
@@ -184,61 +184,8 @@
 <li>$a = 2, x = y$</li>
 </ul>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-using namespace std;
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">50005</span>; </span><br><span class="line">    <span class="hljs-keyword">int</span> n, k, fa[N*<span class="hljs-number">3</span>], ans;<span class="hljs-comment">//1~n事同类,n~2n事食物,2n~3n事敌人.</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (x == fa[x]) <span class="hljs-keyword">return</span> x;</span><br><span class="line">        <span class="hljs-keyword">return</span> fa[x] = get(fa[x]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n * <span class="hljs-number">3</span>; i++) &#123;</span><br><span class="line">            fa[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a, x, y;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;a, &amp;x, &amp;y);</span><br><span class="line">            <span class="hljs-keyword">if</span> (x &gt; n || y &gt; n) &#123;</span><br><span class="line">                ++ans;</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">int</span> x_self = x, x_eat = x + n, x_enemy = x + <span class="hljs-number">2</span> * n;</span><br><span class="line">            <span class="hljs-keyword">int</span> y_self = y, y_eat = y + n, y_enemy = y + <span class="hljs-number">2</span> * n;</span><br><span class="line">            <span class="hljs-keyword">if</span> (a == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (get(x_self) == get(y_eat) || get(x_eat) == get(y_self)) &#123;</span><br><span class="line">                    ++ans;</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    fa[get(x_self)] = get(y_self);</span><br><span class="line">                    fa[get(x_eat)] = get(y_eat);</span><br><span class="line">                    fa[get(x_enemy)] = get(y_enemy);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (get(x_self) == get(y_self) || get(x_self) == get(y_eat) || x == y) &#123;</span><br><span class="line">                    ++ans;</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    fa[get(x_self)] = get(y_enemy);</span><br><span class="line">                    fa[get(x_eat)] = get(y_self);</span><br><span class="line">                    fa[get(x_enemy)] = get(y_eat);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    Gekoo::main();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    const int N = 50005; 
-    int n, k, fa[N*3], ans;//1~n事同类,n~2n事食物,2n~3n事敌人.
-
-    int get(int x) {
-        if (x == fa[x]) return x;
-        return fa[x] = get(fa[x]);
-    }
-
-    void main() {
-        printf(&quot;%d%d&quot;, &amp;n, &amp;k);
-        for(int i = 1; i &lt;= n * 3; i++) {
-            fa[i] = i;
-        }
-        for(int i = 1; i &lt;= k; i++) {
-            int a, x, y;
-            scanf(&quot;%d%d%d&quot;, &amp;a, &amp;x, &amp;y);
-            if (x &gt; n || y &gt; n) {
-                ++ans;
-                continue;
-            }
-            int x_self = x, x_eat = x + n, x_enemy = x + 2 * n;
-            int y_self = y, y_eat = y + n, y_enemy = y + 2 * n;
-            if (a == 1) {
-                if (get(x_self) == get(y_eat) || get(x_eat) == get(y_self)) {
-                    ++ans;
-                    continue;
-                } else {
-                    fa[get(x_self)] = get(y_self);
-                    fa[get(x_eat)] = get(y_eat);
-                    fa[get(x_enemy)] = get(y_enemy);
-                }
-            } else {
-                if (get(x_self) == get(y_self) || get(x_self) == get(y_eat) || x == y) {
-                    ++ans;
-                    continue;
-                } else {
-                    fa[get(x_self)] = get(y_enemy);
-                    fa[get(x_eat)] = get(y_self);
-                    fa[get(x_enemy)] = get(y_eat);
-                }
-            }
-        }
-        printf(&quot;%d\n&quot;, ans);
-    }
-}
-
-signed main() {
-    Gekoo::main();
-    return 0;
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -263,9 +210,9 @@ signed main() {
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/28/luogu-p4879/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/28/luogu-p1731/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P4879 ycz的妹子</span>
+                <span class="level-item"> Luogu P1731 生日蛋糕		</span>
             </a>
         </div>
         
@@ -431,6 +378,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -447,7 +405,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

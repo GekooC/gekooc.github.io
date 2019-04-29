@@ -16,7 +16,7 @@
 <meta property="og:description" content="ning干">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:24:16.071Z">
+<meta property="og:updated_time" content="2019-04-29T12:58:05.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1262 间谍网络		">
 <meta name="twitter:description" content="ning干">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1046 个字)
+                    7 分钟 读完 (大约 1047 个字)
                 </span>
                 
                 
@@ -169,85 +169,8 @@
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>显然,同一个SCC里的间谍会互相出卖.因此,先缩点,记录每个SCC里的最小特工编号和贿赂费用. 思考后可以发现,只要我们控制了所有入度为0的特工,整个图就都可以被控制. 直接寻找一下所有入度为0的点,如果该点不能被贿赂,就无法控制所有间谍,此时记录编号最小的间谍,反之将贿金加给ans.</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 10005
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 10005</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt;&#125; e[N], c[N];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> ecnt, ccnt, head[N], hc[N], p, n, m, MO, num, cnt, ans = <span class="hljs-number">0</span>, cant = <span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> <span class="hljs-built_in">stack</span>[N], dfn[N], low[N], id[N], ind[N], val[N];</span><br><span class="line">    <span class="hljs-keyword">int</span> mn[N], cost[N];</span><br><span class="line">    <span class="hljs-keyword">bool</span> ins[N], flg;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddC</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        dfn[x] = low[x] = ++num;</span><br><span class="line">        <span class="hljs-built_in">stack</span>[++p] = x, ins[x] = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!dfn[y]) &#123;</span><br><span class="line">                Tarjan(y);</span><br><span class="line">                low[x] = <span class="hljs-built_in">std</span>::min(low[x], low[y]);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ins[y])</span><br><span class="line">                low[x] = <span class="hljs-built_in">std</span>::min(low[x], dfn[y]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (dfn[x] == low[x]) &#123;</span><br><span class="line">            cnt++; <span class="hljs-keyword">int</span> y;</span><br><span class="line">            <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">                y = <span class="hljs-built_in">stack</span>[p--], ins[y] = <span class="hljs-number">0</span>;</span><br><span class="line">                id[y] = cnt;</span><br><span class="line">                <span class="hljs-keyword">if</span> (cost[y] &gt; <span class="hljs-number">0</span>) val[cnt] = <span class="hljs-built_in">std</span>::min(val[cnt], cost[y]);</span><br><span class="line">                mn[cnt] = <span class="hljs-built_in">std</span>::min(mn[cnt], y);</span><br><span class="line">            &#125; <span class="hljs-keyword">while</span> (x != y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(val, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(val));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(mn, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(mn));</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, a, b; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            cost[a] = b; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">int</span> r;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;r);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= r; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a, b;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            Add(a, b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="hljs-keyword">if</span> (!dfn[i]) Tarjan(i);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> u = <span class="hljs-number">1</span>; u &lt;= n; u++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> v = e[i].to;</span><br><span class="line">                <span class="hljs-keyword">if</span> (id[u] != id[v]) AddC(id[u], id[v]), ind[id[v]]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= cnt; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!ind[i]) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (val[i] == <span class="hljs-number">0x3f3f3f3f</span>) &#123;</span><br><span class="line">                    flg = <span class="hljs-number">1</span>;</span><br><span class="line">                    cant = <span class="hljs-built_in">std</span>::min(cant, mn[i]);</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    ans += val[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (!flg) <span class="hljs-keyword">return</span> !<span class="hljs-built_in">printf</span>(<span class="hljs-string">"YES\n%d\n"</span>, ans);</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> !<span class="hljs-built_in">printf</span>(<span class="hljs-string">"NO\n%d\n"</span>, cant);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Gekoo::QAQ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N], c[N];
-
-    int ecnt, ccnt, head[N], hc[N], p, n, m, MO, num, cnt, ans = 0, cant = 0x3f3f3f3f;
-    int stack[N], dfn[N], low[N], id[N], ind[N], val[N];
-    int mn[N], cost[N];
-    bool ins[N], flg;
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num;
-        stack[++p] = x, ins[x] = 1;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-            } else if (ins[y])
-                low[x] = std::min(low[x], dfn[y]);
-        }
-        if (dfn[x] == low[x]) {
-            cnt++; int y;
-            do {
-                y = stack[p--], ins[y] = 0;
-                id[y] = cnt;
-                if (cost[y] &gt; 0) val[cnt] = std::min(val[cnt], cost[y]);
-                mn[cnt] = std::min(mn[cnt], y);
-            } while (x != y);
-        }
-    }
-
-    signed QAQ() {
-        memset(val, 0x3f, sizeof(val));
-        memset(mn, 0x3f, sizeof(mn));
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1, a, b; i &lt;= m; i++) {
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            cost[a] = b; 
-        }
-        int r;
-        scanf(&quot;%d&quot;, &amp;r);
-        for (int i = 1; i &lt;= r; i++) {
-            int a, b;
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            Add(a, b);
-        }
-        for (int i = 1; i &lt;= n; i++)
-            if (!dfn[i]) Tarjan(i);
-        for (int u = 1; u &lt;= n; u++) {
-            for (int i = head[u]; i; i = e[i].nxt) {
-                int v = e[i].to;
-                if (id[u] != id[v]) AddC(id[u], id[v]), ind[id[v]]++;
-            }
-        }
-        for (int i = 1; i &lt;= cnt; i++) {
-            if (!ind[i]) {
-                if (val[i] == 0x3f3f3f3f) {
-                    flg = 1;
-                    cant = std::min(cant, mn[i]);
-                } else {
-                    ans += val[i];
-                }
-            }
-        }
-        if (!flg) return !printf(&quot;YES\n%d\n&quot;, ans);
-        else return !printf(&quot;NO\n%d\n&quot;, cant);
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -440,6 +363,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -456,7 +390,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

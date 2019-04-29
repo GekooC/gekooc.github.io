@@ -16,7 +16,7 @@
 <meta property="og:description" content="DP">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:25:16.672Z">
+<meta property="og:updated_time" content="2019-04-29T12:59:40.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P2051 [AHOI2009] 中国象棋		">
 <meta name="twitter:description" content="DP">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 990 个字)
+                    7 分钟 读完 (大约 991 个字)
                 </span>
                 
                 
@@ -176,50 +176,8 @@
 <h5 id="②-都放在没有棋子的两列"><a href="#②-都放在没有棋子的两列" class="headerlink" title="②.都放在没有棋子的两列."></a>②.都放在没有棋子的两列.</h5><p>放置后会使j增加2,k不变.而这种方案数也是很显然的,为$C^2_{m-(j-2)-k}$. 化简该式:$C^2_{m-(j-2)-k}=\frac{(m-j-k+2)!}{2!\times (m-j-k)!}=\frac{(m-j-k)!\times (m-j-k+1)\times (m-j-k+2)}{2!\times(m-j-k)!}=\frac{(m-j-k+1)\times (m-j-k+2)}{2}$. 可得:$ f[i][j][k] += f[i - 1][j - 2][k] \times (m - j - k + 1) \times (m - j - k + 2) / 2$</p>
 <h5 id="③-分别放在有一枚棋子和没有棋子两列"><a href="#③-分别放在有一枚棋子和没有棋子两列" class="headerlink" title="③.分别放在有一枚棋子和没有棋子两列."></a>③.分别放在有一枚棋子和没有棋子两列.</h5><p>放置棋子在有棋子列后会使j减少1,k增加1,放置棋子在无棋子列后会使j增加1,k不变.最终其实j没有改变,只是k增加了1. 根据乘法原理,方案数显然,为$[m-j-(k-1)]\times j$种. 可得:$ f[i][j][k] += f[i - 1][j][k - 1] \times (m - j - k + 1) \times j $. 最后统计答案,这道题就结束了.</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 105
-#define MO 9999973
-#define ll long long
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 105</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MO 9999973</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n, m; </span><br><span class="line">    ll f[N][N][N], ans;<span class="hljs-comment">//f[行][有几列放了1个棋子][有几列放了两个棋子]</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= m; j++) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt;= m - j; k++) &#123;</span><br><span class="line">                    <span class="hljs-comment">//下棋时分三种情况.</span></span><br><span class="line">                    <span class="hljs-comment">//1.放0个棋子</span></span><br><span class="line">                    (f[i][j][k] += f[i - <span class="hljs-number">1</span>][j][k]) %= MO;<span class="hljs-comment">//直接加上之前的</span></span><br><span class="line">                    <span class="hljs-comment">//2.放1个棋子</span></span><br><span class="line">                    <span class="hljs-keyword">if</span> (k &gt;= <span class="hljs-number">1</span>) (f[i][j][k] += f[i - <span class="hljs-number">1</span>][j + <span class="hljs-number">1</span>][k - <span class="hljs-number">1</span>] * (j + <span class="hljs-number">1</span>)) %= MO;<span class="hljs-comment">//(1)放在有棋子的一列</span></span><br><span class="line">                    <span class="hljs-keyword">if</span> (j &gt;= <span class="hljs-number">1</span>) (f[i][j][k] += f[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>][k] * (m - j - k + <span class="hljs-number">1</span>)) %= MO;<span class="hljs-comment">//(2)放在没棋子的一列</span></span><br><span class="line">                    <span class="hljs-comment">//3.2个棋子</span></span><br><span class="line">                    <span class="hljs-keyword">if</span> (j &gt;= <span class="hljs-number">2</span>) (f[i][j][k] += f[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">2</span>][k] * (m - j - k + <span class="hljs-number">1</span>) * (m - j - k + <span class="hljs-number">2</span>) / <span class="hljs-number">2</span>) %= MO;<span class="hljs-comment">//(1)0 and 0</span></span><br><span class="line">                    <span class="hljs-keyword">if</span> (k &gt;= <span class="hljs-number">1</span>) (f[i][j][k] += f[i - <span class="hljs-number">1</span>][j][k - <span class="hljs-number">1</span>] * (m - j - k + <span class="hljs-number">1</span>) * j) %= MO;<span class="hljs-comment">//(2)0 and 1</span></span><br><span class="line">                    <span class="hljs-keyword">if</span> (k &gt;= <span class="hljs-number">2</span>) (f[i][j][k] += f[i - <span class="hljs-number">1</span>][j + <span class="hljs-number">2</span>][k - <span class="hljs-number">2</span>] * (j + <span class="hljs-number">2</span>) * (j + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>) %= MO;<span class="hljs-comment">//(3)1 and 1</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= m; j++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt;= m; k++) &#123;</span><br><span class="line">                (ans += f[n][j][k]) %= MO;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, (ans + MO) % MO);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> Gekoo;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    QAQ();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    int n, m; 
-    ll f[N][N][N], ans;//f[行][有几列放了1个棋子][有几列放了两个棋子]
-
-    void QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        f[0][0][0] = 1;
-        for (int i = 1; i &lt;= n; i++) {
-            for (int j = 0; j &lt;= m; j++) {
-                for (int k = 0; k &lt;= m - j; k++) {
-                    //下棋时分三种情况.
-                    //1.放0个棋子
-                    (f[i][j][k] += f[i - 1][j][k]) %= MO;//直接加上之前的
-                    //2.放1个棋子
-                    if (k &gt;= 1) (f[i][j][k] += f[i - 1][j + 1][k - 1] * (j + 1)) %= MO;//(1)放在有棋子的一列
-                    if (j &gt;= 1) (f[i][j][k] += f[i - 1][j - 1][k] * (m - j - k + 1)) %= MO;//(2)放在没棋子的一列
-                    //3.2个棋子
-                    if (j &gt;= 2) (f[i][j][k] += f[i - 1][j - 2][k] * (m - j - k + 1) * (m - j - k + 2) / 2) %= MO;//(1)0 and 0
-                    if (k &gt;= 1) (f[i][j][k] += f[i - 1][j][k - 1] * (m - j - k + 1) * j) %= MO;//(2)0 and 1
-                    if (k &gt;= 2) (f[i][j][k] += f[i - 1][j + 2][k - 2] * (j + 2) * (j + 1) / 2) %= MO;//(3)1 and 1
-                }
-            }
-        }
-        for (int j = 0; j &lt;= m; j++) {
-            for (int k = 0; k &lt;= m; k++) {
-                (ans += f[n][j][k]) %= MO;
-            }
-        }
-        printf(&quot;%lld\n&quot;, (ans + MO) % MO);
-    }
-}
-
-using namespace Gekoo;
-
-signed main() {
-    QAQ();
-    return 0;
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -412,6 +370,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -428,7 +397,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="虚假的Dijkstra">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:24:03.144Z">
+<meta property="og:updated_time" content="2019-04-29T12:57:48.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1073 最优贸易">
 <meta name="twitter:description" content="虚假的Dijkstra">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1239 个字)
+                    8 分钟 读完 (大约 1240 个字)
                 </span>
                 
                 
@@ -170,76 +170,8 @@
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>问题转化为求1-n的一条路径使得途径点的最大点权与最小点权的差最大. 建原图和反图，先在正图上跑“Dijkstra”得到1到各点最小值，再在反图上跑“Dijkstra”得到n到各点最大值。 枚举1 - n，维护$ans=max(ans,E[i]-G[i])$.</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 500005
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 500005</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt;&#125; e[N &lt;&lt; <span class="hljs-number">1</span>], g[N &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> ecnt, gcnt, ehead[N], ghead[N], n, m, p[N], E[N], G[N], ans;</span><br><span class="line">    <span class="hljs-keyword">bool</span> vis[N];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddE</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;e[++ecnt].to = to, e[ecnt].nxt = ehead[f], ehead[f] = ecnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddG</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;g[++gcnt].to = to, g[gcnt].nxt = ghead[f], ghead[f] = gcnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;p[i]);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> x , y , z;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">            AddE(x, y);</span><br><span class="line">            AddG(y, x);</span><br><span class="line">            <span class="hljs-keyword">if</span> (z == <span class="hljs-number">2</span>) &#123; AddE(y, x); AddG(x, y); &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//Dijkstra</span></span><br><span class="line">        <span class="hljs-built_in">memset</span>(vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(E, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(E));</span><br><span class="line">        <span class="hljs-built_in">std</span>::priority_queue&lt; <span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; &gt; q;</span><br><span class="line">        q.push(<span class="hljs-built_in">std</span>::make_pair(-p[<span class="hljs-number">1</span>], <span class="hljs-number">1</span>));</span><br><span class="line">        E[<span class="hljs-number">1</span>] = p[<span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> u = q.top().second;</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="hljs-keyword">if</span> (vis[u]) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            vis[u] = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = ehead[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> v = e[i].to;</span><br><span class="line">                E[v] = <span class="hljs-built_in">std</span>::min(E[u], p[v]);</span><br><span class="line">                q.push(<span class="hljs-built_in">std</span>::make_pair(-E[v], v));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">        <span class="hljs-built_in">memset</span>(G, <span class="hljs-number">-0x3f</span>, <span class="hljs-keyword">sizeof</span>(G));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="hljs-built_in">std</span>::priority_queue&lt; <span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; &gt; Q;</span><br><span class="line">        Q.push(<span class="hljs-built_in">std</span>::make_pair(p[n], n));</span><br><span class="line">        G[n] = p[n];</span><br><span class="line">        <span class="hljs-keyword">while</span> (!Q.empty()) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> u = Q.top().second;</span><br><span class="line">            Q.pop();</span><br><span class="line">            <span class="hljs-keyword">if</span> (vis[u]) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            vis[u] = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = ghead[u]; i; i = g[i].nxt) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> v = g[i].to;</span><br><span class="line">                G[v] = <span class="hljs-built_in">std</span>::max(G[u], p[v]);</span><br><span class="line">                Q.push(<span class="hljs-built_in">std</span>::make_pair(G[v], v));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">//枚举节点</span></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) ans = <span class="hljs-built_in">std</span>::max(ans, G[i] - E[i]);</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Gekoo::QAQ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N &lt;&lt; 1], g[N &lt;&lt; 1];
-
-    int ecnt, gcnt, ehead[N], ghead[N], n, m, p[N], E[N], G[N], ans;
-    bool vis[N];
-
-    inline void AddE(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = ehead[f], ehead[f] = ecnt;}
-
-    inline void AddG(int f, int to) {g[++gcnt].to = to, g[gcnt].nxt = ghead[f], ghead[f] = gcnt;}
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1; i &lt;= n; i++) scanf(&quot;%d&quot;, &amp;p[i]);
-        for (int i = 1; i &lt;= m; i++) {
-            int x , y , z;
-            scanf(&quot;%d%d%d&quot;, &amp;x, &amp;y, &amp;z);
-            AddE(x, y);
-            AddG(y, x);
-            if (z == 2) { AddE(y, x); AddG(x, y); }
-        }
-
-        //Dijkstra
-        memset(vis, 0, sizeof(vis));
-        memset(E, 0x3f, sizeof(E));
-        std::priority_queue&lt; std::pair&lt;int, int&gt; &gt; q;
-        q.push(std::make_pair(-p[1], 1));
-        E[1] = p[1];
-        while (!q.empty()) {
-            int u = q.top().second;
-            q.pop();
-            if (vis[u]) continue;
-            vis[u] = 1;
-            for (int i = ehead[u]; i; i = e[i].nxt) {
-                int v = e[i].to;
-                E[v] = std::min(E[u], p[v]);
-                q.push(std::make_pair(-E[v], v));
-            }
-        } 
-
-        memset(G, -0x3f, sizeof(G));
-        memset(vis, 0, sizeof(vis));
-        std::priority_queue&lt; std::pair&lt;int, int&gt; &gt; Q;
-        Q.push(std::make_pair(p[n], n));
-        G[n] = p[n];
-        while (!Q.empty()) {
-            int u = Q.top().second;
-            Q.pop();
-            if (vis[u]) continue;
-            vis[u] = 1;
-            for (int i = ghead[u]; i; i = g[i].nxt) {
-                int v = g[i].to;
-                G[v] = std::max(G[u], p[v]);
-                Q.push(std::make_pair(G[v], v));
-            }
-        }
-
-        //枚举节点
-        for (int i = 1; i &lt;= n; i++) ans = std::max(ans, G[i] - E[i]);
-        printf(&quot;%d\n&quot;, ans);
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -432,6 +364,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -448,7 +391,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

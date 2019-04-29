@@ -16,7 +16,7 @@
 <meta property="og:description" content="正经A掉的第一道紫题??">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:26:22.353Z">
+<meta property="og:updated_time" content="2019-04-29T12:56:52.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P4503 [CTSC2014] 企鹅QQ		">
 <meta name="twitter:description" content="正经A掉的第一道紫题??">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 781 个字)
+                    5 分钟 读完 (大约 782 个字)
                 </span>
                 
                 
@@ -170,54 +170,8 @@
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>S可以直接无视（（（ 把题目转换为人话：给一堆字符串，找出只有一个字符不同的字符串对数。 由于L的范围非常小，所以我们可以枚举不同字符的位置。 先预处理字符串从左往右的hash和从右往左的hash，然后在枚举时将左右两边的hash再hash一遍，把相同hash的去重并统计一下，输出对数就OK。</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><p>//请无视S.H.I.T.一样的变量命名(逃</p>
-<pre><code>#include &lt;bits/stdc++.h&gt;
-using namespace std;
-#define ll long long
-#define base1 13131
-#define base2 1313131
-#define MOD 23333333333333333
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//请无视S.H.I.T.一样的变量命名(逃</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> base1 13131</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> base2 1313131</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MOD 23333333333333333</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n, l, s, cwy;</span><br><span class="line">    <span class="hljs-keyword">char</span> QQ[<span class="hljs-number">30005</span>][<span class="hljs-number">205</span>];</span><br><span class="line">    ll gou[<span class="hljs-number">30005</span>][<span class="hljs-number">205</span>], li[<span class="hljs-number">30005</span>][<span class="hljs-number">205</span>], nmsl[<span class="hljs-number">30005</span>];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;n, &amp;l, &amp;s);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>, QQ[i] + <span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= l; j++) &#123;</span><br><span class="line">                gou[i][j] = (gou[i][j - <span class="hljs-number">1</span>] * base1 + QQ[i][j]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = l; j &gt;= <span class="hljs-number">1</span>; j--) &#123;</span><br><span class="line">                li[i][j] = (li[i][j + <span class="hljs-number">1</span>] * base2 + QQ[i][j]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> mid = <span class="hljs-number">1</span>; mid &lt;= l; mid++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">                nmsl[i] = (gou[i][mid - <span class="hljs-number">1</span>]* base1 + li[i][mid + <span class="hljs-number">1</span>]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">            sort(nmsl + <span class="hljs-number">1</span>, nmsl + <span class="hljs-number">1</span> + n);</span><br><span class="line">            <span class="hljs-keyword">int</span> dky = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">register</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (nmsl[i] == nmsl[i - <span class="hljs-number">1</span>]) &#123;</span><br><span class="line">                    cwy += dky;</span><br><span class="line">                    dky++;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    dky = <span class="hljs-number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, cwy);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    Gekoo::QAQ();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    int n, l, s, cwy;
-    char QQ[30005][205];
-    ll gou[30005][205], li[30005][205], nmsl[30005];
-
-    void QAQ() {
-        scanf(&quot;%d%d%d&quot;, &amp;n, &amp;l, &amp;s);
-        for (int i = 1; i &lt;= n; i++) {
-            scanf(&quot;%s&quot;, QQ[i] + 1);
-            for (int j = 1; j &lt;= l; j++) {
-                gou[i][j] = (gou[i][j - 1] * base1 + QQ[i][j]) % MOD;
-            }
-            for (int j = l; j &gt;= 1; j--) {
-                li[i][j] = (li[i][j + 1] * base2 + QQ[i][j]) % MOD;
-            }
-        }
-        for (int mid = 1; mid &lt;= l; mid++) {
-            for (register int i = 1; i &lt;= n; i++) {
-                nmsl[i] = (gou[i][mid - 1]* base1 + li[i][mid + 1]) % MOD;
-            }
-            sort(nmsl + 1, nmsl + 1 + n);
-            int dky = 1;
-            for (register int i = 1; i &lt;= n; i++) {
-                if (nmsl[i] == nmsl[i - 1]) {
-                    cwy += dky;
-                    dky++;
-                } else {
-                    dky = 1;
-                }
-            }
-        }
-        printf(&quot;%d\n&quot;, cwy);
-    }
-}
-
-signed main() {
-    Gekoo::QAQ();
-    return 0;
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -410,6 +364,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -426,7 +391,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="poi~~~">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:26:13.924Z">
+<meta property="og:updated_time" content="2019-04-29T13:02:47.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P3469 [POI2008]BLO-Blockade		">
 <meta name="twitter:description" content="poi~~~">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 611 个字)
+                    4 分钟 读完 (大约 612 个字)
                 </span>
                 
                 
@@ -170,59 +170,8 @@
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>首先,如果 i 是割点,去掉 i 后其余城市仍然联通, <code>ans[i] = 2 * (i - 1)</code>.(点对是有序的) 若 i 不是割点,显然,原图会裂成多个联通块. 1.i自己就是一个联通块 2.i的子树上的联通块 3.不在i子树的联通块 分开求和即可. 但分别去求复杂度过高,无法承受.可以在Tarjan过程中求出每个子树的大小,计算时直接使用. 注释里还有丶东西</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 500005
-#define ll long long
-
-namespace Gekoo {
-    struct Edge {int to, nxt;} e[N &lt;&lt; 1];
-
-    int ecnt, head[N], n, m, num, cnt;
-    int dfn[N], low[N], size[N];
-    ll ans[N];
-    bool cut[N];
-
-    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
-
-    void Tarjan(int x) {
-        dfn[x] = low[x] = ++num, size[x] = 1;
-        int flg = 0, vis = 0;
-        for (int i = head[x]; i; i = e[i].nxt) {
-            int y = e[i].to;
-            if (!dfn[y]) {
-                Tarjan(y);
-                low[x] = std::min(low[x], low[y]);
-                size[x] += size[y]; //计算子树大小
-                if (low[y] &gt;= dfn[x]) {
-                    ans[x] += (ll) size[y] * (n - size[y]); 
-                    vis += size[y];
-                    if (++flg &gt; 1 || x != 1) cut[x] = 1;
-                }
-            }
-            else low[x] = std::min(low[x], dfn[y]);
-        }
-        if (!cut[x]) ans[x] = 2 * (n - 1);//是割点QwQ
-        else ans[x] += (ll) (n - vis - 1) * (vis + 1) + n - 1; //不在子树上的联通块和自身的联通块 
-    }
-
-    signed QAQ() {
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        for (int i = 1, a, b; i &lt;= m; i++) {
-            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
-            Add(a, b), Add(b, a);
-        }
-        Tarjan(1);
-        for (int i =1; i &lt;= n; i++) {
-            printf(&quot;%lld\n&quot;, ans[i]);
-        }
-        return 0;
-    }
-}
-
-signed main() {
-    return Gekoo::QAQ();
-}
-</code></pre>
+<p>代码:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 500005</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt;&#125; e[N &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> ecnt, head[N], n, m, num, cnt;</span><br><span class="line">    <span class="hljs-keyword">int</span> dfn[N], low[N], size[N];</span><br><span class="line">    ll ans[N];</span><br><span class="line">    <span class="hljs-keyword">bool</span> cut[N];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        dfn[x] = low[x] = ++num, size[x] = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> flg = <span class="hljs-number">0</span>, vis = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!dfn[y]) &#123;</span><br><span class="line">                Tarjan(y);</span><br><span class="line">                low[x] = <span class="hljs-built_in">std</span>::min(low[x], low[y]);</span><br><span class="line">                size[x] += size[y]; <span class="hljs-comment">//计算子树大小</span></span><br><span class="line">                <span class="hljs-keyword">if</span> (low[y] &gt;= dfn[x]) &#123;</span><br><span class="line">                    ans[x] += (ll) size[y] * (n - size[y]); </span><br><span class="line">                    vis += size[y];</span><br><span class="line">                    <span class="hljs-keyword">if</span> (++flg &gt; <span class="hljs-number">1</span> || x != <span class="hljs-number">1</span>) cut[x] = <span class="hljs-number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">else</span> low[x] = <span class="hljs-built_in">std</span>::min(low[x], dfn[y]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (!cut[x]) ans[x] = <span class="hljs-number">2</span> * (n - <span class="hljs-number">1</span>);<span class="hljs-comment">//是割点QwQ</span></span><br><span class="line">        <span class="hljs-keyword">else</span> ans[x] += (ll) (n - vis - <span class="hljs-number">1</span>) * (vis + <span class="hljs-number">1</span>) + n - <span class="hljs-number">1</span>; <span class="hljs-comment">//不在子树上的联通块和自身的联通块 </span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, a, b; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            Add(a, b), Add(b, a);</span><br><span class="line">        &#125;</span><br><span class="line">        Tarjan(<span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Gekoo::QAQ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -415,6 +364,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -431,7 +391,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

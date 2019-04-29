@@ -16,7 +16,7 @@
 <meta property="og:description" content="搜索 and 超神剪枝">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:24:54.596Z">
+<meta property="og:updated_time" content="2019-04-29T12:49:41.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1731 生日蛋糕		">
 <meta name="twitter:description" content="搜索 and 超神剪枝">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 471 个字)
+                    3 分钟 读完 (大约 472 个字)
                 </span>
                 
                 
@@ -174,51 +174,8 @@
 <li>玄(数)学剪枝</li>
 </ul>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-#define N 25
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 25</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n, m, r[N], h[N], ans = (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">30</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> lv)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (lv == m + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (v == n) ans = <span class="hljs-built_in">std</span>::min(ans, s + r[<span class="hljs-number">1</span>] * r[<span class="hljs-number">1</span>]);</span><br><span class="line">            <span class="hljs-keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v &gt; n || s + r[<span class="hljs-number">1</span>] * r[<span class="hljs-number">1</span>] &gt;= ans) &#123; <span class="hljs-comment">//体积超出限制 || 表面积超出最优解</span></span><br><span class="line">            <span class="hljs-keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">//此题最坑的玄(数)学剪枝</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (<span class="hljs-number">2</span> * (n - v) / r[lv - <span class="hljs-number">1</span>] + s &gt; ans) <span class="hljs-keyword">return</span> ;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = r[lv - <span class="hljs-number">1</span>] - <span class="hljs-number">1</span>; i &gt;= m - lv + <span class="hljs-number">1</span>; i--) &#123; <span class="hljs-comment">//枚举r</span></span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = h[lv - <span class="hljs-number">1</span>] - <span class="hljs-number">1</span>; j &gt;= m - lv + <span class="hljs-number">1</span>; j--) &#123; <span class="hljs-comment">//枚举h </span></span><br><span class="line">                r[lv] = i;</span><br><span class="line">                h[lv] = j;</span><br><span class="line">                dfs(s + <span class="hljs-number">2</span> * i * j, v + i * i * j, lv + <span class="hljs-number">1</span>);</span><br><span class="line">                r[lv] = <span class="hljs-number">0</span>;</span><br><span class="line">                h[lv] = <span class="hljs-number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        r[<span class="hljs-number">0</span>] = (<span class="hljs-keyword">int</span>) <span class="hljs-built_in">sqrt</span>(n);</span><br><span class="line">        h[<span class="hljs-number">0</span>] = (<span class="hljs-keyword">int</span>) <span class="hljs-built_in">sqrt</span>(n);</span><br><span class="line">        dfs(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);</span><br><span class="line">        ans = (ans == (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">30</span>)) ? <span class="hljs-number">0</span> : ans;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> Gekoo;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    QAQ();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    int n, m, r[N], h[N], ans = (1 &lt;&lt; 30);
-
-    void dfs(int s, int v, int lv) {
-        if (lv == m + 1) {
-            if (v == n) ans = std::min(ans, s + r[1] * r[1]);
-            return ;
-        }
-        if (v &gt; n || s + r[1] * r[1] &gt;= ans) { //体积超出限制 || 表面积超出最优解
-            return ;
-        }
-        //此题最坑的玄(数)学剪枝
-        if (2 * (n - v) / r[lv - 1] + s &gt; ans) return ;
-
-        for (int i = r[lv - 1] - 1; i &gt;= m - lv + 1; i--) { //枚举r
-            for (int j = h[lv - 1] - 1; j &gt;= m - lv + 1; j--) { //枚举h 
-                r[lv] = i;
-                h[lv] = j;
-                dfs(s + 2 * i * j, v + i * i * j, lv + 1);
-                r[lv] = 0;
-                h[lv] = 0;
-            }
-        }
-    }
-
-    void QAQ(){
-        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-        r[0] = (int) sqrt(n);
-        h[0] = (int) sqrt(n);
-        dfs(0, 0, 1);
-        ans = (ans == (1 &lt;&lt; 30)) ? 0 : ans;
-        printf(&quot;%d\n&quot;, ans);
-    }
-}
-
-using namespace Gekoo;
-
-signed main() {
-    QAQ();
-    return 0;
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -251,8 +208,8 @@ signed main() {
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/28/luogu-p4879/">
-                <span class="level-item"> Luogu P4879 ycz的妹子</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/28/luogu-p2024/">
+                <span class="level-item"> Luogu P2024 [NOI2001]食物链		</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -411,6 +368,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -427,7 +395,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>

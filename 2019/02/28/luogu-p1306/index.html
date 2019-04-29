@@ -16,7 +16,7 @@
 <meta property="og:description" content="矩阵乘法板子题">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T11:24:23.725Z">
+<meta property="og:updated_time" content="2019-04-29T12:50:57.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1306 斐波那契公约数		">
 <meta name="twitter:description" content="矩阵乘法板子题">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 409 个字)
+                    3 分钟 读完 (大约 410 个字)
                 </span>
                 
                 
@@ -169,68 +169,8 @@
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>通过打表可以得到一条显然的结论:$gcd(f(n),f(m))=f(gcd(n,m))$. 那么求就vans了.不过数据很大,那么就必须使用矩阵优化了. 所以这是矩阵乘法板子题 求一哈中间矩阵: $\begin {bmatrix} f(i-1), f(i)\\end{bmatrix}=\begin {bmatrix} f(i-2),f(i-1)\end{bmatrix}\times\begin{bmatrix}0,1\1,1\end{bmatrix}$ 最后:<strong>不开long long见祖宗!</strong></p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
-using namespace std;
-#define MO 100000000
-#define ll long long
+<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MO 100000000</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    ll t, p;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Mat</span> &#123;</span></span><br><span class="line">        ll x[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>];</span><br><span class="line">        Mat() &#123;</span><br><span class="line">            <span class="hljs-built_in">memset</span>(x, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(x));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">build_x</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-built_in">memset</span>(x, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(x));</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">2</span>; i++)</span><br><span class="line">                x[i][i] = <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">build_A</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-built_in">memset</span>(x, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(x));</span><br><span class="line">            x[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>] = x[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>] = x[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>] = <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;x, A;</span><br><span class="line"></span><br><span class="line">    Mat <span class="hljs-keyword">operator</span> * (<span class="hljs-keyword">const</span> Mat &amp;a, <span class="hljs-keyword">const</span> Mat &amp;b) &#123;</span><br><span class="line">        Mat z;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(z.x, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(z));</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= <span class="hljs-number">2</span>; k++)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">2</span>; i++)</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">2</span>; j++)</span><br><span class="line">                    z.x[i][j] += (a.x[i][k] % MO) * (b.x[k][j] % MO), z.x[i][j] %= MO;</span><br><span class="line">        <span class="hljs-keyword">return</span> z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function">Mat <span class="hljs-title">qpow</span> <span class="hljs-params">(Mat a, ll b)</span> </span>&#123;</span><br><span class="line">        Mat ans = x;</span><br><span class="line">        <span class="hljs-keyword">for</span> (; b; b &gt;&gt;= <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (b &amp; <span class="hljs-number">1</span>)</span><br><span class="line">                ans = ans * A;</span><br><span class="line">            A = A * A;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function">ll <span class="hljs-title">gcd</span><span class="hljs-params">(ll a, ll b)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> (b == <span class="hljs-number">0</span>) ? a : gcd(b, a % b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        A.build_A();</span><br><span class="line">        x.build_x();</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;t, &amp;p);</span><br><span class="line">        Mat ans = qpow(x, gcd(t, p) - <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, (ans.x[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] + ans.x[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>]) % MO);       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    Gekoo::main();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-namespace Gekoo {
-    ll t, p;
-
-    struct Mat {
-        ll x[3][3];
-        Mat() {
-            memset(x, 0, sizeof(x));
-        }
-        inline void build_x () {
-            memset(x, 0, sizeof(x));
-            for (int i = 1; i &lt;= 2; i++)
-                x[i][i] = 1;
-        }
-        inline void build_A () {
-            memset(x, 0, sizeof(x));
-            x[1][2] = x[2][1] = x[2][2] = 1;
-        }
-    }x, A;
-
-    Mat operator * (const Mat &amp;a, const Mat &amp;b) {
-        Mat z;
-        memset(z.x, 0, sizeof(z));
-        for (int k = 1; k &lt;= 2; k++)
-            for (int i = 1; i &lt;= 2; i++)
-                for (int j = 1; j &lt;= 2; j++)
-                    z.x[i][j] += (a.x[i][k] % MO) * (b.x[k][j] % MO), z.x[i][j] %= MO;
-        return z;
-    }
-
-    Mat qpow (Mat a, ll b) {
-        Mat ans = x;
-        for (; b; b &gt;&gt;= 1) {
-            if (b &amp; 1)
-                ans = ans * A;
-            A = A * A;
-        }
-        return ans;
-    }
-
-    ll gcd(ll a, ll b) {
-        return (b == 0) ? a : gcd(b, a % b);
-    }
-
-    void main () {
-        A.build_A();
-        x.build_x();
-        scanf(&quot;%d%d&quot;, &amp;t, &amp;p);
-        Mat ans = qpow(x, gcd(t, p) - 1);
-        printf(&quot;%d\n&quot;, (ans.x[1][1] + ans.x[1][2]) % MO);       
-    }
-}
-
-signed main() {
-    Gekoo::main();
-    return 0;
-}
-</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -423,6 +363,17 @@ signed main() {
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/03/">
                 <span class="level-start">
                     <span class="level-item">三月 2019</span>
@@ -439,7 +390,7 @@ signed main() {
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
