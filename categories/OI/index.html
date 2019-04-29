@@ -1,0 +1,2646 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>分类: OI - Gekoo&#39;s Notebook</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Note down my life.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gekoo&#39;s Notebook">
+<meta property="og:url" content="https://gekoo.xyz/categories/OI/index.html">
+<meta property="og:site_name" content="Gekoo&#39;s Notebook">
+<meta property="og:description" content="Note down my life.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gekoo&#39;s Notebook">
+<meta name="twitter:description" content="Note down my life.">
+<meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Gekoo&#39;s Notebook" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分类</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">OI</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-14T09:28:00.000Z">2019-03-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 937 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/"> Luogu P2055 [ZJOI2009]假期的宿舍		</a>
+            
+        </h1>
+        <div class="content">
+            <p>二分图求最大匹配</p>
+<h1 id="Luogu-P2055-ZJOI2009-假期的宿舍"><a href="#Luogu-P2055-ZJOI2009-假期的宿舍" class="headerlink" title="Luogu P2055 [ZJOI2009]假期的宿舍"></a><a href="https://www.luogu.org/problemnew/show/P2055" target="_blank" rel="noopener">Luogu P2055 [ZJOI2009]假期的宿舍</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>学校放假了 · · · · · · 有些同学回家了，而有些同学则有以前的好朋友来探访，那么住宿就是一个问题。 比如 A 和 B 都是学校的学生，A 要回家，而 C 来看B，C 与 A 不认识。我们假设每个人只能睡和自己直接认识的人的床。那么一个解决方案就是 B 睡 A 的床而 C 睡 B 的床。而实际情况可能非常复杂，有的人可能认识好多在校学生，在校学生之间也不一定都互相认识。 我们已知一共有 n 个人，并且知道其中每个人是不是本校学生，也知道每个本校学生是否回家。问是否存在一个方案使得所有不回家的本校学生和来看他们的其他人都有地方住。</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行一个数 T 表示数据组数。接下来 T 组数据，每组数据第一行一个数n 表示涉及到的总人数。 接下来一行 n 个数，第 i 个数表示第 i 个人是否是在校学生 (0 表示不是，1 表示是)。再接下来一行 n 个数，第 i 个数表示第 i 个人是否回家 (0 表示不回家，1 表示回家，注意如果第 i 个人不是在校学生，那么这个位置上的数是一个随机的数，你应该在读入以后忽略它)。 接下来 n 行每行 n 个数，第 i 行第 j 个数表示 i 和 j 是否认识 (1 表示认识，0 表示不认识，第 i 行 i 个的值为 0，但是显然自己还是可以睡自己的床)，认识的关系是相互的。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>对于每组数据，如果存在一个方案则输出 “^_^”(不含引号) 否则输出“T_T”(不含引号)。(注意输出的都是半角字符，即三个符号的 ASCII 码分别为94,84,95)</p>
+<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于 30% 的数据满足 1 ≤ n ≤ 12。 对于 100% 的数据满足 1 ≤ n ≤ 50,1 ≤ T ≤ 20。</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>很明显,一个学生睡一张床就是二分图匹配. 先读入学生是不是本校学生,在不在家和学生之间的关系. 如果学生是本校学生且不在家,他就可以睡自己的床,连一下自己. 如果i认识j,j是本校生,i就可以睡j的床,连一下i,j.好混乱 然后统计一下有多少人要住宿舍,跑一下匈牙利,看看最大匹配数是不是等于住宿舍人数.</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 105
+
+namespace Gekoo {
+    struct Edge {int to, nxt;} e[N];
+
+    int n, T, need, mth;
+    int head[N], ecnt = 1, Home[N], School[N], match[N];
+    bool vis[N];
+
+    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+
+    bool dfs(int u) {
+        for (int i = head[u]; i; i = e[i].nxt) {
+            int v = e[i].to;
+            if (!vis[v]) {
+                vis[v] = 1;
+                if (!match[v] || dfs(match[v])) {
+                    match[v] = u;
+                    return 1;
+                }
+            }  
+        }
+        return 0;
+    }
+
+    signed QAQ() {
+        scanf(&quot;%d&quot;, &amp;T);
+        while (T--) {
+            scanf(&quot;%d&quot;, &amp;n);
+            for (int i = 1; i &lt;= n; i++)
+                scanf(&quot;%d&quot;, &amp;School[i]);
+            for (int i = 1; i &lt;= n; i++) {
+                scanf(&quot;%d&quot;, &amp;Home[i]);
+                if (!Home[i] &amp;&amp; School[i]) Add(i, i);
+            }
+            for (int i = 1, x; i &lt;= n; i++) {
+                for (int j = 1; j &lt;= n; j++) {
+                    scanf(&quot;%d&quot;, &amp;x);
+                    if (x &amp;&amp; School[j]) Add(i, j);
+                }
+            }
+            for (int i = 1; i &lt;= n; i++) {
+                if ((!Home[i] &amp;&amp; School[i]) || !School[i]) {
+                    need++;
+                    memset(vis, 0, sizeof(vis));
+                    if (dfs(i))  mth++;
+                }
+            }
+            if (mth == need) printf(&quot;^_^\n&quot;);
+            else printf(&quot;T_T\n&quot;);
+            memset(e, 0, sizeof(e));
+            memset(head, 0, sizeof(head));
+            memset(School, 0, sizeof(School));
+            memset(Home, 0, sizeof(Home));
+            memset(match, 0, sizeof(match));
+            need = mth = ecnt = 0;
+        }
+        return 0;
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 673 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/14/125/"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+            
+        </h1>
+        <div class="content">
+            <p>警惕思维江（不僵化</p>
+<h1 id="Luogu-P5058-ZJOI2004-嗅探器"><a href="#Luogu-P5058-ZJOI2004-嗅探器" class="headerlink" title="Luogu P5058 [ZJOI2004]嗅探器"></a><a href="https://www.luogu.org/problemnew/show/P5058" target="_blank" rel="noopener">Luogu P5058 [ZJOI2004]嗅探器</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>某军搞信息对抗实战演习，红军成功地侵入了蓝军的内部网络，蓝军共有两个信息中心，红军计划在某台中间服务器上安装一个嗅探器，从而能够侦听到两个信息中心互相交换的所有信息，但是蓝军的网络相当的庞大，数据包从一个信息中心传到另一个信息中心可以不止有一条通路。现在需要你尽快地解决这个问题，应该把嗅探器安装在哪个中间服务器上才能保证所有的数据包都能被捕获？</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>输入文件的第一行一个整数 n，表示蓝军网络中服务器的数目。 接下来若干行是对蓝军网络的拓扑结构描述，每行是两个整数 i , j 表示编号为 i 和编号为 j 的两台服务器间存在连接（显然连接是双向的），服务器的编号从 1 开始，一行两个 0 表示网络的拓补结构描述结束，再接下来是两个整数 a , b 分别表示两个中心服务器的编号。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出编号。如果有多个解输出编号最小的一个，如果找不到任何解，输出 No solution</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>求出一个点使得删去他后起点和终点不连通. 最开始我是打算求一下割点，然后枚举删割点. 之后郭老师提醒了我数据范围…&lt;100,Tarjan你horse呢QAQ 直接枚举删点跑Dijkstra,不能联通直接输出点,最后输出No Solution.</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 10005
+
+namespace Gekoo {
+    struct Edge {int to, nxt, val;} e[N &lt;&lt; 1];
+
+    int head[N], ecnt, n, st, ed, dis[N];
+    bool vis[N];
+
+    inline void Add(int f, int to) {e[ecnt].val = 1, e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+
+    bool Dijkstra(int ban) {
+        memset(dis, 0x3f, sizeof(dis));
+        memset(vis, 0, sizeof(vis));
+        std::priority_queue &lt;std::pair&lt;int, int&gt; &gt; q;
+        dis[st] = 0;
+        q.push(std::make_pair(0, st));
+        while (!q.empty()) {
+            int u = q.top().second;
+            q.pop();
+            if (vis[u]) continue;
+            vis[u] = 1;
+            for (int i = head[u]; i; i = e[i].nxt) {
+                int v = e[i].to, val = e[i].val;
+                if (v == ban) continue;
+                if (dis[v] &gt; dis[u] + val) {
+                    dis[v] = dis[u] + val;
+                    if (!vis[v]) {
+                        q.push(std::make_pair(-dis[v], v));
+                    }
+                }
+            }
+        }
+        return (dis[ed] == 0x3f3f3f3f) ? 0 : 1;
+    }
+
+    signed QAQ() {
+        scanf(&quot;%d&quot;, &amp;n);
+        int i, j;
+        while (1) {
+            scanf(&quot;%d%d&quot;, &amp;i, &amp;j);
+            if (!i &amp;&amp; !j) break;
+            Add(i, j), Add(j, i);
+        }
+        scanf(&quot;%d%d&quot;, &amp;st, &amp;ed);
+        for (int i = 1; i &lt;= n; i++) {
+            if (i == st || i == ed) continue;
+            if (!Dijkstra(i)) return !printf(&quot;%d\n&quot;, i);
+        }
+        return !printf(&quot;No solution\n&quot;);
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-13T07:49:46.000Z">2019-03-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 716 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/13/luogu-p2860-usaco06jan-e5-86-97-e4-bd-99-e8-b7-af-e5-be-84redundant-paths/"> Luogu P2860 [USACO06JAN]冗余路径Redundant Paths		</a>
+            
+        </h1>
+        <div class="content">
+            <p>Tarjan水题</p>
+<h1 id="Luogu-P2860-USACO06JAN-冗余路径Redundant-Paths"><a href="#Luogu-P2860-USACO06JAN-冗余路径Redundant-Paths" class="headerlink" title="Luogu P2860 [USACO06JAN]冗余路径Redundant Paths"></a><a href="https://www.luogu.org/problemnew/show/P2860" target="_blank" rel="noopener">Luogu P2860 [USACO06JAN]冗余路径Redundant Paths</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>为了从F(1≤F≤5000)个草场中的一个走到另一个，贝茜和她的同伴们有时不得不路过一些她们讨厌的可怕的树．奶牛们已经厌倦了被迫走某一条路，所以她们想建一些新路，使每一对草场之间都会至少有两条相互分离的路径，这样她们就有多一些选择． 每对草场之间已经有至少一条路径．给出所有R(F-1≤R≤10000)条双向路的描述，每条路连接了两个不同的草场，请计算最少的新建道路的数量, 路径由若干道路首尾相连而成．两条路径相互分离，是指两条路径没有一条重合的道路．但是，两条分离的路径上可以有一些相同的草场． 对于同一对草场之间，可能已经有两条不同的道路，你也可以在它们之间再建一条道路，作为另一条不同的道路．</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行两个整数 f, r. 接下来r行每行两个整数u，v表示u到v有边.</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出一个数tot,为修建道路数.</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>显然,一个边双内必然有两条不同的道路.(可以从两边绕嘛) 于是就先缩点ning干.我们就要添加最少边使整个图变成边双. 我们可以发现把叶子节点连起来就行.所以连边数为叶子节点数/2向上取整. 另:此题有重边.因为数据范围小,我直接开了个bool数组(((</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 10005
+
+namespace Gekoo {
+    struct Edge {int to, nxt;} e[N &lt;&lt; 1], c[N &lt;&lt; 1];
+
+    int n, m;
+    int head[N], ecnt = 1, hc[N], ccnt = 1, deg[N], ans;
+    bool vis[5002][5002];
+
+    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+
+    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
+
+    int dfn[N], low[N], stack[N], id[N], p, num, dcc;
+
+    void Tarjan(int x, int fa) {
+        dfn[x] = low[x] = ++num;
+        stack[++p] = x;
+        for (int i = head[x]; i; i = e[i].nxt) {
+            int y = e[i].to;
+            if (y == fa) continue;
+            if (!dfn[y]) {
+                Tarjan(y, x);
+                low[x] = std::min(low[x], low[y]);
+            } else low[x] = std::min(low[x], dfn[y]);
+        }
+        if (dfn[x] == low[x]) {
+            ++dcc; int y;
+            do {
+                y = stack[p--];
+                id[y] = dcc;
+            } while(x != y);
+        }
+    }
+
+    signed QAQ() {
+        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+        for (int i = 1, x, y; i &lt;= m; i++) {
+            scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
+            if (vis[x][y]) continue;
+            vis[x][y] = vis[y][x] = 1;
+            Add(x, y), Add(y, x);
+        }
+        for (int i = 1; i &lt;= n; i++) 
+            if (!dfn[i]) Tarjan(i, 0);
+        for (int i = 2; i &lt;= ecnt; i += 2) {
+            int x = e[i ^ 1].to, y = e[i].to;
+            if (id[x] == id[y]) continue;
+            AddC(id[x], id[y]);
+            deg[id[x]]++, deg[id[y]]++;
+        }
+        for (int i = 1; i &lt;= dcc; i++)
+            if (deg[i] == 1) ans++;
+        printf(&quot;%d\n&quot;, (ans + 1) &gt;&gt; 1);
+        return 0;
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-12T10:25:49.000Z">2019-03-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1138 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/12/luogu-p2783-e6-9c-89-e6-9c-ba-e5-8c-96-e5-ad-a6-e4-b9-8b-e7-a5-9e-e5-81-b6-e5-b0-94-e4-bc-9a-e5-81-9a-e4-bd-9c-e5-bc-8a/"> Luogu P2783 有机化学之神偶尔会做作弊		</a>
+            
+        </h1>
+        <div class="content">
+            <p>郭老师强力推荐</p>
+<h1 id="Luogu-P2783-有机化学之神偶尔会做作弊"><a href="#Luogu-P2783-有机化学之神偶尔会做作弊" class="headerlink" title="Luogu P2783 有机化学之神偶尔会做作弊"></a><a href="https://www.luogu.org/problemnew/show/P2783" target="_blank" rel="noopener">Luogu P2783 有机化学之神偶尔会做作弊</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>XS中学化学竞赛组教练是一个酷爱炉石的人。 有一天他一边搓炉石一边监考，而你作为一个信息竞赛的大神也来凑热闹。 然而你的化竞基友却向你求助了。 “第1354题怎么做”&lt;–手语 他问道。 你翻到那一题：给定一个烃，只含有单键（给初中生的一个理解性解释：就是一堆碳用横线连起来，横线都是单条的）。 然后炎魔之王拉格纳罗斯用他的火焰净化了一切环（？？？）。所有的环状碳都变成了一个碳。如图所示。 <img src="https://cdn.luogu.org/upload/pic/2758.png" alt="1"> 然后指定多组碳，求出它们之间总共有多少碳。如图所示（和上图没有关系）。 <img src="https://cdn.luogu.org/upload/pic/2759.png" alt="2"> 但是因为在考试，所以你只能把这个答案用手语告诉你的基友。你决定用二进制来表示最后的答案。</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行两个整数n,m.表示有n个点，m根键 接下来m行每行两个整数u，v表示u号碳和v号碳有一根键 接下来一个整数tot表示询问次数 接下来tot行每行两个整数，a,b表示询问的两个碳的编号</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>共tot行 每行一个二进制数</p>
+<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>1&lt;n&lt;=10000,1&lt;m&lt;=50000 （两个碳不成环）</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>题意翻译:给一无向图,去掉所有的环,求两点树上距离. 去掉环很简单,跑一遍Tarjan缩掉边双即可. 很简单? 不!QAQ 踩了个巨坑:我第一次是用LYD的写法缩边双的,然后:</p>
+<blockquote>
+<p>就WA了</p>
+<blockquote>
+<p><em>就WA了</em></p>
+<blockquote>
+<p><strong>就WA了</strong></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>第一版写法:</p>
+<pre><code>void Tarjan(int x, int fa) {
+    dfn[x] = low[x] = ++num;
+    for (int i = head[x]; i; i = e[i].nxt) {
+        int y = e[i].to;
+        if (!dfn[y]) {
+            Tarjan(y, i);
+            low[x] = std::min(low[x], low[y]);
+            if (low[y] &gt; dfn[x]) 
+                bridge[i] = bridge[i ^ 1] = 1;
+        } else if (i != (fa ^ 1))
+            low[x] = std::min(low[x], dfn[y]);
+    }
+}
+
+void dfs(int x) {
+    id[x] = cnt;
+    for (int i = head[x]; i; i = e[i].nxt) {
+        int y = e[i].to;
+        if (id[y] || bridge[i]) continue;
+        dfs(y);
+    }
+}
+</code></pre><p>更改为郭老师写法就畅快AC:</p>
+<pre><code>void Tarjan(int x, int fa) {
+    dfn[x] = low[x] = ++num;
+    stack[++p] = x;
+    for (int i = head[x]; i; i = e[i].nxt) {
+        int y = e[i].to;
+        if (!dfn[y]) {            if(y == fa) continue;
+
+            Tarjan(y, x);
+            low[x] = std::min(low[x], low[y]);
+        } else low[x] = std::min(low[x], dfn[y]);
+    }
+    if (dfn[x] == low[x]) {
+        ++cnt; int y;
+        do {
+            y = stack[p--];
+            id[y] = cnt;
+        } while (x != y);
+    }
+}
+</code></pre><p>原因未知….引以为戒QAQ 求树上距离是很简单的.如下图的树: <img src="https://i.loli.net/2019/03/12/5c8787d0a432c.png" alt="Tree"> 比如说我们要求12和13之间的距离,可以先跑一次树链剖分,求出12和13的深度. 显然,12与13之间的距离就等于<code>dep[12] + dep[13] - 2 * dep[3] + 1</code>. 任意两点x, y在树上的距离就是:<code>dep[x] + dep[y] - 2 * dep[LCA] + 1</code>. 二进制随便写个函数输出一下就行了</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 50005
+
+namespace Gekoo {
+    struct Edge {int to, nxt;} e[N &lt;&lt; 1], c[N &lt;&lt; 1];
+
+    int n, m, s;
+    int ecnt = 1, head[N], ccnt = 1, hc[N], cnt, ask;
+    int dep[N], fa[N], siz[N], son[N], tp[N];
+
+    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
+
+    int dfn[N], low[N], stack[N], id[N], root, p, num;
+    bool bridge[N &lt;&lt; 1];
+
+    void Tarjan(int x, int fa) {
+        dfn[x] = low[x] = ++num;
+        stack[++p] = x;
+        for (int i = head[x]; i; i = e[i].nxt) {
+            int y = e[i].to;
+            if(y == fa) continue;
+            if (!dfn[y]) {
+                Tarjan(y, x);
+                low[x] = std::min(low[x], low[y]);
+            } else low[x] = std::min(low[x], dfn[y]);
+        }
+        if (dfn[x] == low[x]) {
+            ++cnt; int y;
+            do {
+                y = stack[p--];
+                id[y] = cnt;
+            } while (x != y);
+        }
+    }
+
+    void dfs1(int u) {
+        siz[u] = 1;
+        for (int i = hc[u]; i; i = c[i].nxt) {
+            int v = c[i].to;
+            if (dep[v]) continue;
+            dep[v] = dep[u] + 1, fa[v] = u;
+            dfs1(v);
+            siz[u] += siz[v];
+            if (!son[u] || siz[son[u]] &lt; siz[v]) son[u] = v;
+        }
+    }
+
+    void dfs2(int u, int t) {
+        tp[u] = t;
+        if (!son[u]) return;
+        dfs2(son[u], t);
+        for (int i = hc[u]; i; i = c[i].nxt) {
+            int v = c[i].to;
+            if (v == fa[u]) continue;
+            if (v != son[u]) dfs2(v, v);
+        }
+    }
+
+    void Write(int x) {
+        int a[1005] = {}, pt = 0;
+        do {
+            a[++pt] = (x &amp; 1);
+            x &gt;&gt;= 1;
+        }while (x != 0);
+        for (int i = pt; i &gt;= 1; i--)
+            printf(&quot;%d&quot;, a[i]);
+        puts(&quot;&quot;);
+    }
+
+
+    signed QAQ() {
+        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+        for (int i = 1, x, y; i &lt;= m; i++) {
+            scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
+            Add(x, y), Add(y, x);
+        }
+        scanf(&quot;%d&quot;, &amp;ask);
+        for (int i = 1; i &lt;= n; i++) 
+            if (!dfn[i]) Tarjan(i, 0);
+        for (int i = 2; i &lt;= ecnt; i++) {
+            int x = e[i ^ 1].to, y = e[i].to;
+            if (id[x] == id[y]) continue;
+            AddC(id[x], id[y]);
+        }
+        dep[1] = 1;
+        dfs1(1), dfs2(1, 1);
+        for (int i = 1, a, b; i &lt;= ask; i++) {
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            a = id[a], b = id[b];
+            int ans = 0;
+            ans += dep[a] + dep[b];
+            while (tp[a] != tp[b]) {
+                if (dep[tp[a]] &lt; dep[tp[b]]) b = fa[tp[b]];
+                else a = fa[tp[a]];
+            }
+            ans -= 2 * std::min(dep[a], dep[b]) - 1;
+            Write(ans);
+        }
+        return 0;
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-09T09:24:29.000Z">2019-03-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1150 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/09/luogu-p3225-hnoi2012-e7-9f-bf-e5-9c-ba-e6-90-ad-e5-bb-ba/"> Luogu P3225 [HNOI2012]矿场搭建		</a>
+            
+        </h1>
+        <div class="content">
+            <p>调了好久QAQ</p>
+<h1 id="Luogu-P3225-HNOI2012-矿场搭建"><a href="#Luogu-P3225-HNOI2012-矿场搭建" class="headerlink" title="Luogu P3225 [HNOI2012]矿场搭建"></a><a href="https://www.luogu.org/problemnew/show/P3225" target="_blank" rel="noopener">Luogu P3225 [HNOI2012]矿场搭建</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>煤矿工地可以看成是由隧道连接挖煤点组成的无向图。为安全起见，希望在工地发生事故时所有挖煤点的工人都能有一条出路逃到救援出口处。于是矿主决定在某些挖煤点设立救援出口，使得无论哪一个挖煤点坍塌之后，其他挖煤点的工人都有一条道路通向救援出口。 请写一个程序，用来计算至少需要设置几个救援出口，以及不同最少救援出口的设置方案总数。</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>输入文件有若干组数据，每组数据的第一行是一个正整数 N（N&lt;=500），表示工地的隧道数，接下来的 N 行每行是用空格隔开的两个整数 S 和 T，表示挖 S 与挖煤点 T 由隧道直接连接。输入数据以 0 结尾。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输入文件中有多少组数据，输出文件 output.txt 中就有多少行。每行对应一组输入数据的 结果。其中第 i 行以 Case i: 开始（注意大小写，Case 与 i 之间有空格，i 与:之间无空格，: 之后有空格），其后是用空格隔开的两个正整数，第一个正整数表示对于第 i 组输入数据至少需 要设置几个救援出口，第二个正整数表示对于第 i 组输入数据不同最少救援出口的设置方案总 数。输入数据保证答案小于 2^64。输出格式参照以下输入输出样例。</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>v-DCC删去一点后其内部必然仍互相连通,在一个v-DCC中最多只需要建一个出口.所以可以先缩点,缩成一棵树,记录每个节点的大小. <img src="https://i.loli.net/2019/03/09/5c838092b1600.png" alt="QAQ"> 以这个比母亲还要见得多的图(雾 为例,缩点后就变成了: <img src="https://i.loli.net/2019/03/09/5c83811e82b71.png" alt="QWQ"> 仔细观察,非叶节点不用建出口,出事了往叶子节点跑就完事了.叶子节点必须建出口,不然割点炸了就完了. 所以需要建的出口个数就是叶子节点的个数,而出口方案数,通过乘法原理,将叶子节点的大小乘起来即即可. 然而如果缩完点后就剩一个点了就不用这么多事了.显然只需要建两个点(如果一个被炸了另一个还能跑),方案数为$C_{size}^2$.</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 300005
+#define ll long long
+
+namespace Gekoo {
+    struct Edge {int to, nxt;} e[N &lt;&lt; 1], c[N &lt;&lt; 1];
+
+    int ecnt, ccnt, head[N], hc[N], p, m, num, cnt, cas, root, n, ans1;
+    int stack[N], dfn[N], low[N], id[N], new_id[N], size[N];
+    bool cut[N], vis[N];
+    ll ans2 = 1;
+    std::vector&lt;int&gt; dcc[N], leaf;
+
+    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+
+    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
+
+    void Tarjan(int x) {
+        dfn[x] = low[x] = ++num;
+        stack[++p] = x;
+        if (x == root &amp;&amp; !head[x]) {
+            dcc[++cnt].push_back(x);
+            return ;
+        }
+        int flg = 0;
+        for (int i = head[x]; i; i = e[i].nxt) {
+            int y = e[i].to;
+            if (!dfn[y]) {
+                Tarjan(y);
+                low[x] = std::min(low[x], low[y]);
+                if (low[y] &gt;= dfn[x]) {
+                    if (++flg &gt; 1 || x != root) cut[x] = 1;
+                    int z;
+                    cnt++;
+                    do {
+                        z = stack[p--];
+                        dcc[cnt].push_back(z);
+                        size[cnt]++;
+                    } while (y != z);
+                    dcc[cnt].push_back(x);
+                }
+            } else low[x] = std::min(low[x], dfn[y]);
+        }
+    }
+
+    void DFS(int u) {
+        int flg = 0;
+        for (int i = hc[u]; i; i = c[i].nxt) {
+            int v = c[i].to;
+            if (!vis[v]) {
+                vis[v] = 1;
+                flg++;
+                DFS(v);
+            }
+        }
+        if (!flg) leaf.push_back(u);
+    }
+
+    void init() {
+        memset(e, 0, sizeof(e));
+        memset(c, 0, sizeof(c));
+        memset(head, 0, sizeof(head));
+        memset(hc, 0, sizeof(hc));
+        memset(stack, 0, sizeof(stack));
+        memset(dfn, 0, sizeof(dfn));
+        memset(low, 0, sizeof(low));
+        memset(id, 0, sizeof(id));
+        memset(new_id, 0, sizeof(new_id));
+        memset(size, 0, sizeof(size));
+        memset(cut, 0, sizeof(cut));
+        memset(vis, 0, sizeof(vis));
+        for (int i  = 1; i &lt;= cnt; i++) dcc[i].clear();
+        leaf.clear();
+        ecnt = ccnt = p = n = num = cnt = root = 0;
+        ans2 = 1;
+    }
+
+    signed QAQ() {
+        while (1) {
+            cas++;
+            scanf(&quot;%d&quot;, &amp;m);
+            if (!m) return 0;
+            for (int i = 1, s, t; i &lt;= m; i++) {
+                scanf(&quot;%d%d&quot;, &amp;s, &amp;t);
+                Add(s, t), Add(t, s);
+                n = std::max(n, std::max(s, t));
+            }
+            for (int i = 1; i &lt;= n; i++) {
+                if (!dfn[i]) root = i, Tarjan(i);
+            }
+            int t = cnt;
+            for (int i = 1; i &lt;= n; i++)
+                if (cut[i]) new_id[i] = ++t;
+            for (int i = 1; i &lt;= cnt; i++) {
+                for (std::vector&lt;int&gt;::iterator it = dcc[i].begin(); it != dcc[i].end(); ++it) {
+                    if (cut[*it])
+                        AddC(i, new_id[*it]), AddC(new_id[*it], i);
+                    else id[*it] = i;
+                }
+            }
+            DFS(1);
+            if ((int) leaf.size() == 1) {
+                int s = size[leaf[0]] + 1;
+                ans2 = s * (s - 1) / 2;
+                ans1 = 2;
+            }
+            else {
+                ans1 = leaf.size();
+                for (std::vector&lt;int&gt;::iterator it = leaf.begin(); it != leaf.end(); ++it) {
+                    ans2 *= size[*it];
+                }
+            }
+            printf(&quot;Case %d: %d %lld\n&quot;, cas, ans1, ans2);
+            init();
+        }
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-09T06:40:05.000Z">2019-03-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1045 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/09/luogu-p1262-e9-97-b4-e8-b0-8d-e7-bd-91-e7-bb-9c/"> Luogu P1262 间谍网络		</a>
+            
+        </h1>
+        <div class="content">
+            <p>ning干</p>
+<h1 id="Luogu-P1262-间谍网络"><a href="#Luogu-P1262-间谍网络" class="headerlink" title="Luogu P1262 间谍网络"></a><a href="https://www.luogu.org/problemnew/show/P1262" target="_blank" rel="noopener">Luogu P1262 间谍网络</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>由于外国间谍的大量渗入，国家安全正处于高度的危机之中。如果A间谍手中掌握着关于B间谍的犯罪证据，则称A可以揭发B。有些间谍收受贿赂，只要给他们一定数量的美元，他们就愿意交出手中掌握的全部情报。所以，如果我们能够收买一些间谍的话，我们就可能控制间谍网中的每一分子。因为一旦我们逮捕了一个间谍，他手中掌握的情报都将归我们所有，这样就有可能逮捕新的间谍，掌握新的情报。 我们的反间谍机关提供了一份资料，包括所有已知的受贿的间谍，以及他们愿意收受的具体数额。同时我们还知道哪些间谍手中具体掌握了哪些间谍的资料。假设总共有n个间谍(n不超过3000)，每个间谍分别用1到3000的整数来标识。 请根据这份资料，判断我们是否有可能控制全部的间谍，如果可以，求出我们所需要支付的最少资金。否则，输出不能被控制的一个间谍。</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行只有一个整数n。 第二行是整数p。表示愿意被收买的人数，1≤p≤n。 接下来的p行，每行有两个整数，第一个数是一个愿意被收买的间谍的编号，第二个数表示他将会被收买的数额。这个数额不超过20000。 紧跟着一行只有一个整数r，1≤r≤8000。然后r行，每行两个正整数，表示数对(A, B)，A间谍掌握B间谍的证据。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>如果可以控制所有间谍，第一行输出YES，并在第二行输出所需要支付的贿金最小值。否则输出NO，并在第二行输出不能控制的间谍中，编号最小的间谍编号。</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>显然,同一个SCC里的间谍会互相出卖.因此,先缩点,记录每个SCC里的最小特工编号和贿赂费用. 思考后可以发现,只要我们控制了所有入度为0的特工,整个图就都可以被控制. 直接寻找一下所有入度为0的点,如果该点不能被贿赂,就无法控制所有间谍,此时记录编号最小的间谍,反之将贿金加给ans.</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 10005
+
+namespace Gekoo {
+    struct Edge {int to, nxt;} e[N], c[N];
+
+    int ecnt, ccnt, head[N], hc[N], p, n, m, MO, num, cnt, ans = 0, cant = 0x3f3f3f3f;
+    int stack[N], dfn[N], low[N], id[N], ind[N], val[N];
+    int mn[N], cost[N];
+    bool ins[N], flg;
+
+    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+
+    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
+
+    void Tarjan(int x) {
+        dfn[x] = low[x] = ++num;
+        stack[++p] = x, ins[x] = 1;
+        for (int i = head[x]; i; i = e[i].nxt) {
+            int y = e[i].to;
+            if (!dfn[y]) {
+                Tarjan(y);
+                low[x] = std::min(low[x], low[y]);
+            } else if (ins[y])
+                low[x] = std::min(low[x], dfn[y]);
+        }
+        if (dfn[x] == low[x]) {
+            cnt++; int y;
+            do {
+                y = stack[p--], ins[y] = 0;
+                id[y] = cnt;
+                if (cost[y] &gt; 0) val[cnt] = std::min(val[cnt], cost[y]);
+                mn[cnt] = std::min(mn[cnt], y);
+            } while (x != y);
+        }
+    }
+
+    signed QAQ() {
+        memset(val, 0x3f, sizeof(val));
+        memset(mn, 0x3f, sizeof(mn));
+        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+        for (int i = 1, a, b; i &lt;= m; i++) {
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            cost[a] = b; 
+        }
+        int r;
+        scanf(&quot;%d&quot;, &amp;r);
+        for (int i = 1; i &lt;= r; i++) {
+            int a, b;
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            Add(a, b);
+        }
+        for (int i = 1; i &lt;= n; i++)
+            if (!dfn[i]) Tarjan(i);
+        for (int u = 1; u &lt;= n; u++) {
+            for (int i = head[u]; i; i = e[i].nxt) {
+                int v = e[i].to;
+                if (id[u] != id[v]) AddC(id[u], id[v]), ind[id[v]]++;
+            }
+        }
+        for (int i = 1; i &lt;= cnt; i++) {
+            if (!ind[i]) {
+                if (val[i] == 0x3f3f3f3f) {
+                    flg = 1;
+                    cant = std::min(cant, mn[i]);
+                } else {
+                    ans += val[i];
+                }
+            }
+        }
+        if (!flg) return !printf(&quot;YES\n%d\n&quot;, ans);
+        else return !printf(&quot;NO\n%d\n&quot;, cant);
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-08T17:04:51.000Z">2019-03-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1027 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/09/luogu-p2272-zjoi2007-e6-9c-80-e5-a4-a7-e5-8d-8a-e8-bf-9e-e9-80-9a-e5-ad-90-e5-9b-be/"> Luogu P2272 [ZJOI2007]最大半连通子图		</a>
+            
+        </h1>
+        <div class="content">
+            <p>Tarjan总是和DAGDP紧密结合呢</p>
+<h1 id="Luogu-P2272-ZJOI2007-最大半连通子图"><a href="#Luogu-P2272-ZJOI2007-最大半连通子图" class="headerlink" title="Luogu P2272 [ZJOI2007]最大半连通子图"></a><a href="https://www.luogu.org/problemnew/show/P2272" target="_blank" rel="noopener">Luogu P2272 [ZJOI2007]最大半连通子图</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>一个有向图G=(V,E)称为半连通的(Semi-Connected)，如果满足：?u,v∈V，满足u→v或v→u，即对于图中任意两点u，v,存在一条u到v的有向路径或者从v到u的有向路径。若G’=(V’,E’)满足V’?V，E’是E中所有跟V’有关的边，则称G’是G的一个导出子图。若G’是G的导出子图，且G’半连通，则称G’为G的半连通子图。若G’是G所有半连通子图中包含节点数最多的，则称G’是G的最大半连通子图。给定一个有向图G，请求出G的最大半连通子图拥有的节点数K，以及不同的最大半连通子图的数目C。由于C可能比较大，仅要求输出C对X的余数。</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行包含两个整数N，M，X。N，M分别表示图G的点数与边数，X的意义如上文所述接下来M行，每行两个正整数a, b，表示一条有向边(a, b)。图中的每个点将编号为1,2,3…N，保证输入中同一个(a,b)不会出现两次。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>应包含两行，第一行包含一个整数K。第二行包含整数C Mod X.</p>
+<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于100%的数据，$N \le 100000, M \le 1000000, X \le 10^8$</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>简化题意:给定一个有向图，若u，v两点，只要u-v可达或者v-u可达，则称u，v半联通.求半联通子图中点数最多的个数和方案数. 显然又是DAGDP…先跑Tarjan缩点,记录一下每个连通块的大小,再拓扑跑DP. 问题主要在第二问,缩点会有重边,势必会影响方案数统计.所以要去重边. 如何去重? 开一边集数组,先记录所有缩点后的边,再按起始点sort一下.建图时检查一下,如果<code>E[i].from == E[i - 1].from &amp;&amp; E[i].to == E[i - 1].to</code>,说明为重边,直接continue. 其他没什么了.</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define M 1000005
+
+namespace Gekoo {
+    struct Edge {int to, nxt;} e[N], c[N];
+
+    struct EdgeC {
+        int from, to;
+
+        bool operator &lt;(const EdgeC &amp;a) const {
+            return (from == a.from) ? to &lt; a.to : from &lt; a.from;
+        }
+    }EDGE[N];
+
+    int ecnt, ccnt, head[N], hc[N], p, n, m, MO, num, scc, cnt, t,  ans = -114514, ans2;
+    int stack[N], dfn[N], low[N], id[N], ind[N], val[N], f[N], g[N];
+    bool ins[N];
+
+    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+
+    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
+
+    void Tarjan(int x) {
+        dfn[x] = low[x] = ++num;
+        stack[++p] = x, ins[x] = 1;
+        for (int i = head[x]; i; i = e[i].nxt) {
+            int y = e[i].to;
+            if (!dfn[y]) {
+                Tarjan(y);
+                low[x] = std::min(low[x], low[y]);
+            } else if (ins[y])
+                low[x] = std::min(low[x], dfn[y]);
+        }
+        if (dfn[x] == low[x]) {
+            cnt++; int y;
+            do {
+                y = stack[p--], ins[y] = 0;
+                id[y] = cnt;
+                val[cnt]++;
+            } while (x != y);
+        }
+    }
+
+    void TopSort() {
+        std::queue&lt;int&gt; q;
+        for (int i = 1; i &lt;= cnt; i++) 
+            if (!ind[i]) q.push(i), f[i] = val[i], g[i] = 1;
+        while (!q.empty()) {
+            int u = q.front();
+            q.pop();
+            for (int i = hc[u]; i; i = c[i].nxt) {
+                int v = c[i].to;
+                if (f[v] &lt; f[u] + val[v]) {
+                    f[v] = f[u] + val[v];
+                    g[v] = g[u];
+                } else if (f[v] == f[u] + val[v]) {
+                    g[v] = (g[v] + g[u]) % MO;
+                }
+                if (!(--ind[v])) {
+                    q.push(v);
+                }
+            }
+        }
+        for (int i = 1; i &lt;= cnt; i++)
+            if (f[i] &gt; ans) ans = f[i];
+        for (int i = 1; i &lt;= cnt; i++)
+            if (f[i] == ans) ans2 = (ans2 + g[i]) % MO;
+    }
+
+    signed QAQ() {
+        scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;MO);
+        for (int i = 1, a, b; i &lt;= m; i++) {
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            Add(a, b);
+        }
+        for (int i = 1; i &lt;= n; i++)
+            if (!dfn[i]) Tarjan(i);
+        for (int x = 1; x &lt;= n; x++) {
+            for (int i = head[x]; i; i = e[i].nxt) {
+                int y = e[i].to;
+                if (id[x] != id[y]) EDGE[++t].from = id[x], EDGE[t].to = id[y];            
+            }
+        }
+        std::sort(EDGE + 1, EDGE + t + 1);
+        for (int i = 1; i &lt;= t; i++) {
+            if (EDGE[i].from == EDGE[i - 1].from &amp;&amp; EDGE[i].to == EDGE[i - 1].to) continue;
+            AddC(EDGE[i].from, EDGE[i].to), ++ind[EDGE[i].to];
+        }
+        TopSort();
+        printf(&quot;%d\n%d\n&quot;, ans, ans2);
+        return 0;
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-07T16:32:48.000Z">2019-03-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1259 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/08/luogu-p3627-apio2009-e6-8a-a2-e6-8e-a0-e8-ae-a1-e5-88-92/"> Luogu P3627 [APIO2009]抢掠计划		</a>
+            
+        </h1>
+        <div class="content">
+            <p>与缩点模板题惊人的相似…</p>
+<h1 id="Luogu-P3627-APIO2009-抢掠计划"><a href="#Luogu-P3627-APIO2009-抢掠计划" class="headerlink" title="Luogu P3627 [APIO2009]抢掠计划"></a><a href="https://www.luogu.org/problemnew/show/P3627" target="_blank" rel="noopener">Luogu P3627 [APIO2009]抢掠计划</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>Siruseri 城中的道路都是单向的。不同的道路由路口连接。按照法律的规定， 在每个路口都设立了一个 Siruseri 银行的 ATM 取款机。令人奇怪的是，Siruseri 的酒吧也都设在路口，虽然并不是每个路口都设有酒吧。 Banditji 计划实施 Siruseri 有史以来最惊天动地的 ATM 抢劫。他将从市中心 出发，沿着单向道路行驶，抢劫所有他途径的 ATM 机，最终他将在一个酒吧庆 祝他的胜利。 使用高超的黑客技术，他获知了每个 ATM 机中可以掠取的现金数额。他希 望你帮助他计算从市中心出发最后到达某个酒吧时最多能抢劫的现金总数。他可 以经过同一路口或道路任意多次。但只要他抢劫过某个 ATM 机后，该 ATM 机 里面就不会再有钱了。 例如，假设该城中有 6 个路口，道路的连接情况如下图所示： <img src="https://cdn.luogu.org/upload/pic/4396.png" alt="示例"> 市中心在路口 1，由一个入口符号→来标识，那些有酒吧的路口用双圈来表示。每个 ATM 机中可取的钱数标在了路口的上方。在这个例子中，Banditji 能抢 劫的现金总数为 47，实施的抢劫路线是：1-2-4-1-2-3-5。</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行包含两个整数 N、M。N 表示路口的个数，M 表示道路条数。接下来 M 行，每行两个整数，这两个整数都在 1 到 N 之间，第 i+1 行的两个整数表示第 i 条道路的起点和终点的路口编号。接下来 N 行，每行一个整数，按顺序表示每 个路口处的 ATM 机中的钱数。接下来一行包含两个整数 S、P，S 表示市中心的 编号，也就是出发的路口。P 表示酒吧数目。接下来的一行中有 P 个整数，表示 P 个有酒吧的路口的编号。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出一个整数，表示 Banditji 从市中心开始到某个酒吧结束所能抢劫的最多 的现金总数。</p>
+<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>50%的输入保证 N, M&lt;=3000。所有的输入保证 N, M&lt;=500000。每个 ATM 机中可取的钱数为一个非负整数且不超过 4000。 输入数据保证你可以从市中心 沿着 Siruseri 的单向的道路到达其中的至少一个酒吧。</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>此题是要在图中求经过点权最大的路径所经过的点权和. 然后我们就可以发现它与缩点模板题惊人的相似… 我们可以先缩点,将图转化为DAG,之后在DAG上拓扑跑DP即可. 本题有一大坑!(图片来自洛谷评论区) <img src="https://cdn.luogu.org/upload/pic/47931.png" alt="QAQ"> 当出现如图这种情况,若1为起点,5的入度为2,在拓扑过程中由于4不可达,5无法入队.我们可以发现,只需要研究可达的点就够了.所以在跑Tarjan和建新图的时候都只需要跑与起点联通的点.Tarjan只需要从起点跑,建图是特判dfn是否等于0. #3#11卡WA了解一下?</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 500005
+
+namespace Gekoo {
+    struct Edge {int to, nxt;} e[N &lt;&lt; 1], c[N &lt;&lt; 1];
+
+    int ecnt, ccnt, head[N], hc[N], p, n, m, num, scc, cnt, ans = -114514, S, P, SPlace;
+    int stack[N], dfn[N], low[N], id[N], ind[N], pv[N], val[N], f[N];
+    bool bridge[N], vis[N], bar[N], Bar[N];
+
+    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+
+    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
+
+    void Tarjan(int x) {
+        dfn[x] = low[x] = ++num;
+        stack[++p] = x, vis[x] = 1;
+        for (int i = head[x]; i; i = e[i].nxt) {
+            int y = e[i].to;
+            if (!dfn[y]) {
+                Tarjan(y);
+                low[x] = std::min(low[x], low[y]);
+            } else if (vis[y])
+                low[x] = std::min(low[x], dfn[y]);
+        }
+        if (dfn[x] == low[x]) {
+            cnt++; int y;
+            do {
+                y = stack[p--], vis[y] = 0;
+                id[y] = cnt;
+                val[cnt] += pv[y];
+                if (bar[y]) Bar[cnt] = 1;
+                if (y == S) SPlace = cnt;
+            } while (x != y);
+        }
+    }
+
+    void TopSort() {
+        std::queue&lt;int&gt; q;
+        q.push(id[S]);
+        f[id[S]] = val[SPlace];
+        while (!q.empty()) {
+            int u = q.front();
+            q.pop();
+            for (int i = hc[u]; i; i = c[i].nxt) {
+                int v = c[i].to;
+                f[v] = std::max(f[v], f[u] + val[v]);
+                if (!(--ind[v])) {
+                    q.push(v);
+                }
+            }
+        }
+        for (int i = 1; i &lt;= cnt; i++) 
+            if (Bar[i]) ans = std::max(ans, f[i]);
+    }
+
+    signed QAQ() {
+        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+        for (int i = 1, a, b; i &lt;= m; i++) {
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            Add(a, b);
+        }
+        for (int i = 1; i &lt;= n; i++) 
+            scanf(&quot;%d&quot;, &amp;pv[i]);
+        scanf(&quot;%d%d&quot;, &amp;S, &amp;P);
+        for (int i = 1, x; i &lt;= P; i++)
+            scanf(&quot;%d&quot;, &amp;x), bar[x] = 1; 
+        Tarjan(S);
+        for (int x = 1; x &lt;= n; x++) {
+            if (!dfn[x]) continue;
+            for (int i = head[x]; i; i = e[i].nxt) {
+                int y = e[i].to;
+                if (id[x] == id[y]) continue;
+                AddC(id[x], id[y]);
+                ind[id[y]]++;                
+            }
+        }
+        TopSort();
+        printf(&quot;%d\n&quot;, ans);
+        return 0;
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-07T10:22:38.000Z">2019-03-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 846 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/07/p2746-usaco5-3-e6-a0-a1-e5-9b-ad-e7-bd-91network-of-schools/"> P2746 [USACO5.3]校园网Network of Schools		</a>
+            
+        </h1>
+        <div class="content">
+            <p>缩点ning干</p>
+<h1 id="P2746-USACO5-3-校园网Network-of-Schools"><a href="#P2746-USACO5-3-校园网Network-of-Schools" class="headerlink" title="P2746 [USACO5.3]校园网Network of Schools"></a><a href="https://www.luogu.org/problemnew/show/P2746" target="_blank" rel="noopener">P2746 [USACO5.3]校园网Network of Schools</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>一些学校连入一个电脑网络。那些学校已订立了协议：每个学校都会给其它的一些学校分发软件（称作“接受学校”）。注意即使 B 在 A 学校的分发列表中， A 也不一定在 B 学校的列表中。 你要写一个程序计算，根据协议，为了让网络中所有的学校都用上新软件，必须接受新软件副本的最少学校数目（子任务 A）。更进一步，我们想要确定通过给任意一个学校发送新软件，这个软件就会分发到网络中的所有学校。为了完成这个任务，我们可能必须扩展接收学校列表，使其加入新成员。计算最少需要增加几个扩展，使得不论我们给哪个学校发送新软件，它都会到达其余所有的学校（子任务 B）。一个扩展就是在一个学校的接收学校列表中引入一个新成员。</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>输入文件的第一行包括一个整数 N：网络中的学校数目（2 &lt;= N &lt;= 100）。学校用前 N 个正整数标识。 接下来 N 行中每行都表示一个接收学校列表（分发列表）。第 i+1 行包括学校 i 的接收学校的标识符。每个列表用 0 结束。空列表只用一个 0 表示。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>你的程序应该在输出文件中输出两行。 第一行应该包括一个正整数：子任务 A 的解。 第二行应该包括子任务 B 的解。</p>
+<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>n &lt;= 100</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>缩点ning干(逃 先缩点,记录一下入度和出度.显然,问题A的答案就是入度为0的点的个数. 问题B的答案也比较显然,是入度为0和出度为0的点的个数的较大值. 注意特判,当缩成只有一个点的时候问题B答案为0.</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 5000005
+
+namespace Gekoo {
+    struct Edge {int to, nxt;} e[N], c[N];
+
+    int ecnt, ccnt, hc[N], head[N], ind[N], outd[N], n, Aans, Bans;
+    int dfn[N], low[N], s[N], id[N], num, p, cnt;
+    bool vis[N];
+
+    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+
+    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
+
+    void Tarjan(int x) {
+        dfn[x] = low[x] = ++num;
+        s[++p] = x, vis[x] = 1;
+        for (int i = head[x]; i; i = e[i].nxt) {
+            int y = e[i].to;
+            if (!dfn[y]) {
+                Tarjan(y);
+                low[x] = std::min(low[x], low[y]);
+            } else if (vis[y])
+                low[x] = std::min(low[x], dfn[y]);
+        }
+        if (dfn[x] == low[x]) {
+            cnt++; int y;
+            do {
+                y = s[p--], vis[y] = 0;
+                id[y] = cnt;
+            } while (x != y);
+        }
+    }
+
+    signed QAQ() {
+        //Input
+        scanf(&quot;%d&quot;, &amp;n);
+        for (int u = 1, v; u &lt;= n; u++) {
+            while (1) {
+                scanf(&quot;%d&quot;, &amp;v);
+                if (!v) break;
+                Add(u, v);
+            }
+        } 
+        //Shrink
+        for (int i = 1; i &lt;= n; i++)
+            if (!dfn[i]) Tarjan(i);
+        for (int u = 1; u &lt;= n; u++) {
+            for (int i = head[u]; i; i = e[i].nxt) {
+                int v = e[i].to;
+                if (id[u] == id[v]) continue;
+                AddC(id[u], id[v]);
+                ind[id[v]]++, outd[id[u]]++;
+            }
+        }
+        //Task A
+        for (int i = 1; i &lt;= cnt; i++) 
+            if (!ind[i]) Aans++;
+        //Task B
+        for (int i = 1; i &lt;= cnt; i++)
+            if (!outd[i]) Bans++;
+        Bans = std::max(Bans, Aans);
+        if (cnt == 1) Bans = 0;
+        //Output
+        printf(&quot;%d\n%d\n&quot;, Aans, Bans);
+        return 0;
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-07T09:13:46.000Z">2019-03-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 612 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/07/luogu-p3387-e3-80-90-e6-a8-a1-e6-9d-bf-e3-80-91-e7-bc-a9-e7-82-b9/"> Luogu P3387 【模板】缩点		</a>
+            
+        </h1>
+        <div class="content">
+            <p>为什么缩点模板还有DAGDP(半恼</p>
+<h1 id="Luogu-P3387-【模板】缩点"><a href="#Luogu-P3387-【模板】缩点" class="headerlink" title="Luogu P3387 【模板】缩点"></a><a href="https://www.luogu.org/problemnew/show/P3387" target="_blank" rel="noopener">Luogu P3387 【模板】缩点</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目"><a href="#题目" class="headerlink" title="题目:"></a>题目:</h4><p>给定一个n个点m条边有向图，每个点有一个权值，求一条路径，使路径经过的点权值之和最大。你只需要求出这个权值和。 允许多次经过一条边或者一个点，但是，重复经过的点，权值只计算一次。</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行，n,m 第二行，n个整数，依次代表点权 第三至m+2行，每行两个整数u,v，表示u-&gt;v有一条有向边</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>共一行，最大的点权之和。</p>
+<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>n&lt;=10^4,m&lt;=10^5,点权&lt;=1000</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>首先先求出scc,之后缩点 (缩点板子要缩点不是显然 缩点后可以得到一个DAG,求最大点权的转移方程显然:<code>f[v] = max(f[v], f[u] + val[v])</code>. 但是有后效性.为了解决后效性,进行一次拓扑排序,在拓扑排序过程中DP.</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><pre><code>#include &lt;bits/stdc++.h&gt;
+#define N 500005
+
+namespace Gekoo {
+    struct Edge {int to, nxt;} e[N &lt;&lt; 1], c[N &lt;&lt; 1];
+
+    int ecnt, ccnt, head[N], hc[N], p, n, m, num, scc, cnt, ans = -114514;
+    int stack[N], dfn[N], low[N], id[N], ind[N], pv[N], val[N], f[N];
+    bool bridge[N], vis[N];
+
+    inline void Add(int f, int to) {e[++ecnt].to = to, e[ecnt].nxt = head[f], head[f] = ecnt;}
+
+    inline void AddC(int f, int to) {c[++ccnt].to = to, c[ccnt].nxt = hc[f], hc[f] = ccnt;}
+
+    void Tarjan(int x) {
+        dfn[x] = low[x] = ++num;
+        stack[++p] = x, vis[x] = 1;
+        for (int i = head[x]; i; i = e[i].nxt) {
+            int y = e[i].to;
+            if (!dfn[y]) {
+                Tarjan(y);
+                low[x] = std::min(low[x], low[y]);
+            } else if (vis[y])
+                low[x] = std::min(low[x], dfn[y]);
+        }
+        if (dfn[x] == low[x]) {
+            cnt++; int y;
+            do {
+                y = stack[p--], vis[y] = 0;
+                id[y] = cnt;
+                val[cnt] += pv[y];
+            } while (x != y);
+        }
+    }
+
+    void TopSort() {
+        std::queue&lt;int&gt; q;
+        for (int i = 1; i &lt;= cnt; i++) 
+            if(!ind[i]) f[i] = val[i], q.push(i);
+        while (!q.empty()) {
+            int u = q.front();
+            q.pop();
+            for (int i = hc[u]; i; i = c[i].nxt) {
+                int v = c[i].to;
+                f[v] = std::max(f[v], f[u] + val[v]);
+                if (!(--ind[v])) {
+                    q.push(v);
+                }
+            }
+        }
+        for (int i = 1; i &lt;= cnt; i++) ans = std::max(ans, f[i]);
+    }
+
+    signed QAQ() {
+        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+        for (int i = 1; i &lt;= n; i++) 
+            scanf(&quot;%d&quot;, &amp;pv[i]);
+        for (int i = 1, a, b; i &lt;= m; i++) {
+            scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+            Add(a, b);
+        }
+        for (int i = 1; i &lt;= n; i++)
+            if (!dfn[i]) Tarjan(i);
+        for (int x = 1; x &lt;= n; x++) {
+            for (int i = head[x]; i; i = e[i].nxt) {
+                int y = e[i].to;
+                if (id[x] == id[y]) continue;
+                AddC(id[x], id[y]);
+                ind[id[y]]++;                
+            }
+        }
+        TopSort();
+        printf(&quot;%d\n&quot;, ans);
+        return 0;
+    }
+}
+
+signed main() {
+    return Gekoo::QAQ();
+}
+</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/OI/page/0/">上一页</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/OI/page/2/">下一页</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/categories/OI/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/OI/page/2/">2</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/categories/OI/page/3/">3</a></li>
+            
+        </ul>
+    </nav>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Your name
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Your title
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Your location</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        32
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        25
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Nothing/">
+            <span class="level-start">
+                <span class="level-item">Nothing</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/OI/">
+            <span class="level-start">
+                <span class="level-item">OI</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">28</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Thinking/">
+            <span class="level-start">
+                <span class="level-item">Thinking</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/DCC/" style="font-size: 12.86px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 14.29px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.43px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/LCA/" style="font-size: 11.43px;">LCA</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.71px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.57px;">Tarjan</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/拓扑排序/" style="font-size: 12.86px;">拓扑排序</a> <a href="/tags/数学/" style="font-size: 12.86px;">数学</a> <a href="/tags/最短路/" style="font-size: 11.43px;">最短路</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 10px;">矩阵乘法</a> <a href="/tags/缩点/" style="font-size: 17.14px;">缩点</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/04/29/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
+                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
+                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T09:28:00.000Z">2019-03-14</time></div>
+                    <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="has-link-black-ter is-size-6"> Luogu P2055 [ZJOI2009]假期的宿舍		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/14/125/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
+                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/13/luogu-p2860-usaco06jan-e5-86-97-e4-bd-99-e8-b7-af-e5-be-84redundant-paths/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2860 [USACO06JAN]冗余路径Redundant Paths		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T07:49:46.000Z">2019-03-13</time></div>
+                    <a href="/2019/03/13/luogu-p2860-usaco06jan-e5-86-97-e4-bd-99-e8-b7-af-e5-be-84redundant-paths/" class="has-link-black-ter is-size-6"> Luogu P2860 [USACO06JAN]冗余路径Redundant Paths		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">18</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DCC/">
+                        <span class="tag">DCC</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DFS/">
+                        <span class="tag">DFS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DP/">
+                        <span class="tag">DP</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dijkstra/">
+                        <span class="tag">Dijkstra</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Floyd/">
+                        <span class="tag">Floyd</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hash/">
+                        <span class="tag">Hash</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LCA/">
+                        <span class="tag">LCA</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RMQ/">
+                        <span class="tag">RMQ</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SCC/">
+                        <span class="tag">SCC</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SPFA/">
+                        <span class="tag">SPFA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ST表/">
+                        <span class="tag">ST表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tarjan/">
+                        <span class="tag">Tarjan</span>
+                        <span class="tag is-grey">10</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分图/">
+                        <span class="tag">二分图</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/割点/">
+                        <span class="tag">割点</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/匈牙利/">
+                        <span class="tag">匈牙利</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/图论/">
+                        <span class="tag">图论</span>
+                        <span class="tag is-grey">18</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/差分约束/">
+                        <span class="tag">差分约束</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拓扑排序/">
+                        <span class="tag">拓扑排序</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数学/">
+                        <span class="tag">数学</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最短路/">
+                        <span class="tag">最短路</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/生成树/">
+                        <span class="tag">生成树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/矩阵乘法/">
+                        <span class="tag">矩阵乘法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/缩点/">
+                        <span class="tag">缩点</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/04/29/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-29T08:10:34.221Z">2019-04-29</time></div>
+                    <a href="/2019/04/29/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" AFO | OI再见		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-28T09:33:16.000Z">2019-03-28</time></div>
+                    <a href="/2019/03/28/afo-oi-e5-86-8d-e8-a7-81/" class="has-link-black-ter is-size-6"> AFO | OI再见		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Thinking/">Thinking</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2055 [ZJOI2009]假期的宿舍		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T09:28:00.000Z">2019-03-14</time></div>
+                    <a href="/2019/03/14/luogu-p2055-zjoi2009-e5-81-87-e6-9c-9f-e7-9a-84-e5-ae-bf-e8-88-8d/" class="has-link-black-ter is-size-6"> Luogu P2055 [ZJOI2009]假期的宿舍		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/14/125/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P5058 [ZJOI2004]嗅探器		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-14T07:43:16.000Z">2019-03-14</time></div>
+                    <a href="/2019/03/14/125/" class="has-link-black-ter is-size-6"> Luogu P5058 [ZJOI2004]嗅探器		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/13/luogu-p2860-usaco06jan-e5-86-97-e4-bd-99-e8-b7-af-e5-be-84redundant-paths/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2860 [USACO06JAN]冗余路径Redundant Paths		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-13T07:49:46.000Z">2019-03-13</time></div>
+                    <a href="/2019/03/13/luogu-p2860-usaco06jan-e5-86-97-e4-bd-99-e8-b7-af-e5-be-84redundant-paths/" class="has-link-black-ter is-size-6"> Luogu P2860 [USACO06JAN]冗余路径Redundant Paths		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">18</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DCC/">
+                        <span class="tag">DCC</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DFS/">
+                        <span class="tag">DFS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DP/">
+                        <span class="tag">DP</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Dijkstra/">
+                        <span class="tag">Dijkstra</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Floyd/">
+                        <span class="tag">Floyd</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Hash/">
+                        <span class="tag">Hash</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LCA/">
+                        <span class="tag">LCA</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/RMQ/">
+                        <span class="tag">RMQ</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SCC/">
+                        <span class="tag">SCC</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SPFA/">
+                        <span class="tag">SPFA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ST表/">
+                        <span class="tag">ST表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tarjan/">
+                        <span class="tag">Tarjan</span>
+                        <span class="tag is-grey">10</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分图/">
+                        <span class="tag">二分图</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/割点/">
+                        <span class="tag">割点</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/匈牙利/">
+                        <span class="tag">匈牙利</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/图论/">
+                        <span class="tag">图论</span>
+                        <span class="tag is-grey">18</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/差分约束/">
+                        <span class="tag">差分约束</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拓扑排序/">
+                        <span class="tag">拓扑排序</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数学/">
+                        <span class="tag">数学</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最短路/">
+                        <span class="tag">最短路</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/生成树/">
+                        <span class="tag">生成树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/矩阵乘法/">
+                        <span class="tag">矩阵乘法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/缩点/">
+                        <span class="tag">缩点</span>
+                        <span class="tag is-grey">8</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Gekoo&#39;s Notebook" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Gekoo&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
