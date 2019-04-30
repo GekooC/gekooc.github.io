@@ -2,22 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 差分约束 - Gekoo&#39;s Notebook</title>
+<title>luogu-p4168 - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Note down my life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gekoo&#39;s Notebook">
-<meta property="og:url" content="https://gekoo.xyz/tags/差分约束/index.html">
+    <meta name="description" content="分块是暴力的浪漫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="luogu-p4168">
+<meta property="og:url" content="https://gekoo.xyz/2019/04/30/luogu-p4168/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="Note down my life.">
+<meta property="og:description" content="分块是暴力的浪漫">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
+<meta property="og:updated_time" content="2019-04-30T12:52:28.554Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gekoo&#39;s Notebook">
-<meta name="twitter:description" content="Note down my life.">
+<meta name="twitter:title" content="luogu-p4168">
+<meta name="twitter:description" content="分块是暴力的浪漫">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -94,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
+                <img src="/pics/site_logo.png" alt="luogu-p4168" height="28">
             
             </a>
         </div>
@@ -131,33 +132,18 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">差分约束</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-05T00:54:02.000Z">2019-03-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-04-30T12:10:44.000Z">2019-04-30</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 887 个字)
+                    7 分钟 读完 (大约 999 个字)
                 </span>
                 
                 
@@ -166,21 +152,38 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/03/05/luogu-p3275/"> Luogu P3275 [SCOI2011]糖果		</a>
+                luogu-p4168
             
         </h1>
         <div class="content">
-            <p>差分约束</p>
+            <p>分块是暴力的浪漫</p>
+<a id="more"></a>
+<h1 id="Luogu-P4168-Violet-蒲公英"><a href="#Luogu-P4168-Violet-蒲公英" class="headerlink" title="Luogu P4168 [Violet]蒲公英"></a><a href="https://www.luogu.org/problemnew/show/P4168" target="_blank" rel="noopener">Luogu P4168 [Violet]蒲公英</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>在乡下的小路旁种着许多蒲公英，而我们的问题正是与这些蒲公英有关。</p>
+<p>为了简化起见，我们把所有的蒲公英看成一个长度为n的序列$(a_1,a_2..a_n)$,其中$a_i$为一个正整数，表示第i棵蒲公英的种类编号。</p>
+<p>而每次询问一个区间 [l,r]，你需要回答区间里出现次数最多的是哪种蒲公英，如果有若干种蒲公英出现次数相同，则输出种类编号最小的那个。</p>
+<p>注意，你的算法必须是在线的.</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行两个整数 n,m ，表示有n株蒲公英，m 次询问。</p>
+<p>接下来一行n个空格分隔的整数 $a_i$ ，表示蒲公英的种类</p>
+<p>再接下来m行每行两个整数 $l_0,r_0$ ，我们令上次询问的结果为 x（如果这是第一次询问，则 x=0）。</p>
+<p>令 $l=(l_0+x-1)\bmod n + 1,r=(r_0+x-1) \bmod n + 1$，如果 l&gt;r，则交换 l,r 。</p>
+<p>最终的询问区间为[l,r]。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出 m 行。每行一个整数，表示每次询问的结果。</p>
+<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于 20% 的数据，保证 $1\le n,m \le 3000$。</p>
+<p>对于 100% 的数据，保证 $1\le n \le 40000,1\le m \le 50000,1\le a_i \le 10^9$.</p>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>问题转化:求区间众数.</p>
+<p>$n \le 40000$,显然可以分块.$a_i \le 10 ^ 9$,空间接受不能,显然需要离散化.</p>
+<p>显然,一个区间里的众数是这个区间包含的块的众数或者是边角上的数.</p>
+<p>我们用<code>f[i][j]</code>表示从第i块到第j块的最小众数,这很好求,每个块扫一遍.</p>
+<p>当我们得到询问区间后,我们先把它包含的大块的最小众数作为候选答案.然后再扫边角.</p>
+<p>为了得到每个数在区间内的出现次数,我们可以开N个vector来存每个数出现的位置.查找时分别在vector二分查找l和r,下标之差即为出现次数.</p>
+<p>有个坑:查找r时用<code>std::upper_bound</code>,查找l时用<code>std::lower_bound</code>.如果都用<code>std::lower_bound</code>最后结果会少…</p>
+<p>此做法忽略块大小等因素期望复杂度$O(N\sqrt{nlogn})$.且vector常数巨大,吸氧吧您.艰难卡过.</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><p>解法一:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 40005</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, m, block, pos[N], val[N], a[N], f[<span class="hljs-number">250</span>][<span class="hljs-number">250</span>], L[<span class="hljs-number">250</span>], lst, id;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; v[N];</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> cnt[N] = &#123;&#125;, mx = <span class="hljs-number">0</span>, ans = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = L[x]; i &lt;= n; i++) &#123;</span><br><span class="line">        cnt[a[i]]++;    </span><br><span class="line">        <span class="hljs-keyword">if</span> (cnt[a[i]] &gt; mx || (cnt[a[i]] == mx &amp;&amp; val[a[i]] &lt; val[ans]))</span><br><span class="line">            ans = a[i], mx = cnt[a[i]];</span><br><span class="line">        f[x][pos[i]] = ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">ask</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> ret, mx;</span><br><span class="line">    ret = f[pos[l] + <span class="hljs-number">1</span>][pos[r] - <span class="hljs-number">1</span>];</span><br><span class="line">    mx = <span class="hljs-built_in">std</span>::upper_bound(v[ret].begin(), v[ret].end(), r) - <span class="hljs-built_in">std</span>::lower_bound(v[ret].begin(), v[ret].end(), l);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = l; i &lt;= <span class="hljs-built_in">std</span>::min(L[pos[l] + <span class="hljs-number">1</span>] - <span class="hljs-number">1</span>, r); i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> t = <span class="hljs-built_in">std</span>::upper_bound(v[a[i]].begin(), v[a[i]].end(), r) - <span class="hljs-built_in">std</span>::lower_bound(v[a[i]].begin(), v[a[i]].end(), l);</span><br><span class="line">        <span class="hljs-keyword">if</span> (t &gt; mx || (t == mx &amp;&amp; val[a[i]] &lt; val[ret]))</span><br><span class="line">            ret = a[i], mx = t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (pos[l] != pos[r]) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = L[pos[r]]; i &lt;= r; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> t = <span class="hljs-built_in">std</span>::upper_bound(v[a[i]].begin(), v[a[i]].end(), r) - <span class="hljs-built_in">std</span>::lower_bound(v[a[i]].begin(), v[a[i]].end(), l);</span><br><span class="line">            <span class="hljs-keyword">if</span> (t &gt; mx || (t == mx &amp;&amp; val[a[i]] &lt; val[ret]))</span><br><span class="line">                ret = a[i], mx = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="hljs-comment">//离散化</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;a[i]);</span><br><span class="line">        <span class="hljs-keyword">if</span> (mp.find(a[i]) == mp.end()) &#123;</span><br><span class="line">            mp[a[i]] = ++id;</span><br><span class="line">            val[id] = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        a[i] = mp[a[i]];</span><br><span class="line">        v[a[i]].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">//分块和初始化</span></span><br><span class="line">    block = <span class="hljs-keyword">int</span>(<span class="hljs-built_in">sqrt</span>(n));</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        pos[i] = (i - <span class="hljs-number">1</span>) / block + <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (pos[i] != pos[i - <span class="hljs-number">1</span>])</span><br><span class="line">            L[pos[i]] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    L[pos[n + <span class="hljs-number">1</span>] = pos[n] + <span class="hljs-number">1</span>] = n + <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= pos[n]; i++) init(i);</span><br><span class="line">    <span class="hljs-comment">//处理询问</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, l, r; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;l, &amp;r);</span><br><span class="line">        l = (l + lst - <span class="hljs-number">1</span>) % n + <span class="hljs-number">1</span>, r = (r + lst - <span class="hljs-number">1</span>) % n + <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (l &gt; r) <span class="hljs-built_in">std</span>::swap(l, r);</span><br><span class="line">        lst = val[ask(l, r)];</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, lst);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/05/luogu-p3275/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
@@ -190,7 +193,19 @@
 
 
 
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/29/luogu-p4879/">
+                <span class="level-item"> Luogu P4879 ycz的妹子</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -587,7 +602,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
+                    <img src="/pics/site_logo.png" alt="luogu-p4168" height="28">
                 
                 </a>
                 <p class="is-size-7">
