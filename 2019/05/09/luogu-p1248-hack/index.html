@@ -16,7 +16,7 @@
 <meta property="og:description" content="严格弱序在sort中非常重要.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-09T16:58:27.243Z">
+<meta property="og:updated_time" content="2019-05-09T17:19:08.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luogu P1248 加工生产调度 の Hack —— 论严格弱序">
 <meta name="twitter:description" content="严格弱序在sort中非常重要.">
@@ -200,7 +200,7 @@
 </ul>
 <p>显然,我们得到的不等式是不满足不可比性的传递性的,当数值取很小时就已经存在反例了.</p>
 <p>若该不等式满足不可比性的传递性,则满足以下命题:</p>
-<p>$$\forall \left{<br>\begin{aligned}<br>    max(x_a, y_b) = max(x_b, y_a)\<br>    max(y_a, z_b) = max(y_b, z_a)\<br>\end{aligned}<br>\right.<br>,有max(x_a, z_b) = max(x_b, z_a).<br>$$</p>
+<p>$$<br>\forall \left{<br>\begin{aligned}<br>    max(x_a, y_b) = max(x_b, y_a)\<br>    max(y_a, z_b) = max(y_b, z_a)\<br>\end{aligned}<br>\right.<br>,有max(x_a, z_b) = max(x_b, z_a).<br>$$</p>
 <p>事实上当数值很小时就可以构造出反例…</p>
 <p>eg:<br>$$<br>x_a = 3, x_b = 5, y_a = 7, y_b = 7, z_a = 2, z_b = 1\<br>$$<br>$$<br>\left{<br>\begin{aligned}<br>    max(3, 7) = max(5, 7)\<br>    max(7, 1) = max(7, 2)\<br>\end{aligned}<br>\right.<br>,但max(3, 1) \not = max(5, 2).<br>$$</p>
 <p>反例其实很好构造,只需要令$y_a = y_b$为很大的数就可以构造出很多,因此该不等式不满足严格弱序.</p>
@@ -948,5 +948,21 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>
