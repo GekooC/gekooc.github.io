@@ -16,7 +16,7 @@
 <meta property="og:description" content="Luogu P1248 加工生产调度题面：题目描述某工厂收到了n个产品的订单，这n个产品分别在A、B两个车间加工，并且必须先在A车间加工后才可以到B车间加工。 某个产品i在A、B两车间加工的时间分别为Ai、Bi。怎样安排这n个产品的加工顺序，才能使总的加工时间最短。这里所说的加工时间是指：从开始加工第一个产品到最后所有的产品都已在A、B两车间加工完毕的时间。 输入格式：第一行仅—个数据n，表示产">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-09T16:54:58.610Z">
+<meta property="og:updated_time" content="2019-05-09T16:57:12.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luogu P1248 加工生产调度 の Hack —— 论严格弱序">
 <meta name="twitter:description" content="Luogu P1248 加工生产调度题面：题目描述某工厂收到了n个产品的订单，这n个产品分别在A、B两个车间加工，并且必须先在A车间加工后才可以到B车间加工。 某个产品i在A、B两车间加工的时间分别为Ai、Bi。怎样安排这n个产品的加工顺序，才能使总的加工时间最短。这里所说的加工时间是指：从开始加工第一个产品到最后所有的产品都已在A、B两车间加工完毕的时间。 输入格式：第一行仅—个数据n，表示产">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1101 个字)
+                    7 分钟 读完 (大约 1117 个字)
                 </span>
                 
                 
@@ -205,6 +205,7 @@
 <p>反例其实很好构造,只需要令$y_a = y_b$为很大的数就可以构造出很多,因此该不等式不满足严格弱序.</p>
 <p>由于该不等式不满足严格弱序,所以用它作为std::sort的比较函数是错误的.原因是在排序结束后,可能会出现前面的元素”大于”后面的元素的情况,这里的”大于”指不满足该不等式.</p>
 <p>通过本题我们可以认识到,我们在重载小于号时一定要遵守严格弱序,否则我们的算法就是不严谨的,错误的.</p>
+<p>资料来源:<a href="https://en.wikipedia.org/wiki/Strict_weak_order" target="_blank" rel="noopener">Wikipedia: Strict weak order</a></p>
 
         </div>
         
