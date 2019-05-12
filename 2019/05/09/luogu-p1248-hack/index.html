@@ -182,10 +182,8 @@
 <p>显然,加工的总时间为:</p>
 <p>$x_a + max(x_b, y_a) + y_b$</p>
 <p>继续推导得:</p>
-<script type="math/tex; mode=display">
-x_a + max(x_b, y_a) + y_b < x_b + max(x_a, y_b) + y_a \\
-max(x_b, y_a) - x_b - y_a < max(x_a, y_b) - x_a - y_b \\
-max(x_a, y_b) < max(x_b, y_a)</script><p>Mr.Dky就将这个式子作为了排序依据,这样重载了运算符:</p>
+<p>$$<br>x_a + max(x_b, y_a) + y_b &lt; x_b + max(x_a, y_b) + y_a \<br>max(x_b, y_a) - x_b - y_a &lt; max(x_a, y_b) - x_a - y_b \<br>max(x_a, y_b) &lt; max(x_b, y_a)<br>$$</p>
+<p>Mr.Dky就将这个式子作为了排序依据,这样重载了运算符:</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt;(<span class="hljs-keyword">const</span> Product &amp;x) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::min(a, x.b) &lt; <span class="hljs-built_in">std</span>::min(b, x.a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>于是顺利AC.</p>
 <p>但是别忘了本文标题的”Hack”.这个策略实际上是有问题的,只是数据过水才水了过去.</p>
@@ -202,24 +200,10 @@ max(x_a, y_b) < max(x_b, y_a)</script><p>Mr.Dky就将这个式子作为了排序
 </ul>
 <p>显然,我们得到的不等式是不满足不可比性的传递性的,当数值取很小时就已经存在反例了.</p>
 <p>若该不等式满足不可比性的传递性,则满足以下命题:</p>
-<script type="math/tex; mode=display">
-\forall \left \{
-\begin{aligned}
-    max(x_a, y_b) = max(x_b, y_a)\\
-    max(y_a, z_b) = max(y_b, z_a)\\
-\end{aligned}
-\right.
-,有max(x_a, z_b) = max(x_b, z_a).</script><p>事实上当数值很小时就可以构造出反例…</p>
-<p>eg:</p>
-<script type="math/tex; mode=display">
-x_a = 3, x_b = 5, y_a = 7, y_b = 7, z_a = 2, z_b = 1\\</script><script type="math/tex; mode=display">
-\left\{
-\begin{aligned}
-    max(3, 7) = max(5, 7)\\
-    max(7, 1) = max(7, 2)\\
-\end{aligned}
-\right.
-,但max(3, 1) \not = max(5, 2).</script><p>反例其实很好构造,只需要令$y_a = y_b$为很大的数就可以构造出很多,因此该不等式不满足严格弱序.</p>
+<p>$$<br>\forall \left {<br>\begin{aligned}<br>    max(x_a, y_b) = max(x_b, y_a)\<br>    max(y_a, z_b) = max(y_b, z_a)\<br>\end{aligned}<br>\right.<br>,有max(x_a, z_b) = max(x_b, z_a).<br>$$</p>
+<p>事实上当数值很小时就可以构造出反例…</p>
+<p>eg:<br>$$<br>x_a = 3, x_b = 5, y_a = 7, y_b = 7, z_a = 2, z_b = 1\<br>$$<br>$$<br>\left{<br>\begin{aligned}<br>    max(3, 7) = max(5, 7)\<br>    max(7, 1) = max(7, 2)\<br>\end{aligned}<br>\right.<br>,但max(3, 1) \not = max(5, 2).<br>$$</p>
+<p>反例其实很好构造,只需要令$y_a = y_b$为很大的数就可以构造出很多,因此该不等式不满足严格弱序.</p>
 <p>由于该不等式不满足严格弱序,所以用它作为std::sort的比较函数是错误的.原因是在排序结束后,可能会出现前面的元素”大于”后面的元素的情况,这里的”大于”指不满足该不等式.</p>
 <p>通过本题我们可以认识到,我们在重载小于号时一定要遵守严格弱序,否则我们的算法就是不严谨的,错误的.</p>
 <p>资料来源:<a href="https://en.wikipedia.org/wiki/Strict_weak_order" target="_blank" rel="noopener">Wikipedia: Strict weak order</a></p>
