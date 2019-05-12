@@ -16,7 +16,7 @@
 <meta property="og:description" content="差分约束">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-12T01:14:54.931Z">
+<meta property="og:updated_time" content="2019-05-12T01:25:35.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P3275 [SCOI2011]糖果		">
 <meta name="twitter:description" content="差分约束">
@@ -179,8 +179,8 @@
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>事一道差分约束。 差分约束就是把形如$a - b \le x$的不等式组通过三角形不等式，用SPFA等算法解决问题。 分类讨论： </p>
 <ul>
-<li>x = 1: $a = b$.等价于 $a - b \le 0 \&amp;\&amp; b - a \le 0$. 建边<code>(a, b, 0),(b, a, 0)</code>. \</li>
-<li>x = 2: $a &lt; b$.由于差分约束的要求，转化为$a - b \le 1$. 建边<code>(a, b, 1)</code>. \</li>
+<li>x = 1: $a = b$.等价于 $a - b \le 0 \&amp;\&amp; b - a \le 0$. 建边<code>(a, b, 0),(b, a, 0)</code>. </li>
+<li>x = 2: $a &lt; b$.由于差分约束的要求，转化为$a - b \le 1$. 建边<code>(a, b, 1)</code>. </li>
 <li>x = 3: $b \le a$.转化为 $b - a \le 0$. 建边<code>(b, a, 0)</code>. *</li>
 <li>x = 4: $a &gt; b$.由于差分约束的要求，转化为$b - a \le 1$.建边<code>(b, a, 1)</code>. </li>
 <li>x = 5: $a \le b$.转化为$a - b \le 0$.建边<code>(a, b, 0)</code>. </li>
@@ -300,7 +300,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        37
                     </p>
                 </div>
             </div>
@@ -400,7 +400,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/AC自动机/" style="font-size: 10px;">AC自动机</a> <a href="/tags/DCC/" style="font-size: 12.86px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 14.29px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.43px;">Floyd</a> <a href="/tags/Hack/" style="font-size: 10px;">Hack</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/LCA/" style="font-size: 11.43px;">LCA</a> <a href="/tags/Manacher/" style="font-size: 10px;">Manacher</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.71px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.57px;">Tarjan</a> <a href="/tags/fun/" style="font-size: 10px;">fun</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.43px;">分块</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/拓扑排序/" style="font-size: 12.86px;">拓扑排序</a> <a href="/tags/数学/" style="font-size: 12.86px;">数学</a> <a href="/tags/最短路/" style="font-size: 11.43px;">最短路</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 10px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/缩点/" style="font-size: 17.14px;">缩点</a> <a href="/tags/莫队/" style="font-size: 11.43px;">莫队</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/鶸蛭/" style="font-size: 10px;">鶸蛭</a>
+        <a href="/tags/AC自动机/" style="font-size: 10px;">AC自动机</a> <a href="/tags/DCC/" style="font-size: 12.86px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 14.29px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.43px;">Floyd</a> <a href="/tags/Hack/" style="font-size: 10px;">Hack</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/LCA/" style="font-size: 12.86px;">LCA</a> <a href="/tags/Manacher/" style="font-size: 10px;">Manacher</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.71px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.57px;">Tarjan</a> <a href="/tags/fun/" style="font-size: 10px;">fun</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.43px;">分块</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/拓扑排序/" style="font-size: 12.86px;">拓扑排序</a> <a href="/tags/数学/" style="font-size: 12.86px;">数学</a> <a href="/tags/最短路/" style="font-size: 11.43px;">最短路</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 11.43px;">树链剖分</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 10px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/缩点/" style="font-size: 17.14px;">缩点</a> <a href="/tags/莫队/" style="font-size: 11.43px;">莫队</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/鶸蛭/" style="font-size: 10px;">鶸蛭</a>
     </div>
 </div>
 
@@ -419,7 +419,7 @@
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -536,7 +536,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LCA/">
                         <span class="tag">LCA</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -627,7 +627,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/图论/">
                         <span class="tag">图论</span>
-                        <span class="tag is-grey">18</span>
+                        <span class="tag is-grey">19</span>
                     </a>
                 </div>
                 
@@ -683,7 +683,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树链剖分/">
                         <span class="tag">树链剖分</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
