@@ -16,7 +16,7 @@
 <meta property="og:description" content="变种LIS">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-29T12:50:32.547Z">
+<meta property="og:updated_time" content="2019-06-15T09:57:58.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1108 低价购买		">
 <meta name="twitter:description" content="变种LIS">
@@ -145,7 +145,7 @@
                 <time class="level-item has-text-grey" datetime="2019-02-28T08:14:58.000Z">2019-02-28</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
+                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                 </div>
                 
                 
@@ -173,10 +173,10 @@
             <p>变种LIS</p>
 <a id="more"></a>
 <h1 id="Luogu-P1108-低价购买"><a href="#Luogu-P1108-低价购买" class="headerlink" title="Luogu P1108 低价购买"></a><a href="https://www.luogu.org/problemnew/show/P1108" target="_blank" rel="noopener">Luogu P1108 低价购买</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>“低价购买”这条建议是在奶牛股票市场取得成功的一半规则。要想被认为是伟大的投资者，你必须遵循以下的问题建议:“低价购买；再低价购买”。每次你购买一支股票,你必须用低于你上次购买它的价格购买它。买的次数越多越好!你的目标是在遵循以上建议的前提下，求你最多能购买股票的次数。你将被给出一段时间内一支股票每天的出售价($2^{16} $范围内的正整数)，你可以选择在哪些天购买这支股票。每次购买都必须遵循“低价购买；再低价购买”的原则。写一个程序计算最大购买次数。 这里是某支股票的价格清单： 日期 $ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8, 9 ,10 ,11, 12$ 价格 $68 ,69 ,54, 64,68 ,64 ,70 ,67 ,78 ,62, 98, 87 $ 最优秀的投资者可以购买最多4次股票，可行方案中的一种是： 日期 $2 , 5 , 6 ,10 $ 价格 $69, 68 ,64 ,62 $</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第1行: $ N(1 \le N \le 5000) $，股票发行天数 第2行: $ N$个数，是每天的股票价格。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>两个数: 最大购买次数和拥有最大购买次数的方案数($ \le 2^{31} $)当二种方案“看起来一样”时（就是说它们构成的价格队列一样的时候）,这2种方案被认为是相同的。</p>
+<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第1行: $ N(1 \\le N \\le 5000) $，股票发行天数 第2行: $ N$个数，是每天的股票价格。</p>
+<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>两个数: 最大购买次数和拥有最大购买次数的方案数($ \\le 2^{31} $)当二种方案“看起来一样”时（就是说它们构成的价格队列一样的时候）,这2种方案被认为是相同的。</p>
 <hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>第一问ez,由下次购买价格低于上次,求最大购买次数可转化为LIS. 思考点主要在第二问,求出最大购买次数方案数. 事实上可以显然地求出最大购买次数方案数的状态转移方程: $$ c[i]_{j:1\rightarrow i}= \left{ \begin{aligned} 1,if(f[i]=1)\ c[i]+c[j],if(f[i]=f[j]+1,a[i]&lt;a[j])\ 0,if(a[i]=a[j],f[i]=f[j]) \end{aligned} \right.\ $$ 解释一下: 当f[i]=1时,说明这是一种新的方案,c[i]=1. 然后$j:1\rightarrow i$扫一遍,如果f[i]=f[j]+1&amp;&amp;a[i]&lt;a[j],说明他们属于当前方案,将他们的方案数加上. 如果f[i]=f[j]&amp;&amp;a[i]=a[j],说明这两种股票一模一样,当前c[i]直接为0,此步是去重. 最后最重要的:<strong>不开long long见祖宗!!!!!!!!!!!</strong></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>第一问ez,由下次购买价格低于上次,求最大购买次数可转化为LIS. 思考点主要在第二问,求出最大购买次数方案数. 事实上可以显然地求出最大购买次数方案数的状态转移方程: <script type="math/tex">c\[i\]_{j:1\\rightarrow i}= \\left{ \\begin{aligned} 1,if(f\[i\]=1)\ c\[i\]+c\[j\],if(f\[i\]=f\[j\]+1,a\[i\]<a\[j\])\ 0,if(a\[i\]=a\[j\],f\[i\]=f\[j\]) \\end{aligned} \\right.\</script> 解释一下: 当f[i]=1时,说明这是一种新的方案,c[i]=1. 然后$j:1\\rightarrow i$扫一遍,如果f[i]=f[j]+1&amp;&amp;a[i]&lt;a[j],说明他们属于当前方案,将他们的方案数加上. 如果f[i]=f[j]&amp;&amp;a[i]=a[j],说明这两种股票一模一样,当前c[i]直接为0,此步是去重. 最后最重要的:<strong>不开long long见祖宗!!!!!!!!!!!</strong></p>
 <hr>
 <p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 5005</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    ll n, f[N], a[N], c[N], ans = -(<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">30</span>), cans;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>, &amp;n);</span><br><span class="line">        <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>, &amp;a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (ll j = <span class="hljs-number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">                f[i] = (a[i] &lt; a[j])? max(f[i], f[j]) : f[i];</span><br><span class="line">            &#125;</span><br><span class="line">            f[i]++;</span><br><span class="line">            <span class="hljs-keyword">if</span> (f[i] == <span class="hljs-number">1</span>)</span><br><span class="line">                c[i] = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span> (ll j = <span class="hljs-number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (a[i] &lt; a[j] &amp;&amp; f[i] == f[j] + <span class="hljs-number">1</span>) </span><br><span class="line">                    c[i] = (c[i] + c[j]);</span><br><span class="line">                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a[i] == a[j] &amp;&amp; f[i] == f[j])</span><br><span class="line">                    c[i] = <span class="hljs-number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = max(ans, f[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (ll i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(f[i] == ans)</span><br><span class="line">                cans += c[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld %lld\n"</span>, ans, cans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    Gekoo::QAQ();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
@@ -287,7 +287,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        54
                     </p>
                 </div>
             </div>
@@ -297,7 +297,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        1
+                        2
                     </p>
                 </div>
             </div>
@@ -360,12 +360,20 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/OI/">
+        <a class="level is-marginless" href="/categories/笔记/">
             <span class="level-start">
-                <span class="level-item">OI</span>
+                <span class="level-item">笔记</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">33</span>
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/题解/">
+            <span class="level-start">
+                <span class="level-item">题解</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">32</span>
             </span>
         </a></li>
             </ul>
@@ -379,7 +387,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/AC自动机/" style="font-size: 10px;">AC自动机</a> <a href="/tags/DCC/" style="font-size: 12.86px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 15.71px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.43px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/LCA/" style="font-size: 11.43px;">LCA</a> <a href="/tags/Manacher/" style="font-size: 10px;">Manacher</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.71px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.57px;">Tarjan</a> <a href="/tags/bitset/" style="font-size: 10px;">bitset</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.43px;">分块</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/周考/" style="font-size: 11.43px;">周考</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 12.86px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 10px;">数位DP</a> <a href="/tags/数学/" style="font-size: 12.86px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最短路/" style="font-size: 11.43px;">最短路</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 11.43px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/缩点/" style="font-size: 17.14px;">缩点</a> <a href="/tags/莫队/" style="font-size: 14.29px;">莫队</a>
+        <a href="/tags/AC自动机/" style="font-size: 10px;">AC自动机</a> <a href="/tags/DCC/" style="font-size: 12.86px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 15.71px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.43px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/LCA/" style="font-size: 11.43px;">LCA</a> <a href="/tags/Manacher/" style="font-size: 10px;">Manacher</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.71px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.57px;">Tarjan</a> <a href="/tags/bitset/" style="font-size: 10px;">bitset</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.43px;">分块</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 12.86px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 11.43px;">数位DP</a> <a href="/tags/数学/" style="font-size: 12.86px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最短路/" style="font-size: 11.43px;">最短路</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/比赛/" style="font-size: 12.86px;">比赛</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 11.43px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/缩点/" style="font-size: 17.14px;">缩点</a> <a href="/tags/莫队/" style="font-size: 14.29px;">莫队</a>
     </div>
 </div>
 
@@ -393,12 +401,23 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/06/">
                 <span class="level-start">
                     <span class="level-item">六月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">14</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -608,13 +627,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/周考/">
-                        <span class="tag">周考</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/图论/">
                         <span class="tag">图论</span>
                         <span class="tag is-grey">18</span>
@@ -673,7 +685,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/数位DP/">
                         <span class="tag">数位DP</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -709,6 +721,13 @@
                     <a class="tags has-addons" href="/tags/树链剖分/">
                         <span class="tag">树链剖分</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/比赛/">
+                        <span class="tag">比赛</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -958,21 +977,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>
