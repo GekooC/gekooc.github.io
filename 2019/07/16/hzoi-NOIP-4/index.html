@@ -16,7 +16,7 @@
 <meta property="og:description" content="我好菜…">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-16T16:27:58.581Z">
+<meta property="og:updated_time" content="2019-07-17T00:17:16.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="衡中NOIP模拟赛4">
 <meta name="twitter:description" content="我好菜…">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2082 个字)
+                    14 分钟 读完 (大约 2086 个字)
                 </span>
                 
                 
@@ -210,7 +210,7 @@
 <p>同时$Lmax[i] &gt;= Rmax[j]，Lmin[i] &gt;= Rmin[j]$.</p>
 <p>我们从分治区间左端点L到mid枚举左端点i，易于想到在右边j可能存在在一个区间$[p, q]$内使得原式成立（Rmax和Rmin可能在某一段是不变的）。</p>
 <p>我们这时用桶统计，设桶名为QAQ。先移动右端点q。while (Rmax[q] &lt; Lmax[i])，QAQ[q + Rmin[q]]++, 同时将也q++。这样将所有满足第一个不等式的结果都扔进桶里。之后再移动左端点p，while (Rmin[p] &gt; Lmin[i])，QAQ[p + Rmin[p]]–, 之后再把p++，这一步又将所有不满足第二个不等式的结果从桶里扔出来了。</p>
-<p>最后答案应该加上QAQ[i + Lmax[i]].把桶清空一下。</p>
+<p>最后答案应该加上QAQ<a href="如果&gt;0的话">i + Lmax[i]</a>.把桶清空一下。</p>
 <h4 id="case-3"><a href="#case-3" class="headerlink" title="case 3:"></a>case 3:</h4><p>套用原式可以把j的位置直接算出来，直接判断是否合法，把合法答案加给ans。</p>
 <h4 id="case-2-amp-4"><a href="#case-2-amp-4" class="headerlink" title="case 2 &amp; 4:"></a>case 2 &amp; 4:</h4><p>与case 1 &amp; 3对称，自己想去（</p>
 <p>有个坑：减的时候桶的下标可能会小于0，这个时候在这种情况的每个下标都加一个偏移量delta就行了。</p>
