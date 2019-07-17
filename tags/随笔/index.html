@@ -2,24 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title> Luogu P2880 Balanced Lineup		 - Gekoo&#39;s Notebook</title>
+<title>标签: 随笔 - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="ST表">
-<meta name="keywords" content="RMQ,ST表">
-<meta property="og:type" content="article">
-<meta property="og:title" content=" Luogu P2880 Balanced Lineup		">
-<meta property="og:url" content="https://gekoo.xyz/2019/02/28/luogu-p2880/index.html">
+    <meta name="description" content="Note down my life.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gekoo&#39;s Notebook">
+<meta property="og:url" content="https://gekoo.xyz/tags/随笔/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="ST表">
+<meta property="og:description" content="Note down my life.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-15T09:59:55.978Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" Luogu P2880 Balanced Lineup		">
-<meta name="twitter:description" content="ST表">
+<meta name="twitter:title" content="Gekoo&#39;s Notebook">
+<meta name="twitter:description" content="Note down my life.">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -100,7 +98,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt=" Luogu P2880 Balanced Lineup		" height="28">
+                <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
             
             </a>
         </div>
@@ -137,62 +135,54 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">随笔</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-27T23:06:31.000Z">2019-02-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-07-17T03:04:04.000Z">2019-07-17</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 424 个字)
+                    几秒 读完 (大约 64 个字)
                 </span>
                 
-                
-                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                    <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span>次访问
-                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 Luogu P2880 Balanced Lineup		
+                <a class="has-link-black-ter" href="/2019/07/17/plan/">近期计划</a>
             
         </h1>
         <div class="content">
-            <p>ST表</p>
-<a id="more"></a>
-<h1 id="Luogu-P2880-Balanced-Lineup"><a href="#Luogu-P2880-Balanced-Lineup" class="headerlink" title="Luogu P2880 Balanced Lineup"></a><a href="https://www.luogu.org/problemnew/show/P2880" target="_blank" rel="noopener">Luogu P2880 Balanced Lineup</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>每天,农夫 John 的N(1 &lt;= N &lt;= 50,000)头牛总是按同一序列排队. 有一天, John 决定让一些牛们玩一场飞盘比赛. 他准备找一群在对列中为置连续的牛来进行比赛. 但是为了避免水平悬殊,牛的身高不应该相差太大. John 准备了Q (1 &lt;= Q &lt;= 180,000) 个可能的牛的选择和所有牛的身高 (1 &lt;= 身高 &lt;= 1,000,000). 他想知道每一组里面最高和最低的牛的身高差别.</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第1行：N,Q 第2到N+1行：每头牛的身高 第N+2到N+Q+1行：两个整数A和B，表示从A到B的所有牛。（1&lt;=A&lt;=B&lt;=N）</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出每行一个数，为最大数与最小数的差</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>开两个数组f和g，分别存最大值和最小值就行了 蓝题++这怎么是蓝题的</p>
-<hr>
-<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 50005</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> r(x) x=read();</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> a=<span class="hljs-number">1</span>,b=<span class="hljs-number">0</span>;<span class="hljs-keyword">char</span> c;</span><br><span class="line">    <span class="hljs-keyword">do</span>&#123;c=getchar();<span class="hljs-keyword">if</span>(c==<span class="hljs-string">'-'</span>) a=<span class="hljs-number">-1</span>;&#125;<span class="hljs-keyword">while</span>(c&lt;<span class="hljs-string">'0'</span>||c&gt;<span class="hljs-string">'9'</span>);</span><br><span class="line">    <span class="hljs-keyword">do</span>&#123;b=b*<span class="hljs-number">10</span>+c-<span class="hljs-string">'0'</span>;c=getchar();&#125;<span class="hljs-keyword">while</span>(c&gt;=<span class="hljs-string">'0'</span>&amp;&amp;c&lt;=<span class="hljs-string">'9'</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> a*b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,q,a[N],f[N][<span class="hljs-number">25</span>],g[N][<span class="hljs-number">25</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ST_pre</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) f[i][<span class="hljs-number">0</span>]=g[i][<span class="hljs-number">0</span>]=a[i];</span><br><span class="line">    <span class="hljs-keyword">int</span> t=log2(n)+<span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;t;j++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n-(<span class="hljs-number">1</span>&lt;&lt;j)+<span class="hljs-number">1</span>;i++)&#123;</span><br><span class="line">            f[i][j]=max(f[i][j<span class="hljs-number">-1</span>],f[i+(<span class="hljs-number">1</span>&lt;&lt;(j<span class="hljs-number">-1</span>))][j<span class="hljs-number">-1</span>]);</span><br><span class="line">            g[i][j]=min(g[i][j<span class="hljs-number">-1</span>],g[i+(<span class="hljs-number">1</span>&lt;&lt;(j<span class="hljs-number">-1</span>))][j<span class="hljs-number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">ST_q</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t=log2(r-l+<span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> max(f[l][t],f[r-(<span class="hljs-number">1</span>&lt;&lt;t)+<span class="hljs-number">1</span>][t])-min(g[l][t],g[r-(<span class="hljs-number">1</span>&lt;&lt;t)+<span class="hljs-number">1</span>][t]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    r(n);r(q);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        r(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    ST_pre();</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>,a,b;i&lt;=q;i++)&#123;</span><br><span class="line">        r(a);r(b);</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ST_q(a,b));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+            <p>为了戒掉咕咕咕的坏习惯，开个计划帖.</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/RMQ/">RMQ</a>, <a class="has-link-grey -link" href="/tags/ST表/">ST表</a>
+                <a class="button is-size-7 is-light" href="/2019/07/17/plan/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
@@ -200,42 +190,9 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/28/luogu-p2024/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P2024 [NOI2001]食物链		</span>
-            </a>
-        </div>
-        
-        
-    </div>
-</div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="valine-thread" class="content"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: false,
-        verify: false,
-        app_id: '05RiuFrnlnB47YsbQox8oy8M-gzGzoHsz',
-        app_key: '7ft8sFltyxrQmh2z60MsMKdN',
-        placeholder: '你知道吗,这个博客是有评论系统的QAQ'
-    });
-</script>
-
-    </div>
-</div>
 </div>
                 
                 
@@ -852,7 +809,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt=" Luogu P2880 Balanced Lineup		" height="28">
+                    <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
                 
                 </a>
                 <p class="is-size-7">
