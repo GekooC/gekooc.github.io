@@ -8,7 +8,7 @@
 
 
     <meta name="description" content="我好菜…">
-<meta name="keywords" content="Tarjan,比赛,状压,期望DP,贪心,分治">
+<meta name="keywords" content="Tarjan,期望DP,比赛,状压,贪心,分治">
 <meta property="og:type" content="article">
 <meta property="og:title" content="衡中NOIP模拟赛4">
 <meta property="og:url" content="https://gekoo.xyz/2019/07/16/hzoi-NOIP-4/index.html">
@@ -209,7 +209,7 @@
 <p>此时$Lmax[i] - Rmin[j] = j - i$，移项，$j + Rmin[j] = i + Lmax[i]$, 我们把i + Lmax[i]和j + Rmin[j]作为桶的下标。</p>
 <p>同时$Lmax[i] &gt;= Rmax[j]，Lmin[i] &gt;= Rmin[j]$.</p>
 <p>我们从分治区间左端点L到mid枚举左端点i，易于想到在右边j可能存在在一个区间$[p, q]$内使得原式成立（Rmax和Rmin可能在某一段是不变的）。</p>
-<p>我们这时用桶统计，设桶名为QAQ。先移动右端点q。while (Rmax[q] &lt; Lmax[i])，QAQ[q + Rmin[q]]++, 同时将也q++。这样将所有满足第一个不等式的结果都扔进桶里。之后再移动左端点p，while (Rmin[p] &gt; Lmin[i])，QAQ[p + Rmin[p]]–, 之后再把p++，这一步又将所有不满足第二个不等式的结果从桶里扔出来了。</p>
+<p>我们这时用桶统计，设桶名为QAQ。先移动右端点q。while (Rmax[q] &lt; Lmax[i])，QAQ[q + Rmin[q]]++, 同时将也q++。这样将所有满足第一个不等式的结果都扔进桶里。之后再移动左端点p，while (Rmin[p] &gt; Lmin[i])，QAQ[p + Rmin[p]]—, 之后再把p++，这一步又将所有不满足第二个不等式的结果从桶里扔出来了。</p>
 <p>最后答案应该加上QAQ<a href="如果&gt;0的话">i + Lmax[i]</a>.把桶清空一下。</p>
 <h4 id="case-3"><a href="#case-3" class="headerlink" title="case 3:"></a>case 3:</h4><p>套用原式可以把j的位置直接算出来，直接判断是否合法，把合法答案加给ans。</p>
 <h4 id="case-2-amp-4"><a href="#case-2-amp-4" class="headerlink" title="case 2 &amp; 4:"></a>case 2 &amp; 4:</h4><p>与case 1 &amp; 3对称，自己想去（</p>
@@ -322,7 +322,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        61
+                        63
                     </p>
                 </div>
             </div>
@@ -420,7 +420,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/BCC/" style="font-size: 11.11px;">BCC</a> <a href="/tags/DCC/" style="font-size: 12.22px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 16.67px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 11.11px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.11px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/LCA/" style="font-size: 13.33px;">LCA</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.56px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.89px;">Tarjan</a> <a href="/tags/bitset/" style="font-size: 10px;">bitset</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.11px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/圆方树/" style="font-size: 11.11px;">圆方树</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 12.22px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 11.11px;">数位DP</a> <a href="/tags/数学/" style="font-size: 12.22px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13.33px;">最短路</a> <a href="/tags/期望DP/" style="font-size: 12.22px;">期望DP</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 11.11px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/欧拉回路/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/比赛/" style="font-size: 13.33px;">比赛</a> <a href="/tags/状压/" style="font-size: 10px;">状压</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 11.11px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/线段树优化建图/" style="font-size: 11.11px;">线段树优化建图</a> <a href="/tags/缩点/" style="font-size: 17.78px;">缩点</a> <a href="/tags/莫队/" style="font-size: 14.44px;">莫队</a> <a href="/tags/记忆化搜索/" style="font-size: 10px;">记忆化搜索</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        <a href="/tags/BCC/" style="font-size: 11.11px;">BCC</a> <a href="/tags/DCC/" style="font-size: 12.22px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 16.67px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 11.11px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.11px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/LCA/" style="font-size: 13.33px;">LCA</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.56px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.89px;">Tarjan</a> <a href="/tags/bitset/" style="font-size: 10px;">bitset</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.11px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/圆方树/" style="font-size: 11.11px;">圆方树</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 12.22px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 11.11px;">数位DP</a> <a href="/tags/数学/" style="font-size: 12.22px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13.33px;">最短路</a> <a href="/tags/期望DP/" style="font-size: 12.22px;">期望DP</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 11.11px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/欧拉回路/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/比赛/" style="font-size: 13.33px;">比赛</a> <a href="/tags/状压/" style="font-size: 10px;">状压</a> <a href="/tags/状压DP/" style="font-size: 11.11px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 11.11px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/线段树优化建图/" style="font-size: 11.11px;">线段树优化建图</a> <a href="/tags/缩点/" style="font-size: 17.78px;">缩点</a> <a href="/tags/莫队/" style="font-size: 14.44px;">莫队</a> <a href="/tags/记忆化搜索/" style="font-size: 10px;">记忆化搜索</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     </div>
 </div>
 
@@ -439,7 +439,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -816,7 +816,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/状压DP/">
                         <span class="tag">状压DP</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 

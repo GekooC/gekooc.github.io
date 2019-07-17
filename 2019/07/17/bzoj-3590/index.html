@@ -2,24 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title> Luogu P1313 计算系数		 - Gekoo&#39;s Notebook</title>
+<title>BZOJ 3590 [SNOI 2013] Quare - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="NOIP最简单的数论题">
-<meta name="keywords" content="数学">
+    <meta name="description" content="思路：选出无向图中包含所有点的权值和最小的双连通子图。 完全没思路，看了题解才会。。。。。 首先有一条重要的性质：一个双连通图可以拆成一个小双连通图和一条链。 我们首先能想到状压，用集合S表示点集。 那么设f[S]表示点集S构成的双连通图的最小权值和。 此题最大的思维难点来力：再预处理出两个数组g[S][i][j], h[S][i][1/0]. 其中数组g表示以i、j为链端点，链的点集为S，这条链">
+<meta name="keywords" content="状压DP">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" Luogu P1313 计算系数		">
-<meta property="og:url" content="https://gekoo.xyz/2019/02/28/luogu-p1313/index.html">
+<meta property="og:title" content="BZOJ 3590 [SNOI 2013] Quare">
+<meta property="og:url" content="https://gekoo.xyz/2019/07/17/bzoj-3590/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="NOIP最简单的数论题">
+<meta property="og:description" content="思路：选出无向图中包含所有点的权值和最小的双连通子图。 完全没思路，看了题解才会。。。。。 首先有一条重要的性质：一个双连通图可以拆成一个小双连通图和一条链。 我们首先能想到状压，用集合S表示点集。 那么设f[S]表示点集S构成的双连通图的最小权值和。 此题最大的思维难点来力：再预处理出两个数组g[S][i][j], h[S][i][1/0]. 其中数组g表示以i、j为链端点，链的点集为S，这条链">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-15T09:58:46.089Z">
+<meta property="og:updated_time" content="2019-07-17T09:31:44.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" Luogu P1313 计算系数		">
-<meta name="twitter:description" content="NOIP最简单的数论题">
+<meta name="twitter:title" content="BZOJ 3590 [SNOI 2013] Quare">
+<meta name="twitter:description" content="思路：选出无向图中包含所有点的权值和最小的双连通子图。 完全没思路，看了题解才会。。。。。 首先有一条重要的性质：一个双连通图可以拆成一个小双连通图和一条链。 我们首先能想到状压，用集合S表示点集。 那么设f[S]表示点集S构成的双连通图的最小权值和。 此题最大的思维难点来力：再预处理出两个数组g[S][i][j], h[S][i][1/0]. 其中数组g表示以i、j为链端点，链的点集为S，这条链">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt=" Luogu P1313 计算系数		" height="28">
+                <img src="/pics/site_logo.png" alt="BZOJ 3590 [SNOI 2013] Quare" height="28">
             
             </a>
         </div>
@@ -142,17 +142,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-28T08:14:03.000Z">2019-02-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-07-17T09:17:15.000Z">2019-07-17</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 434 个字)
+                    5 分钟 读完 (大约 758 个字)
                 </span>
                 
                 
@@ -166,28 +162,28 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 Luogu P1313 计算系数		
+                BZOJ 3590 [SNOI 2013] Quare
             
         </h1>
         <div class="content">
-            <p>NOIP最简单的数论题</p>
-<a id="more"></a>
-<h1 id="Luogu-P1313-计算系数"><a href="#Luogu-P1313-计算系数" class="headerlink" title="Luogu P1313 计算系数"></a><a href="https://www.luogu.org/problemnew/show/P1313" target="_blank" rel="noopener">Luogu P1313 计算系数</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个多项式 $ (by+ax)^k $ ,请求出多项式展开后 $x^n \\times y^m $项的系数.</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>共一行,包含5个整数,分别为a,b,k,n,m,每两个整数之间用一个空格隔开.</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>共1行,包含一个整数,表示所求的系数,这个系数可能很大,输出对10007取模后的结果.</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于30% 的数据,有0 ≤ k ≤10 ； 对于50%的数据,有a = 1,b = 1； 对于100%的数据,有0 ≤ k ≤ 1,000, 0 ≤ n , m ≤ k,且 n + m = k , 0 ≤ a , b ≤1,000,000. 来自NOIP 2011 TG D2T1.</p>
+            <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>选出无向图中包含所有点的权值和最小的双连通子图。</p>
+<p>完全没思路，看了题解才会。。。。。</p>
+<p>首先有一条重要的性质：一个双连通图可以拆成一个小双连通图和一条链。</p>
+<p>我们首先能想到状压，用集合S表示点集。</p>
+<p>那么设f[S]表示点集S构成的双连通图的最小权值和。</p>
+<p>此题最大的思维难点来力：再预处理出两个数组g[S][i][j], h[S][i][1/0].</p>
+<p>其中数组g表示以i、j为链端点，链的点集为S，这条链的最小权值。数组h表示从点i到点集S的最短边和次短边。</p>
+<p>我们为什么要求这两个数组？由上文性质可以想到状态的转移，一个点集S是从一个更小的点集T和一条链转移来的。而这条链汇入点集T时有两种情况：1.链只有一个点。那么链与T的两条连边就是这个点到T的最小边和次小边。2.链不止一个点，那么连边就是两个端点与T的最小边。</p>
+<p>我还没写过这么长的状压DP。。。。。</p>
 <hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>刺激数论! 根据二项式定理:$ (by + ax)^k =\\Sigma_{r=0}^{k}C^r_n(by)^{k-r}(ax)^r=\\Sigma_{r=0}^{k}C^r_k(a^rb^{k-r})(x^ry^{k-r})$. $ n + m = k$.所以第n项: $(C^n_ka^nb^{m})(x^ny^{m})$. 由组合数的性质:$C^n_ka^nb^{m}=C_k^pa^pb^{k-p},p=min(n,m)$. 最后将问题转化为求$C^p_k\\times a^pb^{k-p}$. $ a^pb^{k-p}$通过快速幂求解. $C^n_k$通过组合数递推公式:$C^m_n=C^m_{n-1}+C^{m-1}_{n-1}$求解.</p>
-<hr>
-<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MO 10007</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> a, b, k, n, m, C[<span class="hljs-number">1005</span>][<span class="hljs-number">1005</span>], p;</span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">qpow</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">1</span> % MO;</span><br><span class="line">        <span class="hljs-keyword">for</span> (; b; b &gt;&gt;= <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (b &amp; <span class="hljs-number">1</span>)</span><br><span class="line">                ans = (ans * a) % MO;</span><br><span class="line">            a = (a * a) % MO;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d%d"</span>, &amp;a, &amp;b, &amp;k, &amp;n, &amp;m);</span><br><span class="line">        p = min(n, m), a %= MO, b %= MO;</span><br><span class="line">        ans = (qpow(a, n) * qpow(b, m)) % MO;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= k; i++)</span><br><span class="line">            C[i][<span class="hljs-number">0</span>] = C[i][i] = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= k; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= p; j++) &#123;</span><br><span class="line">                C[i][j] = (C[i - <span class="hljs-number">1</span>][j] + C[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>]) % MO;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = (ans * C[k][p]) % MO;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    Gekoo::QAQ();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> mx, n, m, t, ecnt, head[<span class="hljs-number">15</span>], f[<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>], g[<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>][<span class="hljs-number">13</span>][<span class="hljs-number">13</span>], h[<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>][<span class="hljs-number">13</span>][<span class="hljs-number">3</span>], bin[<span class="hljs-number">13</span>], cnt[<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>];</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt, val;&#125; e[<span class="hljs-number">233333</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    e[++ecnt] = &#123;to, head[f], val&#125;, head[f] = ecnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;t);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">13</span>; i++) bin[i] = (<span class="hljs-number">1</span> &lt;&lt; (i - <span class="hljs-number">1</span>));</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>); i++) cnt[i] = cnt[i &gt;&gt; <span class="hljs-number">1</span>] + (i &amp; <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(g, <span class="hljs-number">0x10</span>, <span class="hljs-keyword">sizeof</span>(g));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(h, <span class="hljs-number">0x10</span>, <span class="hljs-keyword">sizeof</span>(h));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(f, <span class="hljs-number">0x10</span>, <span class="hljs-keyword">sizeof</span>(f));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(head, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(head));</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        mx = (<span class="hljs-number">1</span> &lt;&lt; n) - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, x, y, z; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">            AddEdge(x, y, z), AddEdge(y, x, z);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">            g[bin[i]][i][i] = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= n; x++)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x], y = e[i].to; i; i = e[i].nxt, y = e[i].to)</span><br><span class="line">                g[bin[x] | bin[y]][x][y] = <span class="hljs-built_in">std</span>::min(g[bin[x] | bin[y]][x][y], e[i].val);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> S = <span class="hljs-number">1</span>; S &lt;= mx; S++) </span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= n; x++)</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> y = <span class="hljs-number">1</span>; y &lt;= n; y++)</span><br><span class="line">                    <span class="hljs-keyword">if</span> ((bin[x] &amp; S) &amp;&amp; (bin[y] &amp; S))</span><br><span class="line">                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[y], z = e[i].to; i; i = e[i].nxt, z = e[i].to)</span><br><span class="line">                            <span class="hljs-keyword">if</span> (!(bin[z] &amp; S))</span><br><span class="line">                                g[S | bin[z]][x][z] = <span class="hljs-built_in">std</span>::min(g[S | bin[z]][x][z], g[S][x][y] + e[i].val);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> S = <span class="hljs-number">1</span>; S &lt;= mx; S++)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= n; x++)</span><br><span class="line">                <span class="hljs-keyword">if</span> (!(S &amp; bin[x]))</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x], y = e[i].to; i; i = e[i].nxt, y = e[i].to)</span><br><span class="line">                        <span class="hljs-keyword">if</span> (S &amp; bin[y]) &#123;</span><br><span class="line">                            <span class="hljs-keyword">if</span> (e[i].val &lt;= h[S][x][<span class="hljs-number">0</span>]) </span><br><span class="line">                                h[S][x][<span class="hljs-number">1</span>] = h[S][x][<span class="hljs-number">0</span>], h[S][x][<span class="hljs-number">0</span>] = e[i].val;</span><br><span class="line">                            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e[i].val &lt; h[S][x][<span class="hljs-number">1</span>])</span><br><span class="line">                                h[S][x][<span class="hljs-number">1</span>] = e[i].val;</span><br><span class="line">                        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) f[bin[i]] = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> D = <span class="hljs-number">1</span>; D &lt;= mx; D++)</span><br><span class="line">            <span class="hljs-keyword">if</span> (cnt[D] &gt;= <span class="hljs-number">2</span>)</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> S = (D - <span class="hljs-number">1</span>) &amp; D, T = D - S; S; S = (S - <span class="hljs-number">1</span>) &amp; D, T = D - S)</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= n; x++)</span><br><span class="line">                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> y = <span class="hljs-number">1</span>; y &lt;= n; y++)</span><br><span class="line">                            <span class="hljs-keyword">if</span> ((S &amp; bin[x]) &amp;&amp; (S &amp; bin[y])) &#123;</span><br><span class="line">                                <span class="hljs-keyword">if</span> (x == y)</span><br><span class="line">                                    f[D] = <span class="hljs-built_in">std</span>::min(f[D], f[T] + g[S][x][x] + h[T][x][<span class="hljs-number">0</span>] + h[T][x][<span class="hljs-number">1</span>]);</span><br><span class="line">                                <span class="hljs-keyword">else</span> </span><br><span class="line">                                    f[D] = <span class="hljs-built_in">std</span>::min(f[D], f[T] + g[S][x][y] + h[T][x][<span class="hljs-number">0</span>] + h[T][y][<span class="hljs-number">0</span>]);</span><br><span class="line">                            &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (f[mx] &gt;= <span class="hljs-number">0x10101010</span>)</span><br><span class="line">            <span class="hljs-built_in">puts</span>(<span class="hljs-string">"impossible"</span>);</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, f[mx]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/数学/">数学</a>
+                    <a class="has-link-grey -link" href="/tags/状压DP/">状压DP</a>
                 </div>
             </div>
         </div>
@@ -204,17 +200,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/28/luogu-p1108/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P1108 低价购买		</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/28/luogu-p1731/">
-                <span class="level-item"> Luogu P1731 生日蛋糕		</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/17/luogu-p2886/">
+                <span class="level-item">luogu-p2886</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -873,7 +862,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt=" Luogu P1313 计算系数		" height="28">
+                    <img src="/pics/site_logo.png" alt="BZOJ 3590 [SNOI 2013] Quare" height="28">
                 
                 </a>
                 <p class="is-size-7">
