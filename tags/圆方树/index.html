@@ -2,24 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Luogu P2709 小B的询问 - Gekoo&#39;s Notebook</title>
+<title>标签: 圆方树 - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="莫队模板题">
-<meta name="keywords" content="莫队,分块">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Luogu P2709 小B的询问">
-<meta property="og:url" content="https://gekoo.xyz/2019/05/08/luogu-p2709/index.html">
+    <meta name="description" content="Note down my life.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gekoo&#39;s Notebook">
+<meta property="og:url" content="https://gekoo.xyz/tags/圆方树/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="莫队模板题">
+<meta property="og:description" content="Note down my life.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-15T09:59:34.866Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luogu P2709 小B的询问">
-<meta name="twitter:description" content="莫队模板题">
+<meta name="twitter:title" content="Gekoo&#39;s Notebook">
+<meta name="twitter:description" content="Note down my life.">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -100,7 +98,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt="Luogu P2709 小B的询问" height="28">
+                <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
             
             </a>
         </div>
@@ -137,70 +135,54 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">圆方树</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-07T16:07:16.000Z">2019-05-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-07-17T01:52:21.000Z">2019-07-17</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 672 个字)
+                    3 分钟 读完 (大约 513 个字)
                 </span>
                 
-                
-                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                    <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span>次访问
-                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Luogu P2709 小B的询问
+                <a class="has-link-black-ter" href="/2019/07/17/bzoj-3331/">BZOJ 3331 [BeiJing2013] 压力</a>
             
         </h1>
         <div class="content">
-            <p>莫队模板题</p>
-<a id="more"></a>
-<h1 id="Luogu-P2709-小B的询问"><a href="#Luogu-P2709-小B的询问" class="headerlink" title="Luogu P2709 小B的询问"></a><a href="https://www.luogu.org/problemnew/show/P2709" target="_blank" rel="noopener">Luogu P2709 小B的询问</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>小B有一个序列，包含N个1~K之间的整数。他一共有M个询问，每个询问给定一个区间[L..R]，求$Sigma(c(i)^2)$的值,其中i的值从1到K，其中c(i)表示数字i在[L..R]中的重复次数。小B请你帮助他回答询问。</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行，三个整数N、M、K。</p>
-<p>第二行，N个整数，表示小B的序列。</p>
-<p>接下来的M行，每行两个整数L、R。</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>M行，每行一个整数，其中第i行的整数表示第i个询问的答案。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>对于全部的数据，1&lt;=N、M、K&lt;=50000</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>询问一个区间每个数字重复次数的平方和,首先大分块肯定可做,但比较麻烦…</p>
-<p>这时我们就可以学习一种你没有学过的船新算法:莫队算法</p>
-<p>主要思想就是将询问保存并排序,通过移动左右端点维护询问.当我们解决了一个询问后,我们就移动它的左右端点使它成为下一个询问,在移动的过程中维护答案.</p>
-<p>合理的排序可以让我们的复杂度更加优秀.移动的越少,跑得就越像HK记者.</p>
-<p>为了控制移动的距离,我们使用分块优化.如果左端点属于同一块就按右端点排序,否则按左端点排序.最终的莫队算法复杂度是$O(n\sqrt n)$.</p>
-<p>关于维护,由完全平方公式可得,只需要加减$2 \times c(i) + 1$.</p>
-<p>总的来说,莫队可以解决许多区间维护问题<del>而且比分块更好写</del>.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 50000 + 233</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><span class="hljs-keyword">int</span> l, r, id;&#125; nd[N];</span><br><span class="line"><span class="hljs-keyword">int</span> n, m, k, block, a[N], pos[N];</span><br><span class="line">ll tmp, cnt[N], ans[N];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Node &amp;a, <span class="hljs-keyword">const</span> Node &amp;b)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> (pos[a.l] == pos[b.l]) ? a.r &lt; b.r : a.l &lt; b.l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;k);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, a + i);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;nd[i].l, &amp;nd[i].r);</span><br><span class="line">        nd[i].id = i;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    block = (<span class="hljs-keyword">int</span>) <span class="hljs-built_in">sqrt</span>(n);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        pos[i] = (i - <span class="hljs-number">1</span>) / block + <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-built_in">std</span>::sort(nd + <span class="hljs-number">1</span>, nd + <span class="hljs-number">1</span> + m, cmp);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, l = <span class="hljs-number">1</span>, r = <span class="hljs-number">0</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &gt; nd[i].l) &#123;</span><br><span class="line">            l--;</span><br><span class="line">            tmp += <span class="hljs-number">2</span> * cnt[a[l]] + <span class="hljs-number">1</span>;</span><br><span class="line">            cnt[a[l]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">while</span> (r &lt; nd[i].r) &#123;</span><br><span class="line">            r++;</span><br><span class="line">            tmp += <span class="hljs-number">2</span> * cnt[a[r]] + <span class="hljs-number">1</span>;</span><br><span class="line">            cnt[a[r]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">while</span> (l &lt; nd[i].l) &#123;</span><br><span class="line">            tmp -= <span class="hljs-number">2</span> * cnt[a[l]] - <span class="hljs-number">1</span>;</span><br><span class="line">            cnt[a[l]]--;</span><br><span class="line">            l++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">while</span> (r &gt; nd[i].r) &#123;</span><br><span class="line">            tmp -= <span class="hljs-number">2</span> * cnt[a[r]] - <span class="hljs-number">1</span>;</span><br><span class="line">            cnt[a[r]]--;</span><br><span class="line">            r--;</span><br><span class="line">        &#125;</span><br><span class="line">        ans[nd[i].id] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans[i]);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>圆方树真好用.jpg</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/分块/">分块</a>, <a class="has-link-grey -link" href="/tags/莫队/">莫队</a>
+                <a class="button is-size-7 is-light" href="/2019/07/17/bzoj-3331/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
@@ -208,49 +190,9 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/09/luogu-p4396/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Luogu P4396 [AHOI2013]作业</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/30/luogu-p4168/">
-                <span class="level-item">Luogu P4168 [Violet]蒲公英</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="valine-thread" class="content"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: false,
-        verify: false,
-        app_id: '05RiuFrnlnB47YsbQox8oy8M-gzGzoHsz',
-        app_key: '7ft8sFltyxrQmh2z60MsMKdN',
-        placeholder: '你知道吗,这个博客是有评论系统的QAQ'
-    });
-</script>
-
-    </div>
-</div>
 </div>
                 
                 
@@ -896,7 +838,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt="Luogu P2709 小B的询问" height="28">
+                    <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
                 
                 </a>
                 <p class="is-size-7">
