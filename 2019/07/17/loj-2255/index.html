@@ -2,24 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>luogu-p2015 - Gekoo&#39;s Notebook</title>
+<title>LOJ 2255 [SNOI 2017] 炸弹 - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="树形DP蒟蒻.jpg">
-<meta name="keywords" content="树形DP">
+    <meta name="description" content="简化了的线段树优化建图">
+<meta name="keywords" content="线段树优化建图,Tarjan">
 <meta property="og:type" content="article">
-<meta property="og:title" content="luogu-p2015">
-<meta property="og:url" content="https://gekoo.xyz/2019/07/17/luogu-p2015/index.html">
+<meta property="og:title" content="LOJ 2255 [SNOI 2017] 炸弹">
+<meta property="og:url" content="https://gekoo.xyz/2019/07/17/loj-2255/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="树形DP蒟蒻.jpg">
+<meta property="og:description" content="简化了的线段树优化建图">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-17T01:28:41.049Z">
+<meta property="og:updated_time" content="2019-07-17T01:32:47.911Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luogu-p2015">
-<meta name="twitter:description" content="树形DP蒟蒻.jpg">
+<meta name="twitter:title" content="LOJ 2255 [SNOI 2017] 炸弹">
+<meta name="twitter:description" content="简化了的线段树优化建图">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt="luogu-p2015" height="28">
+                <img src="/pics/site_logo.png" alt="LOJ 2255 [SNOI 2017] 炸弹" height="28">
             
             </a>
         </div>
@@ -142,13 +142,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-17T01:08:35.000Z">2019-07-17</time>
+                <time class="level-item has-text-grey" datetime="2019-07-17T01:29:55.000Z">2019-07-17</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 286 个字)
+                    3 分钟 读完 (大约 516 个字)
                 </span>
                 
                 
@@ -162,27 +162,22 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                luogu-p2015
+                LOJ 2255 [SNOI 2017] 炸弹
             
         </h1>
         <div class="content">
-            <p>树形DP蒟蒻.jpg</p>
+            <p>简化了的线段树优化建图</p>
 <a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>蒟蒻树形DP没学好,最近从头开始重学(捂脸</p>
-<p>树形DP设计状态的重要方法是f[i][j]i表示以i为根子树,j按照所求去设计.</p>
-<p>而转移状态主要就是从儿子向爸爸转移.</p>
-<p>回到本题,设f[x][i]为以x为根的子树中保留树枝数量为i的最多苹果数.</p>
-<p>状态转移方程:$f[x][i] = max(f[x][i - k] + f[y][k])$.</p>
-<p>dfs时注意一下对根节点的特判.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>一个炸弹炸的范围是一个区间,仍然考虑线段树优化建图.</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">233</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt, val;&#125; e[N &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> n, q, f[N][N], head[N], ecnt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    e[++ecnt] = &#123;to, head[f], val&#125;, head[f] = ecnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x], y = e[i].to; i; i = e[i].nxt, y = e[i].to) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (y == fa) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        f[y][<span class="hljs-number">1</span>] = e[i].val;</span><br><span class="line">        dfs(y, x);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = q; j &gt;= <span class="hljs-number">1</span>; j--)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt;= j; k++)</span><br><span class="line">                <span class="hljs-keyword">if</span> ((j != <span class="hljs-number">1</span> &amp;&amp; k != j) || x == <span class="hljs-number">1</span>) f[x][j] = <span class="hljs-built_in">std</span>::max(f[x][j], f[x][j - k] + f[y][k]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;q);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, x, y, z; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">        AddEdge(x, y, z), AddEdge(y, x, z);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> !<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, f[<span class="hljs-number">1</span>][q]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">5002333</span>, MO = <span class="hljs-number">1000000007</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt;&#125; e[N &lt;&lt; <span class="hljs-number">3</span>], c[N &lt;&lt; <span class="hljs-number">3</span>];</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">SegTree</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> l, r, ls, rs;</span><br><span class="line">&#125; t[N &lt;&lt; <span class="hljs-number">2</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> head[N], ecnt, ccnt, hc[N], tot, pos[N], n, root, f[N], ans, vis[N], tim, cnt;</span><br><span class="line">ll x[N], r[N];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">AddEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;</span><br><span class="line">    e[++ecnt] = &#123;to, head[f]&#125;, head[f] = ecnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">AddC</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to)</span> </span>&#123;</span><br><span class="line">    c[++ccnt] = &#123;to, hc[f]&#125;, hc[f] = ccnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Build</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;p, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    p = ++tot, t[p].l = l, t[p].r = r;</span><br><span class="line">    <span class="hljs-keyword">if</span> (l == r) &#123;pos[l] = p; <span class="hljs-keyword">return</span>;&#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">    Build(t[p].ls, l, mid), Build(t[p].rs, mid + <span class="hljs-number">1</span>, r);</span><br><span class="line">    AddEdge(p, t[p].ls), AddEdge(p, t[p].rs);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Link</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (t[p].l &gt;= l &amp;&amp; t[p].r &lt;= r) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (pos[v] == p) <span class="hljs-keyword">return</span>;</span><br><span class="line">        AddEdge(pos[v], p); <span class="hljs-keyword">return</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> mid = (t[p].l + t[p].r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (l &lt;= mid) Link(t[p].ls, l, r, v);</span><br><span class="line">    <span class="hljs-keyword">if</span> (r &gt; mid) Link(t[p].rs, l, r, v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> dfn[N], low[N], stk[N], id[N], siz[N], p, num, scc;</span><br><span class="line"><span class="hljs-keyword">bool</span> ins[N];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    dfn[x] = low[x] = ++num;</span><br><span class="line">    stk[++p] = x, ins[x] = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x], y = e[i].to; i; i = e[i].nxt, y = e[i].to) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (!dfn[y]) &#123;</span><br><span class="line">            Tarjan(y), low[x] = <span class="hljs-built_in">std</span>::min(low[x], low[y]);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ins[y]) low[x] = <span class="hljs-built_in">std</span>::min(low[x], dfn[y]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (low[x] == dfn[x]) &#123;</span><br><span class="line">        ++scc; <span class="hljs-keyword">int</span> z;</span><br><span class="line">        <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">            z = stk[p--], ins[z] = <span class="hljs-number">0</span>, id[z] = scc;</span><br><span class="line">        &#125; <span class="hljs-keyword">while</span> (x != z);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    vis[x] = tim, cnt += siz[x];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = hc[x], y = c[i].to; i; i = c[i].nxt, y = c[i].to) </span><br><span class="line">        <span class="hljs-keyword">if</span> (vis[y] != tim) </span><br><span class="line">            vis[y] = tim, dfs(y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    x = id[pos[x]];</span><br><span class="line">    <span class="hljs-keyword">if</span> (f[x]) <span class="hljs-keyword">return</span> f[x];</span><br><span class="line">    tim++, cnt = <span class="hljs-number">0</span>;</span><br><span class="line">    dfs(x);</span><br><span class="line">    <span class="hljs-keyword">return</span> f[x] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld"</span>, &amp;x[i], &amp;r[i]);</span><br><span class="line">    Build(root, <span class="hljs-number">1</span>, n);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> L = <span class="hljs-built_in">std</span>::lower_bound(x + <span class="hljs-number">1</span>, x + <span class="hljs-number">1</span> + n, x[i] - r[i]) - x;</span><br><span class="line">        <span class="hljs-keyword">int</span> R = <span class="hljs-built_in">std</span>::upper_bound(x + <span class="hljs-number">1</span>, x + <span class="hljs-number">1</span> + n, x[i] + r[i]) - x - <span class="hljs-number">1</span>;</span><br><span class="line">        Link(<span class="hljs-number">1</span>, L, R, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-keyword">if</span> (!dfn[pos[i]]) Tarjan(pos[i]);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= tot; x++)</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x], y = e[i].to; i; i = e[i].nxt, y = e[i].to)</span><br><span class="line">            <span class="hljs-keyword">if</span> (id[x] != id[y]) AddC(id[x], id[y]);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) siz[id[pos[i]]]++;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        (ans += (<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>) i * (<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>) Solve(i) % MO) %= MO;</span><br><span class="line">    <span class="hljs-keyword">return</span> !<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/树形DP/">树形DP</a>
+                    <a class="has-link-grey -link" href="/tags/Tarjan/">Tarjan</a>, <a class="has-link-grey -link" href="/tags/线段树优化建图/">线段树优化建图</a>
                 </div>
             </div>
         </div>
@@ -199,17 +194,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/17/bzoj-3073/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">BZOJ 3073 Journeys</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/16/hzoi-NOIP-4/">
-                <span class="level-item">衡中NOIP模拟赛4</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/17/bzoj-3073/">
+                <span class="level-item">BZOJ 3073 Journeys</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -863,7 +851,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt="luogu-p2015" height="28">
+                    <img src="/pics/site_logo.png" alt="LOJ 2255 [SNOI 2017] 炸弹" height="28">
                 
                 </a>
                 <p class="is-size-7">
