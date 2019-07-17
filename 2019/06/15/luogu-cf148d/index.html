@@ -2,23 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>luogu-cf148d - Gekoo&#39;s Notebook</title>
+<title>Luogu CF148D Bag of mice - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Note down my life.">
+    <meta name="description" content="期望DP">
+<meta name="keywords" content="期望DP,记忆化搜索">
 <meta property="og:type" content="article">
-<meta property="og:title" content="luogu-cf148d">
+<meta property="og:title" content="Luogu CF148D Bag of mice">
 <meta property="og:url" content="https://gekoo.xyz/2019/06/15/luogu-cf148d/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="Note down my life.">
+<meta property="og:description" content="期望DP">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-15T08:49:28.281Z">
+<meta property="og:updated_time" content="2019-07-17T08:26:56.954Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luogu-cf148d">
-<meta name="twitter:description" content="Note down my life.">
+<meta name="twitter:title" content="Luogu CF148D Bag of mice">
+<meta name="twitter:description" content="期望DP">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -99,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt="luogu-cf148d" height="28">
+                <img src="/pics/site_logo.png" alt="Luogu CF148D Bag of mice" height="28">
             
             </a>
         </div>
@@ -147,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    1 分钟 读完 (大约 131 个字)
                 </span>
                 
                 
@@ -161,11 +162,25 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                luogu-cf148d
+                Luogu CF148D Bag of mice
             
         </h1>
         <div class="content">
-            
+            <p>期望DP</p>
+<a id="more"></a>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>学姐说记忆化搜索冗余状态少跑得快（</p>
+<p>主要都是分类讨论，懒得写了（</p>
+<hr>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> w, b;</span><br><span class="line"><span class="hljs-keyword">double</span> f[<span class="hljs-number">1005</span>][<span class="hljs-number">1005</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> nw, <span class="hljs-keyword">int</span> nb)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!nw) <span class="hljs-keyword">return</span> <span class="hljs-number">0.0</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!nb) <span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (f[nw][nb]) <span class="hljs-keyword">return</span> f[nw][nb];</span><br><span class="line">    <span class="hljs-keyword">double</span> ret = (<span class="hljs-keyword">double</span>) nw / (nw + nb);</span><br><span class="line">    <span class="hljs-keyword">if</span> (nb == <span class="hljs-number">2</span>) </span><br><span class="line">        ret += (<span class="hljs-keyword">double</span>) nb / (nw + nb) * (nb - <span class="hljs-number">1</span>) / (nw + nb - <span class="hljs-number">1</span>) * dfs(nw - <span class="hljs-number">1</span>, nb - <span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nb &gt;= <span class="hljs-number">3</span>) </span><br><span class="line">        ret += (<span class="hljs-keyword">double</span>) nb / (nw + nb) * (nb - <span class="hljs-number">1</span>) / (nw + nb - <span class="hljs-number">1</span>) * ((<span class="hljs-keyword">double</span>) nw / (nw + nb - <span class="hljs-number">2</span>) * dfs(nw - <span class="hljs-number">1</span>, nb - <span class="hljs-number">2</span>) + (<span class="hljs-keyword">double</span>) (nb - <span class="hljs-number">2</span>) / (nw + nb - <span class="hljs-number">2</span>) * dfs(nw, nb - <span class="hljs-number">3</span>));</span><br><span class="line">    <span class="hljs-keyword">return</span> f[nw][nb] = ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;w, &amp;b);</span><br><span class="line">    <span class="hljs-keyword">return</span> !<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.9lf\n"</span>, dfs(w, b));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/期望DP/">期望DP</a>, <a class="has-link-grey -link" href="/tags/记忆化搜索/">记忆化搜索</a>
+                </div>
+            </div>
         </div>
         
         
@@ -284,7 +299,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        53
+                        54
                     </p>
                 </div>
             </div>
@@ -362,7 +377,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/BCC/" style="font-size: 11.11px;">BCC</a> <a href="/tags/DCC/" style="font-size: 12.22px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 16.67px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 11.11px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.11px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/LCA/" style="font-size: 13.33px;">LCA</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.56px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.89px;">Tarjan</a> <a href="/tags/bitset/" style="font-size: 10px;">bitset</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.11px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/圆方树/" style="font-size: 11.11px;">圆方树</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 12.22px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 11.11px;">数位DP</a> <a href="/tags/数学/" style="font-size: 12.22px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13.33px;">最短路</a> <a href="/tags/期望DP/" style="font-size: 10px;">期望DP</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 11.11px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/欧拉回路/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/比赛/" style="font-size: 13.33px;">比赛</a> <a href="/tags/状压/" style="font-size: 10px;">状压</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 11.11px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/线段树优化建图/" style="font-size: 11.11px;">线段树优化建图</a> <a href="/tags/缩点/" style="font-size: 17.78px;">缩点</a> <a href="/tags/莫队/" style="font-size: 14.44px;">莫队</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        <a href="/tags/BCC/" style="font-size: 11.11px;">BCC</a> <a href="/tags/DCC/" style="font-size: 12.22px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 16.67px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 11.11px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.11px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/LCA/" style="font-size: 13.33px;">LCA</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.56px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.89px;">Tarjan</a> <a href="/tags/bitset/" style="font-size: 10px;">bitset</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.11px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/圆方树/" style="font-size: 11.11px;">圆方树</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 12.22px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 11.11px;">数位DP</a> <a href="/tags/数学/" style="font-size: 12.22px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13.33px;">最短路</a> <a href="/tags/期望DP/" style="font-size: 12.22px;">期望DP</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 11.11px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/欧拉回路/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/比赛/" style="font-size: 13.33px;">比赛</a> <a href="/tags/状压/" style="font-size: 10px;">状压</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 11.11px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/线段树优化建图/" style="font-size: 11.11px;">线段树优化建图</a> <a href="/tags/缩点/" style="font-size: 17.78px;">缩点</a> <a href="/tags/莫队/" style="font-size: 14.44px;">莫队</a> <a href="/tags/记忆化搜索/" style="font-size: 10px;">记忆化搜索</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     </div>
 </div>
 
@@ -702,7 +717,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/期望DP/">
                         <span class="tag">期望DP</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -812,6 +827,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/记忆化搜索/">
+                        <span class="tag">记忆化搜索</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/贪心/">
                         <span class="tag">贪心</span>
                         <span class="tag is-grey">1</span>
@@ -842,7 +864,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt="luogu-cf148d" height="28">
+                    <img src="/pics/site_logo.png" alt="Luogu CF148D Bag of mice" height="28">
                 
                 </a>
                 <p class="is-size-7">
@@ -1022,5 +1044,21 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>

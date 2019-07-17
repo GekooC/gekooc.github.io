@@ -16,7 +16,7 @@
 <meta property="og:description" content="虚假的Dijkstra">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-15T09:58:19.308Z">
+<meta property="og:updated_time" content="2019-07-17T08:27:11.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1073 最优贸易">
 <meta name="twitter:description" content="虚假的Dijkstra">
@@ -152,7 +152,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1240 个字)
+                    8 分钟 读完 (大约 1227 个字)
                 </span>
                 
                 
@@ -172,7 +172,7 @@
         <div class="content">
             <p>虚假的Dijkstra</p>
 <a id="more"></a>
-<h1 id="Luogu-P1073-最优贸易"><a href="#Luogu-P1073-最优贸易" class="headerlink" title="Luogu P1073 最优贸易"></a><a href="https://www.luogu.org/problemnew/show/P1073" target="_blank" rel="noopener">Luogu P1073 最优贸易</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>C 国有 n 个大城市和 m 条道路，每条道路连接这 n 个城市中的某两个城市。任意两个城市之间最多只有一条道路直接相连。这 m 条道路中有一部分为单向通行的道路，一部分为双向通行的道路，双向通行的道路在统计条数时也计为 1 条。 C 国幅员辽阔，各地的资源分布情况各不相同，这就导致了同一种商品在不同城市的价格不一定相同。但是，同一种商品在同一个城市的买入价和卖出价始终是相同的。 商人阿龙来到 C 国旅游。当他得知同一种商品在不同城市的价格可能会不同这一信息之后，便决定在旅游的同时，利用商品在不同城市中的差价赚回一点旅费。设 C 国 n 个城市的标号从 1~ n，阿龙决定从 1 号城市出发，并最终在 n 号城市结束自己的旅行。在旅游的过程中，任何城市可以重复经过多次，但不要求经过所有 n 个城市。阿龙通过这样的贸易方式赚取旅费：他会选择一个经过的城市买入他最喜欢的商品――水晶球，并在之后经过的另一个城市卖出这个水晶球，用赚取的差价当做旅费。由于阿龙主要是来 C 国旅游，他决定这个贸易只进行最多一次，当然，在赚不到差价的情况下他就无需进行贸易。 现在给出 n 个城市的水晶球价格，m 条道路的信息（每条道路所连接的两个城市的编号以及该条道路的通行情况）。请你告诉阿龙，他最多能赚取多少旅费。</p>
+<h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>C 国有 n 个大城市和 m 条道路，每条道路连接这 n 个城市中的某两个城市。任意两个城市之间最多只有一条道路直接相连。这 m 条道路中有一部分为单向通行的道路，一部分为双向通行的道路，双向通行的道路在统计条数时也计为 1 条。 C 国幅员辽阔，各地的资源分布情况各不相同，这就导致了同一种商品在不同城市的价格不一定相同。但是，同一种商品在同一个城市的买入价和卖出价始终是相同的。 商人阿龙来到 C 国旅游。当他得知同一种商品在不同城市的价格可能会不同这一信息之后，便决定在旅游的同时，利用商品在不同城市中的差价赚回一点旅费。设 C 国 n 个城市的标号从 1~ n，阿龙决定从 1 号城市出发，并最终在 n 号城市结束自己的旅行。在旅游的过程中，任何城市可以重复经过多次，但不要求经过所有 n 个城市。阿龙通过这样的贸易方式赚取旅费：他会选择一个经过的城市买入他最喜欢的商品――水晶球，并在之后经过的另一个城市卖出这个水晶球，用赚取的差价当做旅费。由于阿龙主要是来 C 国旅游，他决定这个贸易只进行最多一次，当然，在赚不到差价的情况下他就无需进行贸易。 现在给出 n 个城市的水晶球价格，m 条道路的信息（每条道路所连接的两个城市的编号以及该条道路的通行情况）。请你告诉阿龙，他最多能赚取多少旅费。</p>
 <h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行包含 2 个正整n 和 m ，中间用一个空格隔开，分别表示城市的数目和道路的数目。 第二行 n 个正整数，每两个整数之间用一个空格隔开，按标号顺序分别表示这 n 个城市的商品价格。 接下来 m 行，每行有 3 个正整数 x, y, z，每两个整数之间用一个空格隔开。如果 = 1，表示这条道路是城市 x 到城市 y 之间的单向道路；如果 z = 2，表示这条道路为城市 x 和城市 y 之间的双向道路。</p>
 <h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>一个整数，表示最多能赚取的旅费。如果没有进行贸易，则输出 0。</p>
 <h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>输入数据保证 1 号城市可以到达 n 号城市。 对于 10% 的数据，1 ≤ n ≤ 6。 对于 30% 的数据，1 ≤ n ≤ 100。 对于 50% 的数据，不存在一条旅游路线，可以从一个城市出发，再回到这个城市。 对于 100% 的数据，1 ≤ n ≤ 100000，1 ≤ m ≤ 500000，1 ≤ x, y ≤ n，1 ≤ z ≤ 2，1 ≤ 各城市 水晶球价格 ≤ 100.</p>
@@ -308,7 +308,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        53
+                        54
                     </p>
                 </div>
             </div>
@@ -386,7 +386,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/BCC/" style="font-size: 11.11px;">BCC</a> <a href="/tags/DCC/" style="font-size: 12.22px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 16.67px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 11.11px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.11px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/LCA/" style="font-size: 13.33px;">LCA</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.56px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.89px;">Tarjan</a> <a href="/tags/bitset/" style="font-size: 10px;">bitset</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.11px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/圆方树/" style="font-size: 11.11px;">圆方树</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 12.22px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 11.11px;">数位DP</a> <a href="/tags/数学/" style="font-size: 12.22px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13.33px;">最短路</a> <a href="/tags/期望DP/" style="font-size: 10px;">期望DP</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 11.11px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/欧拉回路/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/比赛/" style="font-size: 13.33px;">比赛</a> <a href="/tags/状压/" style="font-size: 10px;">状压</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 11.11px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/线段树优化建图/" style="font-size: 11.11px;">线段树优化建图</a> <a href="/tags/缩点/" style="font-size: 17.78px;">缩点</a> <a href="/tags/莫队/" style="font-size: 14.44px;">莫队</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        <a href="/tags/BCC/" style="font-size: 11.11px;">BCC</a> <a href="/tags/DCC/" style="font-size: 12.22px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 16.67px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 11.11px;">Dijkstra</a> <a href="/tags/Floyd/" style="font-size: 11.11px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/LCA/" style="font-size: 13.33px;">LCA</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 15.56px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 18.89px;">Tarjan</a> <a href="/tags/bitset/" style="font-size: 10px;">bitset</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/分块/" style="font-size: 11.11px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/圆方树/" style="font-size: 11.11px;">圆方树</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 12.22px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 11.11px;">数位DP</a> <a href="/tags/数学/" style="font-size: 12.22px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13.33px;">最短路</a> <a href="/tags/期望DP/" style="font-size: 12.22px;">期望DP</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 11.11px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/欧拉回路/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/比赛/" style="font-size: 13.33px;">比赛</a> <a href="/tags/状压/" style="font-size: 10px;">状压</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 11.11px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/线段树优化建图/" style="font-size: 11.11px;">线段树优化建图</a> <a href="/tags/缩点/" style="font-size: 17.78px;">缩点</a> <a href="/tags/莫队/" style="font-size: 14.44px;">莫队</a> <a href="/tags/记忆化搜索/" style="font-size: 10px;">记忆化搜索</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     </div>
 </div>
 
@@ -726,7 +726,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/期望DP/">
                         <span class="tag">期望DP</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -832,6 +832,13 @@
                     <a class="tags has-addons" href="/tags/莫队/">
                         <span class="tag">莫队</span>
                         <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/记忆化搜索/">
+                        <span class="tag">记忆化搜索</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1046,5 +1053,21 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>
