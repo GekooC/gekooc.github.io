@@ -141,13 +141,61 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-17T03:04:04.000Z">2019-07-17</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    几秒 读完 (大约 67 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/17/plan/">近期计划</a>
+            
+        </h1>
+        <div class="content">
+            <p>为了戒掉咕咕咕的坏习惯，开个计划帖.</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/17/plan/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-17T09:17:15.000Z">2019-07-17</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 758 个字)
+                    5 分钟 读完 (大约 775 个字)
                 </span>
                 
                 
@@ -160,19 +208,17 @@
             
         </h1>
         <div class="content">
-            <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>选出无向图中包含所有点的权值和最小的双连通子图。</p>
-<p>完全没思路，看了题解才会。。。。。</p>
-<p>首先有一条重要的性质：一个双连通图可以拆成一个小双连通图和一条链。</p>
-<p>我们首先能想到状压，用集合S表示点集。</p>
-<p>那么设f[S]表示点集S构成的双连通图的最小权值和。</p>
-<p>此题最大的思维难点来力：再预处理出两个数组g[S][i][j], h[S][i][1/0].</p>
-<p>其中数组g表示以i、j为链端点，链的点集为S，这条链的最小权值。数组h表示从点i到点集S的最短边和次短边。</p>
-<p>我们为什么要求这两个数组？由上文性质可以想到状态的转移，一个点集S是从一个更小的点集T和一条链转移来的。而这条链汇入点集T时有两种情况：1.链只有一个点。那么链与T的两条连边就是这个点到T的最小边和次小边。2.链不止一个点，那么连边就是两个端点与T的最小边。</p>
-<p>我还没写过这么长的状压DP。。。。。</p>
-<hr>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> mx, n, m, t, ecnt, head[<span class="hljs-number">15</span>], f[<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>], g[<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>][<span class="hljs-number">13</span>][<span class="hljs-number">13</span>], h[<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>][<span class="hljs-number">13</span>][<span class="hljs-number">3</span>], bin[<span class="hljs-number">13</span>], cnt[<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>];</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span><span class="hljs-keyword">int</span> to, nxt, val;&#125; e[<span class="hljs-number">233333</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    e[++ecnt] = &#123;to, head[f], val&#125;, head[f] = ecnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;t);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">13</span>; i++) bin[i] = (<span class="hljs-number">1</span> &lt;&lt; (i - <span class="hljs-number">1</span>));</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">13</span>); i++) cnt[i] = cnt[i &gt;&gt; <span class="hljs-number">1</span>] + (i &amp; <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(g, <span class="hljs-number">0x10</span>, <span class="hljs-keyword">sizeof</span>(g));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(h, <span class="hljs-number">0x10</span>, <span class="hljs-keyword">sizeof</span>(h));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(f, <span class="hljs-number">0x10</span>, <span class="hljs-keyword">sizeof</span>(f));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(head, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(head));</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        mx = (<span class="hljs-number">1</span> &lt;&lt; n) - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, x, y, z; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">            AddEdge(x, y, z), AddEdge(y, x, z);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">            g[bin[i]][i][i] = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= n; x++)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x], y = e[i].to; i; i = e[i].nxt, y = e[i].to)</span><br><span class="line">                g[bin[x] | bin[y]][x][y] = <span class="hljs-built_in">std</span>::min(g[bin[x] | bin[y]][x][y], e[i].val);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> S = <span class="hljs-number">1</span>; S &lt;= mx; S++) </span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= n; x++)</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> y = <span class="hljs-number">1</span>; y &lt;= n; y++)</span><br><span class="line">                    <span class="hljs-keyword">if</span> ((bin[x] &amp; S) &amp;&amp; (bin[y] &amp; S))</span><br><span class="line">                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[y], z = e[i].to; i; i = e[i].nxt, z = e[i].to)</span><br><span class="line">                            <span class="hljs-keyword">if</span> (!(bin[z] &amp; S))</span><br><span class="line">                                g[S | bin[z]][x][z] = <span class="hljs-built_in">std</span>::min(g[S | bin[z]][x][z], g[S][x][y] + e[i].val);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> S = <span class="hljs-number">1</span>; S &lt;= mx; S++)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= n; x++)</span><br><span class="line">                <span class="hljs-keyword">if</span> (!(S &amp; bin[x]))</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[x], y = e[i].to; i; i = e[i].nxt, y = e[i].to)</span><br><span class="line">                        <span class="hljs-keyword">if</span> (S &amp; bin[y]) &#123;</span><br><span class="line">                            <span class="hljs-keyword">if</span> (e[i].val &lt;= h[S][x][<span class="hljs-number">0</span>]) </span><br><span class="line">                                h[S][x][<span class="hljs-number">1</span>] = h[S][x][<span class="hljs-number">0</span>], h[S][x][<span class="hljs-number">0</span>] = e[i].val;</span><br><span class="line">                            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e[i].val &lt; h[S][x][<span class="hljs-number">1</span>])</span><br><span class="line">                                h[S][x][<span class="hljs-number">1</span>] = e[i].val;</span><br><span class="line">                        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) f[bin[i]] = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> D = <span class="hljs-number">1</span>; D &lt;= mx; D++)</span><br><span class="line">            <span class="hljs-keyword">if</span> (cnt[D] &gt;= <span class="hljs-number">2</span>)</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> S = (D - <span class="hljs-number">1</span>) &amp; D, T = D - S; S; S = (S - <span class="hljs-number">1</span>) &amp; D, T = D - S)</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>; x &lt;= n; x++)</span><br><span class="line">                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> y = <span class="hljs-number">1</span>; y &lt;= n; y++)</span><br><span class="line">                            <span class="hljs-keyword">if</span> ((S &amp; bin[x]) &amp;&amp; (S &amp; bin[y])) &#123;</span><br><span class="line">                                <span class="hljs-keyword">if</span> (x == y)</span><br><span class="line">                                    f[D] = <span class="hljs-built_in">std</span>::min(f[D], f[T] + g[S][x][x] + h[T][x][<span class="hljs-number">0</span>] + h[T][x][<span class="hljs-number">1</span>]);</span><br><span class="line">                                <span class="hljs-keyword">else</span> </span><br><span class="line">                                    f[D] = <span class="hljs-built_in">std</span>::min(f[D], f[T] + g[S][x][y] + h[T][x][<span class="hljs-number">0</span>] + h[T][y][<span class="hljs-number">0</span>]);</span><br><span class="line">                            &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (f[mx] &gt;= <span class="hljs-number">0x10101010</span>)</span><br><span class="line">            <span class="hljs-built_in">puts</span>(<span class="hljs-string">"impossible"</span>);</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, f[mx]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>这和Tarjan有什么关系？为什么在Tarjan专题?</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/17/bzoj-3590/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -258,54 +304,6 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/2019/07/17/loj-2587/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-17T03:04:04.000Z">2019-07-17</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    几秒 读完 (大约 67 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/17/plan/">近期计划</a>
-            
-        </h1>
-        <div class="content">
-            <p>为了戒掉咕咕咕的坏习惯，开个计划帖.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/07/17/plan/#more">阅读更多</a>
                 </div>
             </div>
         </div>

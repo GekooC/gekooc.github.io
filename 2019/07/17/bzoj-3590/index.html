@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="思路：选出无向图中包含所有点的权值和最小的双连通子图。 完全没思路，看了题解才会。。。。。 首先有一条重要的性质：一个双连通图可以拆成一个小双连通图和一条链。 我们首先能想到状压，用集合S表示点集。 那么设f[S]表示点集S构成的双连通图的最小权值和。 此题最大的思维难点来力：再预处理出两个数组g[S][i][j], h[S][i][1/0]. 其中数组g表示以i、j为链端点，链的点集为S，这条链">
+    <meta name="description" content="这和Tarjan有什么关系？为什么在Tarjan专题?">
 <meta name="keywords" content="状压DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ 3590 [SNOI 2013] Quare">
 <meta property="og:url" content="https://gekoo.xyz/2019/07/17/bzoj-3590/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="思路：选出无向图中包含所有点的权值和最小的双连通子图。 完全没思路，看了题解才会。。。。。 首先有一条重要的性质：一个双连通图可以拆成一个小双连通图和一条链。 我们首先能想到状压，用集合S表示点集。 那么设f[S]表示点集S构成的双连通图的最小权值和。 此题最大的思维难点来力：再预处理出两个数组g[S][i][j], h[S][i][1/0]. 其中数组g表示以i、j为链端点，链的点集为S，这条链">
+<meta property="og:description" content="这和Tarjan有什么关系？为什么在Tarjan专题?">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-17T09:31:44.666Z">
+<meta property="og:updated_time" content="2019-07-17T09:45:40.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ 3590 [SNOI 2013] Quare">
-<meta name="twitter:description" content="思路：选出无向图中包含所有点的权值和最小的双连通子图。 完全没思路，看了题解才会。。。。。 首先有一条重要的性质：一个双连通图可以拆成一个小双连通图和一条链。 我们首先能想到状压，用集合S表示点集。 那么设f[S]表示点集S构成的双连通图的最小权值和。 此题最大的思维难点来力：再预处理出两个数组g[S][i][j], h[S][i][1/0]. 其中数组g表示以i、j为链端点，链的点集为S，这条链">
+<meta name="twitter:description" content="这和Tarjan有什么关系？为什么在Tarjan专题?">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 758 个字)
+                    5 分钟 读完 (大约 775 个字)
                 </span>
                 
                 
@@ -166,7 +166,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>选出无向图中包含所有点的权值和最小的双连通子图。</p>
+            <p>这和Tarjan有什么关系？为什么在Tarjan专题?</p>
+<a id="more"></a>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>选出无向图中包含所有点的权值和最小的双连通子图。</p>
 <p>完全没思路，看了题解才会。。。。。</p>
 <p>首先有一条重要的性质：一个双连通图可以拆成一个小双连通图和一条链。</p>
 <p>我们首先能想到状压，用集合S表示点集。</p>
