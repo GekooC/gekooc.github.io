@@ -2,22 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: DP - Gekoo&#39;s Notebook</title>
+<title>luogu-p1070 - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Note down my life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gekoo&#39;s Notebook">
-<meta property="og:url" content="https://gekoo.xyz/tags/DP/page/2/index.html">
+    <meta name="description" content="qwq">
+<meta name="keywords" content="单调队列优化DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="luogu-p1070">
+<meta property="og:url" content="https://gekoo.xyz/2019/09/21/luogu-p1070/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="Note down my life.">
+<meta property="og:description" content="qwq">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-21T01:32:59.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gekoo&#39;s Notebook">
-<meta name="twitter:description" content="Note down my life.">
+<meta name="twitter:title" content="luogu-p1070">
+<meta name="twitter:description" content="qwq">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -94,7 +96,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
+                <img src="/pics/site_logo.png" alt="luogu-p1070" height="28">
             
             </a>
         </div>
@@ -131,33 +133,18 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">DP</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-28T08:20:23.000Z">2019-02-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-09-21T01:28:54.000Z">2019-09-21</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 991 个字)
+                    2 分钟 读完 (大约 303 个字)
                 </span>
                 
                 
@@ -166,21 +153,28 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/02/28/luogu-p2051/"> Luogu P2051 [AHOI2009] 中国象棋		</a>
+                luogu-p1070
             
         </h1>
         <div class="content">
-            <p>DP</p>
+            <p>qwq</p>
+<a id="more"></a>
+<p>可以立刻写出一个$O(N^3)$的柿子：</p>
+<p>$f[i] = max(f[i-k] + sum[i][j] - sum[i-k][j-k] - cost[i-k]) = max(f[i-k] - sum[i-k][j-k] - cost[i-k]) + sum[i][j]$</p>
+<p>好像可以过了，但不珂学qwq</p>
+<p>可以发现是在对角线上进行一个滑动窗口式的转移，开n个单调队列优化DP。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">1005</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> n, m, p, f[N], sum[N][N], cost[N];</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">deque</span>&lt;<span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&gt; q[N];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">upper</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123; <span class="hljs-keyword">return</span> (x % n + n) % n; &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;p);</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++j)</span><br><span class="line">      <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;sum[i][j]);</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;cost[i]);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= m; ++i)</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; n; ++j) </span><br><span class="line">      sum[j][i] += sum[upper(j - <span class="hljs-number">1</span>)][i<span class="hljs-number">-1</span>];</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)</span><br><span class="line">    q[upper(i + <span class="hljs-number">1</span>)].push_back(<span class="hljs-built_in">std</span>::make_pair(-cost[i], <span class="hljs-number">0</span>));</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++i) f[i] = <span class="hljs-number">-1145141919</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; n; ++j)</span><br><span class="line">      f[i] = <span class="hljs-built_in">std</span>::max(f[i], </span><br><span class="line">        q[upper(j - i + <span class="hljs-number">1</span>)].front().first + sum[upper(j - <span class="hljs-number">1</span>)][i]);</span><br><span class="line">        </span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">      <span class="hljs-keyword">while</span> (!q[upper(j - i + <span class="hljs-number">1</span>)].empty() </span><br><span class="line">        &amp;&amp; i - q[upper(j - i + <span class="hljs-number">1</span>)].front().second &gt;= p)</span><br><span class="line">          q[upper(j - i + <span class="hljs-number">1</span>)].pop_front();</span><br><span class="line">      <span class="hljs-keyword">int</span> d = f[i] - sum[upper(j - <span class="hljs-number">1</span>)][i] - cost[j];</span><br><span class="line">      <span class="hljs-keyword">while</span> (!q[upper(j - i + <span class="hljs-number">1</span>)].empty()</span><br><span class="line">        &amp;&amp; q[upper(j - i + <span class="hljs-number">1</span>)].back().first &lt;= d)  </span><br><span class="line">          q[upper(j - i + <span class="hljs-number">1</span>)].pop_back();</span><br><span class="line">      q[upper(j - i + <span class="hljs-number">1</span>)].push_back(<span class="hljs-built_in">std</span>::make_pair(d, i));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> !<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, f[m]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/28/luogu-p2051/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/单调队列优化DP/">单调队列优化DP</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -190,79 +184,41 @@
 
 
 
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-28T08:14:58.000Z">2019-02-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 606 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/02/28/luogu-p1108/"> Luogu P1108 低价购买		</a>
-            
-        </h1>
-        <div class="content">
-            <p>变种LIS</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/28/luogu-p1108/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/DP/">上一页</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/21/hzoi-CSP-48/">
+                <span class="level-item">hzoi-CSP-48</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/tags/DP/page/3/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/tags/DP/">1</a></li>
-            
-            <li><a class="pagination-link is-current" href="/tags/DP/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '05RiuFrnlnB47YsbQox8oy8M-gzGzoHsz',
+        app_key: '7ft8sFltyxrQmh2z60MsMKdN',
+        placeholder: '你知道吗,这个博客是有评论系统的QAQ'
+    });
+</script>
+
+    </div>
 </div>
 </div>
                 
@@ -1210,7 +1166,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
+                    <img src="/pics/site_logo.png" alt="luogu-p1070" height="28">
                 
                 </a>
                 <p class="is-size-7">
