@@ -2,22 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 树上差分 - Gekoo&#39;s Notebook</title>
+<title>Luogu P1039 [NOIP2003] 侦探推理 - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Note down my life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gekoo&#39;s Notebook">
-<meta property="og:url" content="https://gekoo.xyz/tags/树上差分/index.html">
+    <meta name="description" content="模拟狂魔第二弹">
+<meta name="keywords" content="模拟,NOIP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Luogu P1039 [NOIP2003] 侦探推理">
+<meta property="og:url" content="https://gekoo.xyz/2019/09/27/luogu-P1039/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="Note down my life.">
+<meta property="og:description" content="模拟狂魔第二弹">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-27T09:15:14.904Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gekoo&#39;s Notebook">
-<meta name="twitter:description" content="Note down my life.">
+<meta name="twitter:title" content="Luogu P1039 [NOIP2003] 侦探推理">
+<meta name="twitter:description" content="模拟狂魔第二弹">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -94,7 +96,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
+                <img src="/pics/site_logo.png" alt="Luogu P1039 [NOIP2003] 侦探推理" height="28">
             
             </a>
         </div>
@@ -131,29 +133,18 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">树上差分</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-17T01:52:21.000Z">2019-07-17</time>
+                <time class="level-item has-text-grey" datetime="2019-09-27T09:12:31.000Z">2019-09-27</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 513 个字)
+                    2 分钟 读完 (大约 361 个字)
                 </span>
                 
                 
@@ -162,21 +153,27 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/07/17/bzoj-3331/">BZOJ 3331 [BeiJing2013] 压力</a>
+                Luogu P1039 [NOIP2003] 侦探推理
             
         </h1>
         <div class="content">
-            <p>圆方树真好用.jpg</p>
+            <p>模拟狂魔第二弹</p>
+<a id="more"></a>
+<p>其实这题不难，不要被蓝色tag和读入唬住了，用上std::string直接秒了。</p>
+<p>枚举星期几和犯罪嫌疑人，在每一天判断某人说的是不是真话，开个fake数组记一下就行了。</p>
+<p>实名谴责读入最后有\r的屑数据。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, m, p, f[<span class="hljs-number">1003</span>], error, fake[<span class="hljs-number">1003</span>], cri;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> name[<span class="hljs-number">1003</span>], speaker, evid[<span class="hljs-number">1003</span>];</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> qwq[<span class="hljs-number">10</span>] = &#123;<span class="hljs-string">"Tony Ma"</span>, <span class="hljs-string">"Today is Sunday."</span>, <span class="hljs-string">"Today is Monday."</span>,</span><br><span class="line">  <span class="hljs-string">"Today is Tuesday."</span>, <span class="hljs-string">"Today is Wednesday."</span>, <span class="hljs-string">"Today is Thursday."</span>,</span><br><span class="line">  <span class="hljs-string">"Today is Friday."</span>, <span class="hljs-string">"Today is Saturday."</span>,&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">judge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> reality)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (fake[x] &amp;&amp; reality != fake[x]) error = <span class="hljs-number">1</span>;</span><br><span class="line">  <span class="hljs-keyword">else</span> fake[x] = reality;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;m, &amp;n, &amp;p);</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++i) <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; name[i];</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= p; ++i) &#123;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; speaker;</span><br><span class="line">    speaker.erase(speaker.end() - <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++j) </span><br><span class="line">      <span class="hljs-keyword">if</span> (speaker == name[j]) f[i] = j;</span><br><span class="line">    getline(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>, evid[i]);</span><br><span class="line">    evid[i].erase(evid[i].begin());</span><br><span class="line">    evid[i].erase(evid[i].end() - <span class="hljs-number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> day = <span class="hljs-number">1</span>; day &lt;= <span class="hljs-number">7</span>; ++day) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> crime = <span class="hljs-number">1</span>; crime &lt;= m; ++crime) &#123;</span><br><span class="line">      error = <span class="hljs-number">0</span>;</span><br><span class="line">      <span class="hljs-built_in">memset</span>(fake, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> fake);</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= p; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> from = f[i];</span><br><span class="line">        <span class="hljs-keyword">if</span> (evid[i] == <span class="hljs-string">"I am guilty."</span>) &#123;</span><br><span class="line">          judge(from, crime == from ? <span class="hljs-number">2</span> : <span class="hljs-number">1</span>);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (evid[i] == <span class="hljs-string">"I am not guilty."</span>) &#123;</span><br><span class="line">          judge(from, crime != from ? <span class="hljs-number">2</span> : <span class="hljs-number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">7</span>; ++j)</span><br><span class="line">          <span class="hljs-keyword">if</span> (qwq[j] == evid[i]) judge(from, j == day ? <span class="hljs-number">2</span> : <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++j) &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (j == from) <span class="hljs-keyword">continue</span>;</span><br><span class="line">          <span class="hljs-keyword">if</span> (evid[i] == name[j] + <span class="hljs-string">" is guilty."</span>) judge(from, crime == j ? <span class="hljs-number">2</span> : <span class="hljs-number">1</span>);</span><br><span class="line">          <span class="hljs-keyword">if</span> (evid[i] == name[j] + <span class="hljs-string">" is not guilty."</span>) judge(from, crime != j ? <span class="hljs-number">2</span> : <span class="hljs-number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">if</span> (error) <span class="hljs-keyword">continue</span>;</span><br><span class="line">      <span class="hljs-keyword">int</span> lie = <span class="hljs-number">0</span>, truth = <span class="hljs-number">0</span>, idk = <span class="hljs-number">0</span>;</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (fake[i] == <span class="hljs-number">2</span>) ++truth;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (fake[i] == <span class="hljs-number">1</span>) ++lie;</span><br><span class="line">        <span class="hljs-keyword">else</span> ++idk;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">if</span> (lie &lt;= n &amp;&amp; lie + idk &gt;= n) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (cri) &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (cri != crime) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> !<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Cannot Determine\n"</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> cri = crime;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">if</span> (cri) <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; name[cri] &lt;&lt; <span class="hljs-string">"\n"</span>;</span><br><span class="line">  <span class="hljs-keyword">else</span> <span class="hljs-built_in">puts</span>(<span class="hljs-string">"Impossible"</span>);</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/07/17/bzoj-3331/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/NOIP/">NOIP</a>, <a class="has-link-grey -link" href="/tags/模拟/">模拟</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -186,9 +183,42 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/24/luogu-p1027/">
+                <span class="level-item">Luogu P1027 [NOIP2001] Car的旅行路线</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '05RiuFrnlnB47YsbQox8oy8M-gzGzoHsz',
+        app_key: '7ft8sFltyxrQmh2z60MsMKdN',
+        placeholder: '你知道吗,这个博客是有评论系统的QAQ'
+    });
+</script>
+
+    </div>
+</div>
 </div>
                 
                 
@@ -1156,7 +1186,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
+                    <img src="/pics/site_logo.png" alt="Luogu P1039 [NOIP2003] 侦探推理" height="28">
                 
                 </a>
                 <p class="is-size-7">
