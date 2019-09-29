@@ -16,7 +16,7 @@
 <meta property="og:description" content="点分治惨遭遗忘">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-29T09:15:20.519Z">
+<meta property="og:updated_time" content="2019-09-29T09:35:58.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDFZOI-0928">
 <meta name="twitter:description" content="点分治惨遭遗忘">
@@ -144,7 +144,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 873 个字)
+                    6 分钟 读完 (大约 874 个字)
                 </span>
                 
                 
@@ -170,7 +170,7 @@
 <h1 id="T2-c"><a href="#T2-c" class="headerlink" title="T2: c"></a>T2: c</h1><p>数论题不会证，打表找规律，发现符合条件的数对都满足以下性质：</p>
 <p>$(x, y) = x - y = x ^ y$.</p>
 <p>不要问我为什么，证明找dky（</p>
-<p>那就很简单了，枚举$(x, y)$，对于每个$(x, y)$枚举b，它必然是$(x, y)$的倍数。$x - (x, y)$可以还原出一个y，$(x, y) ^ x$也可以还原出一个y，对比它们是否相同。</p>
+<p>那就很简单了，枚举$(x, y)$，对于每个$(x, y)$枚举b，它必然是$(x, y)$的倍数。$x - (x, y)$可以还原出一个y，$(x, y) \oplus x$也可以还原出一个y，对比它们是否相同。</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Gekoo</span> &#123;</span></span><br><span class="line"> <span class="hljs-keyword">public</span>:</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>;</span><br><span class="line"></span><br><span class="line"> <span class="hljs-keyword">private</span>:</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main_input</span><span class="hljs-params">()</span></span>;</span><br><span class="line">  <span class="hljs-keyword">int</span> _read();</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">get_list</span><span class="hljs-params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">int</span> n;</span><br><span class="line">  <span class="hljs-keyword">int</span> ans;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Gekoo UUZ;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  UUZ.solve();</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> Gekoo::_read() &#123;</span><br><span class="line">  <span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>, b = <span class="hljs-number">1</span>;</span><br><span class="line">  <span class="hljs-keyword">char</span> c = getchar();</span><br><span class="line">  <span class="hljs-keyword">while</span> (!<span class="hljs-built_in">isdigit</span>(c)) b = c == <span class="hljs-string">'-'</span> ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>, c = getchar();</span><br><span class="line">  <span class="hljs-keyword">while</span> (<span class="hljs-built_in">isdigit</span>(c)) a = a * <span class="hljs-number">10</span> + c - <span class="hljs-string">'0'</span>, c = getchar();</span><br><span class="line">  <span class="hljs-keyword">return</span> b ? a : -a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> Gekoo::main_input() &#123; n = _read(); &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> Gekoo::solve() &#123;</span><br><span class="line">  main_input();</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> g = <span class="hljs-number">1</span>; g &lt;= n; ++g) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> b = <span class="hljs-number">2</span> * g; b &lt;= n; b += g) &#123;</span><br><span class="line">      <span class="hljs-comment">// g = b - a</span></span><br><span class="line">      <span class="hljs-comment">// g ^ b = a</span></span><br><span class="line">      <span class="hljs-keyword">if</span> ((g ^ b) == (b - g)) ++ans;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="T3-b"><a href="#T3-b" class="headerlink" title="T3: b"></a>T3: b</h1><p>考场看出淀粉质但我忘了。</p>
 <p>这是淀粉质板子，没得说，移步<a href="https://gekoo.top/tree-DnC" target="_blank" rel="noopener">淀粉质复习</a>，请。</p>
@@ -201,14 +201,14 @@
         <div class="level-start">
             <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/29/tree-DnC/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">tree-DnC</span>
+                <span class="level-item">点分治复习</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/27/hzoi-CSP-ex/">
-                <span class="level-item">hzoi-CSP-ex</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/27/luogu-p2482/">
+                <span class="level-item">Luogu P2482 [SDOI2010]猪国杀</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -282,7 +282,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        89
+                        88
                     </p>
                 </div>
             </div>
@@ -435,14 +435,14 @@
             
             <a href="/2019/09/29/tree-DnC/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="tree-DnC">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="点分治复习">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T08:58:11.000Z">2019-09-29</time></div>
-                    <a href="/2019/09/29/tree-DnC/" class="has-link-black-ter is-size-6">tree-DnC</a>
+                    <a href="/2019/09/29/tree-DnC/" class="has-link-black-ter is-size-6">点分治复习</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -462,25 +462,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-29T08:57:12.000Z">2019-09-29</time></div>
                     <a href="/2019/09/29/sdfzoi-0928/" class="has-link-black-ter is-size-6">SDFZOI-0928</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/27/hzoi-CSP-ex/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hzoi-CSP-ex">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-27T09:24:19.000Z">2019-09-27</time></div>
-                    <a href="/2019/09/27/hzoi-CSP-ex/" class="has-link-black-ter is-size-6">hzoi-CSP-ex</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -526,6 +507,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/09/24/luogu-p1027/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P1027 [NOIP2001] Car的旅行路线">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-24T10:23:18.000Z">2019-09-24</time></div>
+                    <a href="/2019/09/24/luogu-p1027/" class="has-link-black-ter is-size-6">Luogu P1027 [NOIP2001] Car的旅行路线</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -544,7 +544,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">26</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
