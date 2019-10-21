@@ -16,7 +16,7 @@
 <meta property="og:description" content="qwq">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-21T13:56:35.191Z">
+<meta property="og:updated_time" content="2019-10-21T14:00:29.633Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luogu P5021 [NOIP 2018] 赛道修建">
 <meta name="twitter:description" content="qwq">
@@ -144,7 +144,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 577 个字)
+                    4 分钟 读完 (大约 581 个字)
                 </span>
                 
                 
@@ -161,7 +161,7 @@
 <a id="more"></a>
 <p>我是全组最后一个写赛道修建的.jpg</p>
 <p>给出一个无根树，我们显然可以钦定 1 为根。看到最小值最大，易于想到二分长度最小值 lim。</p>
-<p>现在主要问题在于 check 函数。对于每个节点 x，可以产生赛道 $res = val + dis$。val 是 x 与子节点的边权，dis 是子节点上传的赛道长度。</p>
+<p>现在主要问题在于 check 函数。对于每个节点 x，每个子树可以产生赛道 $res = val + dis$。val 是 x 与子节点的边权，dis 是子节点上传的赛道长度。</p>
 <p>res 有两种情况：</p>
 <ul>
 <li>$res \ge lim$ 直接 ++cnt，符合要求的赛道数增加。</li>
