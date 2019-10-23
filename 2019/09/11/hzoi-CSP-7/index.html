@@ -16,7 +16,7 @@
 <meta property="og:description" content="考爆了，爆零，GG.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-11T08:57:12.277Z">
+<meta property="og:updated_time" content="2019-10-23T09:27:20.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hzoi-CSP-7">
 <meta name="twitter:description" content="考爆了，爆零，GG.">
@@ -140,6 +140,10 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-09-11T04:45:04.000Z">2019-09-11</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/比赛/">比赛</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
@@ -178,7 +182,7 @@
 <p>所以$\Delta x = \frac{b}{g}, \Delta y = \frac{a}{g}$.</p>
 <p>原方程同解为$x = x_0 + t \frac{b}{g}, y = y_0 - t \frac{a}{g}, t \in Z $.</p>
 <p>求出刚好大于0的y，求出刚好大于0的x对应的最大y，差值除以步长$\frac{a}{g}$再+1就是答案。</p>
-<p>本题过于难调，$Have fun debugging!$ （逃</p>
+<p>本题过于难调，$Have\ fun\ debugging!$ （逃</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">Exgcd</span><span class="hljs-params">(ll a, ll b, ll &amp;x, ll &amp;y)</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">		x = <span class="hljs-number">1</span>, y = <span class="hljs-number">0</span>; <span class="hljs-keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	ll r = Exgcd(b, a % b, y, x);</span><br><span class="line">	y -= (a / b) * x;</span><br><span class="line">	<span class="hljs-keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">Solve</span><span class="hljs-params">(ll a, ll b, ll c)</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">bool</span> opa = <span class="hljs-number">0</span>, opb = <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">if</span> (a == <span class="hljs-number">0</span> &amp;&amp; b == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> c == <span class="hljs-number">0</span> ? <span class="hljs-number">-1</span> : <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">if</span> (a == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> (c == <span class="hljs-number">0</span> || (c % b == <span class="hljs-number">0</span> &amp;&amp; c / b &gt; <span class="hljs-number">0</span>)) ? <span class="hljs-number">-1</span> : <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> (c == <span class="hljs-number">0</span> || (c % a == <span class="hljs-number">0</span> &amp;&amp; c / a &gt; <span class="hljs-number">0</span>)) ? <span class="hljs-number">-1</span> : <span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">if</span> (c &lt; <span class="hljs-number">0</span>) a = -a, b = - b, c = -c;</span><br><span class="line">	<span class="hljs-keyword">if</span> (a &lt; <span class="hljs-number">0</span>) a = -a, opa = <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">if</span> (b &lt; <span class="hljs-number">0</span>) b = -b, opb = <span class="hljs-number">1</span>;</span><br><span class="line">	ll x, y;</span><br><span class="line">	ll g = Exgcd(a, b, x, y);</span><br><span class="line">	<span class="hljs-keyword">if</span> (c % g != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">	ll t = c / g; 		x *= t, y *= t, a /= g, b /= g, c = t;</span><br><span class="line">	<span class="hljs-keyword">if</span> (opa) a = -a, x = -x;</span><br><span class="line">	<span class="hljs-keyword">if</span> (opb) b = -b, y = -y;</span><br><span class="line">	<span class="hljs-keyword">if</span> (a &lt; <span class="hljs-number">0</span>) a = -a, b = -b, c = -c;</span><br><span class="line">	<span class="hljs-keyword">if</span> (a * b &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;</span><br><span class="line">	x %= b;</span><br><span class="line">	<span class="hljs-keyword">while</span> (x &lt;= <span class="hljs-number">0</span>) x += b;</span><br><span class="line">	y = (c - a * x) / b;</span><br><span class="line">	<span class="hljs-keyword">if</span> (y &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">	ll y_min = y % a;</span><br><span class="line">	<span class="hljs-keyword">while</span> (y_min &lt;= <span class="hljs-number">0</span>) y_min += a;</span><br><span class="line">	<span class="hljs-keyword">return</span> y_min &lt;= y ? (y - y_min) / a + <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> T;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;T);</span><br><span class="line">	<span class="hljs-keyword">while</span> (T--) &#123;</span><br><span class="line">		ll a, b, c;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld%lld"</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">		ll ans = Solve(a, b, c);</span><br><span class="line">		<span class="hljs-keyword">if</span> (ans == <span class="hljs-number">-1</span> || ans &gt; <span class="hljs-number">65535</span>) <span class="hljs-built_in">puts</span>(<span class="hljs-string">"ZenMeZheMeDuo"</span>);</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="T2-Visit"><a href="#T2-Visit" class="headerlink" title="T2:Visit"></a>T2:Visit</h1><p>最开始T2是树上染色，疯狂码，结果换题了，郁闷。。。。</p>
 <p>有一个显然的$O(N^3)$暴力，不提了</p>
@@ -337,7 +341,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        1
+                        4
                     </p>
                 </div>
             </div>
@@ -500,12 +504,36 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/比赛/">
+            <span class="level-start">
+                <span class="level-item">比赛</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/考试/">
+            <span class="level-start">
+                <span class="level-item">考试</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/项目/">
+            <span class="level-start">
+                <span class="level-item">项目</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/题解/">
             <span class="level-start">
                 <span class="level-item">题解</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">32</span>
+                <span class="level-item tag">69</span>
             </span>
         </a></li>
             </ul>
@@ -544,7 +572,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2050-10-23T08:42:33.000Z">2050-10-23</time></div>
                     <a href="/2050/10/23/pigeonoj/" class="has-link-black-ter is-size-6">PigeonOJ 立项啦</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/项目/">项目</a>
                     </p>
                 </div>
             </div>
@@ -563,7 +591,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:32.000Z">2019-10-21</time></div>
                     <a href="/2019/10/21/luogu-p3959/" class="has-link-black-ter is-size-6">Luogu P3959 [NOIP 2017] 宝藏</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                     </p>
                 </div>
             </div>
@@ -582,7 +610,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:25.000Z">2019-10-21</time></div>
                     <a href="/2019/10/21/luogu-p5021/" class="has-link-black-ter is-size-6">Luogu P5021 [NOIP 2018] 赛道修建</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                     </p>
                 </div>
             </div>
@@ -601,7 +629,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:16.000Z">2019-10-21</time></div>
                     <a href="/2019/10/21/luogu-p1312/" class="has-link-black-ter is-size-6">Luogu P1312 [NOIP 2011] Mayan游戏</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                     </p>
                 </div>
             </div>
@@ -620,7 +648,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:10.000Z">2019-10-21</time></div>
                     <a href="/2019/10/21/luogu-p1850/" class="has-link-black-ter is-size-6">Luogu P1850 [NOIP 2016] 换教室</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                     </p>
                 </div>
             </div>
