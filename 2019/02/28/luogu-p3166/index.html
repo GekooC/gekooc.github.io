@@ -16,7 +16,7 @@
 <meta property="og:description" content="喜闻乐见的数学题">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-15T10:00:00.025Z">
+<meta property="og:updated_time" content="2019-10-23T09:23:43.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P3166 [CQOI2014]数三角形		">
 <meta name="twitter:description" content="喜闻乐见的数学题">
@@ -163,12 +163,12 @@
         <div class="content">
             <p>喜闻乐见的数学题</p>
 <a id="more"></a>
-<h1 id="Luogu-P3166-CQOI2014-数三角形"><a href="#Luogu-P3166-CQOI2014-数三角形" class="headerlink" title="Luogu P3166 [CQOI2014]数三角形"></a><a href="https://www.luogu.org/problemnew/show/P3166" target="_blank" rel="noopener">Luogu P3166 [CQOI2014]数三角形</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个$n \\times m$的网格，请计算三点都在格点上的三角形共有多少个。注意三角形的三点不能共线。</p>
+<h1 id="Luogu-P3166-CQOI2014-数三角形"><a href="#Luogu-P3166-CQOI2014-数三角形" class="headerlink" title="Luogu P3166 [CQOI2014]数三角形"></a><a href="https://www.luogu.org/problemnew/show/P3166" target="_blank" rel="noopener">Luogu P3166 [CQOI2014]数三角形</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个$n \times m$的网格，请计算三点都在格点上的三角形共有多少个。注意三角形的三点不能共线。</p>
 <h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>输入一行，包含两个空格分隔的正整数m和n。</p>
 <h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出一个正整数，为所求三角形数量。</p>
 <h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>1&lt;=m,n&lt;=1000</p>
 <hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>$n\\times m$的网格中共有$(n+1)(m+1)$个点,其中选3个点的方法数共有$C_{(n + 1)(m + 1)}^3$种.为构成三角形,须除去三点共线的情况.横向和纵向共线数很显然,为$mC_{n+1}^3+nC_{m+1}^3$种.而斜向就比较复杂. 首先,斜向共有两个方向,我们只研究一个就行,将结果×2. 然后仔细思考可以发现每条落在格点上的直线必然是由最短的一条线段延伸,设这条线段的端点为(0,0),(x,y),xy必然互素.而之后直线在格点上的点的横纵坐标必然为(kx,ky).稍加整理后显然可得斜向共线情况数为: $\\sum_{i=1}^m\\sum_{j=1}^n(gcd(i,j)-1)\\times(m-i+1)\\times(n-j+1)\\times 2$. 最终,$ans=C_{(n + 1)(m + 1)}^3-mC_{n+1}^3-nC_{m+1}^3-\\sum_{i=1}^m\\sum_{j=1}^n(gcd(i,j)-1)\\times(m-i+1)\\times(n-j+1)\\times 2$</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>$n\times m$的网格中共有$(n+1)(m+1)$个点,其中选3个点的方法数共有$C_{(n + 1)(m + 1)}^3$种.为构成三角形,须除去三点共线的情况.横向和纵向共线数很显然,为$mC_{n+1}^3+nC_{m+1}^3$种.而斜向就比较复杂. 首先,斜向共有两个方向,我们只研究一个就行,将结果×2. 然后仔细思考可以发现每条落在格点上的直线必然是由最短的一条线段延伸,设这条线段的端点为(0,0),(x,y),xy必然互素.而之后直线在格点上的点的横纵坐标必然为(kx,ky).稍加整理后显然可得斜向共线情况数为: $\sum_{i=1}^m\sum_{j=1}^n(gcd(i,j)-1)\times(m-i+1)\times(n-j+1)\times 2$. 最终,$ans=C_{(n + 1)(m + 1)}^3-mC_{n+1}^3-nC_{m+1}^3-\sum_{i=1}^m\sum_{j=1}^n(gcd(i,j)-1)\times(m-i+1)\times(n-j+1)\times 2$</p>
 <hr>
 <p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> m, n;</span><br><span class="line">    ll ans;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function">ll <span class="hljs-title">C</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">        ll ret = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) ret = ret * (ll) (n - m + i) / i;</span><br><span class="line">        <span class="hljs-keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">GCD</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<span class="hljs-keyword">return</span> b == <span class="hljs-number">0</span> ? a : GCD(b, a % b);&#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;m, &amp;n);</span><br><span class="line">        ans = C((m + <span class="hljs-number">1</span>) * (n + <span class="hljs-number">1</span>), <span class="hljs-number">3</span>) - (n + <span class="hljs-number">1</span>) * C((m + <span class="hljs-number">1</span>), <span class="hljs-number">3</span>) - (m + <span class="hljs-number">1</span>) * C((n + <span class="hljs-number">1</span>), <span class="hljs-number">3</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                ans -= (ll) (GCD(i, j) - <span class="hljs-number">1</span>) * (m - i + <span class="hljs-number">1</span>) * (n - j + <span class="hljs-number">1</span>) * <span class="hljs-number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    Gekoo::QAQ();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
@@ -279,7 +279,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        91
+                        94
                     </p>
                 </div>
             </div>
@@ -520,6 +520,63 @@
         
         <article class="media">
             
+            <a href="/2019/10/23/luogu-p1979/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="luogu-p1979">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T13:25:08.000Z">2019-10-23</time></div>
+                    <a href="/2019/10/23/luogu-p1979/" class="has-link-black-ter is-size-6">luogu-p1979</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/23/luogu-p2827/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="luogu-p2827">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T13:24:59.000Z">2019-10-23</time></div>
+                    <a href="/2019/10/23/luogu-p2827/" class="has-link-black-ter is-size-6">luogu-p2827</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/23/luogu-p3953/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="luogu-p3953">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T13:24:53.000Z">2019-10-23</time></div>
+                    <a href="/2019/10/23/luogu-p3953/" class="has-link-black-ter is-size-6">luogu-p3953</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/21/luogu-p3959/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P3959 [NOIP 2017] 宝藏">
@@ -530,63 +587,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:32.000Z">2019-10-21</time></div>
                     <a href="/2019/10/21/luogu-p3959/" class="has-link-black-ter is-size-6">Luogu P3959 [NOIP 2017] 宝藏</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/21/luogu-p5021/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P5021 [NOIP 2018] 赛道修建">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:25.000Z">2019-10-21</time></div>
-                    <a href="/2019/10/21/luogu-p5021/" class="has-link-black-ter is-size-6">Luogu P5021 [NOIP 2018] 赛道修建</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/21/luogu-p1312/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P1312 [NOIP 2011] Mayan游戏">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:16.000Z">2019-10-21</time></div>
-                    <a href="/2019/10/21/luogu-p1312/" class="has-link-black-ter is-size-6">Luogu P1312 [NOIP 2011] Mayan游戏</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/21/luogu-p1850/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P1850 [NOIP 2016] 换教室">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:10.000Z">2019-10-21</time></div>
-                    <a href="/2019/10/21/luogu-p1850/" class="has-link-black-ter is-size-6">Luogu P1850 [NOIP 2016] 换教室</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                     </p>
@@ -623,7 +623,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>

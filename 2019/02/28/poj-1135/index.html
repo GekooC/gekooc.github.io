@@ -165,7 +165,7 @@
 <a id="more"></a>
 <h1 id="POJ1135-Domino-Effect"><a href="#POJ1135-Domino-Effect" class="headerlink" title="POJ1135 Domino Effect"></a><a href="http://poj.org/problem?id=1135" target="_blank" rel="noopener">POJ1135 Domino Effect</a></h1><h2 id="人话版题面："><a href="#人话版题面：" class="headerlink" title="人话版题面："></a>人话版题面：</h2><p>给一无向图,从节点1开始推骨牌,骨牌运动速度为1m/s,求出最后一个骨牌的落地时间.</p>
 <hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>先求最短路,找出最短路中最大值,即为落在节点上的最长时间. 再枚举落在边上的最长时间,画图手推可得,落在边$(u,v)$上的时间为$\\frac{dis(u)+dis(v)+val}{2}$. 最后比较一下大小对应输出. 由于我不良的代码习惯导致一直WA,我忏悔</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>先求最短路,找出最短路中最大值,即为落在节点上的最长时间. 再枚举落在边上的最长时间,画图手推可得,落在边$(u,v)$上的时间为$\frac{dis(u)+dis(v)+val}{2}$. 最后比较一下大小对应输出. 由于我不良的代码习惯导致一直WA,我忏悔</p>
 <hr>
 <p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;deque&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;utility&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 500005</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span></span><br><span class="line">        <span class="hljs-keyword">int</span> to, nxt, val;</span><br><span class="line">    &#125;e[N &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> n, m, ecnt, head[N], dis[N], cnt;</span><br><span class="line">    <span class="hljs-keyword">bool</span> vis[N];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">AddEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> to, <span class="hljs-keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        e[++ecnt].to = to, e[ecnt].val = val, e[ecnt].nxt = head[f], head[f] = ecnt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Dijkstra</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(dis, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(dis));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="hljs-built_in">std</span>::priority_queue&lt; <span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; &gt; q;</span><br><span class="line">        q.push(<span class="hljs-built_in">std</span>::make_pair(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>));</span><br><span class="line">        dis[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> u = q.top().second;</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="hljs-keyword">if</span> (vis[u]) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            vis[u] = <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> v = e[i].to, val = e[i].val;</span><br><span class="line">                <span class="hljs-keyword">if</span> (dis[v] &gt; dis[u] + val) &#123;</span><br><span class="line">                    dis[v] = dis[u] + val;</span><br><span class="line">                    q.push(<span class="hljs-built_in">std</span>::make_pair(-dis[v], v));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        ecnt = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(e, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(e));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(head, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(head));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">QAQ</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">            <span class="hljs-keyword">if</span> (!n &amp;&amp; !m) <span class="hljs-keyword">break</span>;</span><br><span class="line">            init();</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> a, b, l;</span><br><span class="line">                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;l);</span><br><span class="line">                AddEdge(a, b, l);</span><br><span class="line">                AddEdge(b, a, l);</span><br><span class="line">            &#125;</span><br><span class="line">            Dijkstra(<span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">double</span> mx_pt = <span class="hljs-number">0.0</span>;</span><br><span class="line">            <span class="hljs-keyword">int</span> pt = <span class="hljs-number">0</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (dis[i] &gt;= mx_pt) &#123;</span><br><span class="line">                    mx_pt = dis[i];</span><br><span class="line">                    pt = i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">double</span> mx_e = <span class="hljs-number">0.0</span>;</span><br><span class="line">            <span class="hljs-keyword">int</span> lpt = <span class="hljs-number">0</span>, rpt = <span class="hljs-number">0</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> u = <span class="hljs-number">1</span>; u &lt;= n; u++) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">                    <span class="hljs-keyword">int</span> v = e[i].to, val = e[i].val;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (mx_e &lt;= (<span class="hljs-keyword">double</span>) (dis[u] + dis[v] + val) / <span class="hljs-number">2.0</span>) &#123;</span><br><span class="line">                        mx_e = (<span class="hljs-keyword">double</span>) (dis[u] + dis[v] + val) / <span class="hljs-number">2.0</span>;</span><br><span class="line">                        lpt = <span class="hljs-built_in">std</span>::min(u, v), rpt = <span class="hljs-built_in">std</span>::max(u, v);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"System #%d\n"</span>, ++cnt);</span><br><span class="line">            <span class="hljs-keyword">if</span> (mx_pt &gt;= mx_e) &#123;</span><br><span class="line">                <span class="hljs-built_in">printf</span>(<span class="hljs-string">"The last domino falls after %.1f seconds, at key domino %d.\n"</span>, mx_pt, pt);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-built_in">printf</span>(<span class="hljs-string">"The last domino falls after %.1f seconds, between key dominoes %d and %d.\n"</span>, mx_e, lpt, rpt);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-built_in">puts</span>(<span class="hljs-string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Gekoo::QAQ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
@@ -276,7 +276,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        91
+                        94
                     </p>
                 </div>
             </div>
@@ -517,6 +517,63 @@
         
         <article class="media">
             
+            <a href="/2019/10/23/luogu-p1979/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="luogu-p1979">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T13:25:08.000Z">2019-10-23</time></div>
+                    <a href="/2019/10/23/luogu-p1979/" class="has-link-black-ter is-size-6">luogu-p1979</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/23/luogu-p2827/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="luogu-p2827">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T13:24:59.000Z">2019-10-23</time></div>
+                    <a href="/2019/10/23/luogu-p2827/" class="has-link-black-ter is-size-6">luogu-p2827</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/23/luogu-p3953/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="luogu-p3953">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-23T13:24:53.000Z">2019-10-23</time></div>
+                    <a href="/2019/10/23/luogu-p3953/" class="has-link-black-ter is-size-6">luogu-p3953</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/21/luogu-p3959/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P3959 [NOIP 2017] 宝藏">
@@ -527,63 +584,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:32.000Z">2019-10-21</time></div>
                     <a href="/2019/10/21/luogu-p3959/" class="has-link-black-ter is-size-6">Luogu P3959 [NOIP 2017] 宝藏</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/21/luogu-p5021/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P5021 [NOIP 2018] 赛道修建">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:25.000Z">2019-10-21</time></div>
-                    <a href="/2019/10/21/luogu-p5021/" class="has-link-black-ter is-size-6">Luogu P5021 [NOIP 2018] 赛道修建</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/21/luogu-p1312/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P1312 [NOIP 2011] Mayan游戏">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:16.000Z">2019-10-21</time></div>
-                    <a href="/2019/10/21/luogu-p1312/" class="has-link-black-ter is-size-6">Luogu P1312 [NOIP 2011] Mayan游戏</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/21/luogu-p1850/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P1850 [NOIP 2016] 换教室">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-21T13:17:10.000Z">2019-10-21</time></div>
-                    <a href="/2019/10/21/luogu-p1850/" class="has-link-black-ter is-size-6">Luogu P1850 [NOIP 2016] 换教室</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                     </p>
@@ -620,7 +620,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
