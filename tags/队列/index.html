@@ -2,24 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Luogu P3901 数列找不同 - Gekoo&#39;s Notebook</title>
+<title>标签: 队列 - Gekoo&#39;s Notebook</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="简单的莫队">
-<meta name="keywords" content="莫队">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Luogu P3901 数列找不同">
-<meta property="og:url" content="https://gekoo.xyz/2019/05/29/luogu-p3901/index.html">
+    <meta name="description" content="Note down my life.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gekoo&#39;s Notebook">
+<meta property="og:url" content="https://gekoo.xyz/tags/队列/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="简单的莫队">
+<meta property="og:description" content="Note down my life.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-23T09:23:18.004Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luogu P3901 数列找不同">
-<meta name="twitter:description" content="简单的莫队">
+<meta name="twitter:title" content="Gekoo&#39;s Notebook">
+<meta name="twitter:description" content="Note down my life.">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -96,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt="Luogu P3901 数列找不同" height="28">
+                <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
             
             </a>
         </div>
@@ -133,12 +131,23 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">队列</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-29T14:40:15.000Z">2019-05-29</time>
+                <time class="level-item has-text-grey" datetime="2019-10-23T13:24:59.000Z">2019-10-23</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/题解/">题解</a>
@@ -148,7 +157,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 272 个字)
+                    3 分钟 读完 (大约 386 个字)
                 </span>
                 
                 
@@ -157,29 +166,23 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Luogu P3901 数列找不同
+                <a class="has-link-black-ter" href="/2019/10/23/luogu-p2827/">Luogu P2827 [NOIP2016] 蚯蚓</a>
             
         </h1>
         <div class="content">
-            <p>简单的莫队</p>
-<a id="more"></a>
-<h1 id="Luogu-P3901-数列找不同"><a href="#Luogu-P3901-数列找不同" class="headerlink" title="Luogu P3901 数列找不同"></a><a href="https://www.luogu.org/problemnew/show/P3901" target="_blank" rel="noopener">Luogu P3901 数列找不同</a></h1><hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>维护区间<code>[l, r]</code>出现了几种数字, 若出现数等于<code>r - l + 1</code>则数列互不相同,反之则有相同.</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 100000 + 233</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, q, block, kind;</span><br><span class="line"><span class="hljs-keyword">int</span> pos[N], a[N], appear[N];</span><br><span class="line"><span class="hljs-keyword">bool</span> ans[N];</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> l, r, id;</span><br><span class="line">	<span class="hljs-keyword">friend</span> <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt;(Node a, Node b) &#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> (pos[a.l] ^ pos[b.l]) ? pos[a.l] &lt; pos[b.l] : ((pos[a.l] &amp; <span class="hljs-number">1</span>) ? a.r &lt; b.r : a.r &gt; b.r);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; nd[N];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">R</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>; <span class="hljs-keyword">char</span> c = getchar();</span><br><span class="line">	<span class="hljs-keyword">while</span> (!<span class="hljs-built_in">isdigit</span>(c)) c = getchar();</span><br><span class="line">	<span class="hljs-keyword">while</span> (<span class="hljs-built_in">isdigit</span>(c)) a = a * <span class="hljs-number">10</span> + c - <span class="hljs-string">'0'</span>, c = getchar();</span><br><span class="line">	<span class="hljs-keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	++appear[x];</span><br><span class="line">	<span class="hljs-keyword">if</span> (appear[x] == <span class="hljs-number">1</span>) ++kind;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Remove</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	--appear[x];</span><br><span class="line">	<span class="hljs-keyword">if</span> (!appear[x]) --kind;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">	n = R(), q = R();</span><br><span class="line">	block = (<span class="hljs-keyword">int</span>) <span class="hljs-built_in">sqrt</span>(n);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">		a[i] = R(), pos[i] = (i - <span class="hljs-number">1</span>) / block + <span class="hljs-number">1</span>;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= q; i++)</span><br><span class="line">		nd[i].l = R(), nd[i].r = R(), nd[i].id = i;</span><br><span class="line">	<span class="hljs-built_in">std</span>::sort(nd + <span class="hljs-number">1</span>, nd + <span class="hljs-number">1</span> + q);</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>, l = <span class="hljs-number">1</span>, r = <span class="hljs-number">0</span>; i &lt;= q; i++) &#123;</span><br><span class="line">		<span class="hljs-keyword">while</span> (l &lt; nd[i].l) Remove(a[l++]);</span><br><span class="line">		<span class="hljs-keyword">while</span> (l &gt; nd[i].l) Add(a[--l]);</span><br><span class="line">		<span class="hljs-keyword">while</span> (r &lt; nd[i].r) Add(a[++r]);</span><br><span class="line">		<span class="hljs-keyword">while</span> (r &gt; nd[i].r) Remove(a[r--]);</span><br><span class="line">		ans[nd[i].id] = (kind == nd[i].r - nd[i].l + <span class="hljs-number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= q; i++)</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s\n"</span>, ans[i] ? <span class="hljs-string">"Yes"</span> : <span class="hljs-string">"No"</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>qwq</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/莫队/">莫队</a>
+                <a class="button is-size-7 is-light" href="/2019/10/23/luogu-p2827/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
@@ -187,49 +190,9 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/29/luogu-p3674/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Luogu P3674 小清新人渣的本愿</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/09/luogu-p4396/">
-                <span class="level-item">Luogu P4396 [AHOI2013]作业</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="valine-thread" class="content"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: false,
-        verify: false,
-        app_id: '05RiuFrnlnB47YsbQox8oy8M-gzGzoHsz',
-        app_key: '7ft8sFltyxrQmh2z60MsMKdN',
-        placeholder: '你知道吗,这个博客是有评论系统的QAQ'
-    });
-</script>
-
-    </div>
-</div>
 </div>
                 
                 
@@ -1368,7 +1331,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt="Luogu P3901 数列找不同" height="28">
+                    <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
                 
                 </a>
                 <p class="is-size-7">
