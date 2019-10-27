@@ -7,22 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>PigeonOJ 立项啦 - Gekoo&#39;s Notebook</title>
+<title>PigeonOJ - Gekoo&#39;s Notebook</title>
 
 
-    <meta name="description" content="Pigeon Online Judge，一个用于算法竞赛的评测系统解决方案。">
-<meta name="keywords" content="项目">
+    <meta name="keywords" content="项目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PigeonOJ 立项啦">
+<meta property="og:title" content="PigeonOJ">
 <meta property="og:url" content="https://gekoo.xyz/2050/10/23/pigeonoj/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="Pigeon Online Judge，一个用于算法竞赛的评测系统解决方案。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-23T09:22:35.917Z">
+<meta property="og:updated_time" content="2019-10-27T03:34:38.135Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PigeonOJ 立项啦">
-<meta name="twitter:description" content="Pigeon Online Judge，一个用于算法竞赛的评测系统解决方案。">
+<meta name="twitter:title" content="PigeonOJ">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -83,7 +80,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt="PigeonOJ 立项啦" height="28">
+                <img src="/pics/site_logo.png" alt="PigeonOJ" height="28">
             
             </a>
         </div>
@@ -145,7 +142,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 33 个字)
+                    1 分钟 读完 (大约 127 个字)
                 </span>
                 
                 
@@ -159,14 +156,17 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                PigeonOJ 立项啦
+                PigeonOJ
             
         </h1>
         <div class="content">
-            <p>Pigeon Online Judge，一个用于算法竞赛的评测系统解决方案。</p>
-<p><img src="/pics/OJLogo.PNG" alt="PigeonOJ"></p>
+            <p><img src="/pics/OJLogo.PNG" alt="PigeonOJ"></p>
 <a id="more"></a>
-<p>19.10.23 PigeonOJ正式立项啦</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Pigeon Online Judge System，一个用于算法竞赛的在线评测系统。</p>
+<p>主要代码使用Python。</p>
+<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>PigeonOJ的架构参考了<a href="https://github.com/syzoj/syzoj" target="_blank" rel="noopener">SYZOJ</a>，分为Web端和Judge端。</p>
+<p>Web端前后端分离，前端使用Vue，后端使用Flask，前后端通过Ajax完成数据交互。</p>
+<p>使用Celery+Redis作为消息队列，Judge端通过消息队列获取任务，通过Http回传评测结果。</p>
 
         </div>
         
@@ -193,8 +193,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/27/luogu-p2221/">
-                <span class="level-item">Luogu P2221 [HAOI2012] 高速公路</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/10/27/noip/">
+                <span class="level-item">NOIP (CSP) 题目聚合 &amp; 部分一句话题解</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -344,6 +344,25 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#简介">
+        <span class="has-mr-6">1</span>
+        <span>简介</span>
+        </a></li><li>
+        <a class="is-flex" href="#架构">
+        <span class="has-mr-6">2</span>
+        <span>架构</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
 
     
         <div class="card widget">
@@ -515,7 +534,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt="PigeonOJ 立项啦" height="28">
+                    <img src="/pics/site_logo.png" alt="PigeonOJ" height="28">
                 
                 </a>
                 <p class="is-size-7">
