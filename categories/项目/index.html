@@ -141,7 +141,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2050-10-23T08:42:33.000Z">2050-10-23</time>
+                <time class="level-item has-text-grey" datetime="2019-10-23T08:42:33.000Z">2019-10-23</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/项目/">项目</a>
@@ -160,7 +160,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2050/10/23/pigeonoj/">PigeonOJ</a>
+                <a class="has-link-black-ter" href="/2019/10/23/pigeonoj/">PigeonOJ</a>
             
         </h1>
         <div class="content">
@@ -171,7 +171,7 @@
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2050/10/23/pigeonoj/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2019/10/23/pigeonoj/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -661,5 +661,21 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>

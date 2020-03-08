@@ -7,20 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>归档: 2050/10 - Gekoo&#39;s Notebook</title>
+<title>PigeonOJ - Gekoo&#39;s Notebook</title>
 
 
-    <meta name="description" content="幸福往往是摸得透彻，而敬业的心却常常隐藏">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gekoo&#39;s Notebook">
-<meta property="og:url" content="https://gekoo.xyz/archives/2050/10/index.html">
+    <meta name="keywords" content="项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PigeonOJ">
+<meta property="og:url" content="https://gekoo.xyz/2019/10/23/pigeonoj/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
-<meta property="og:description" content="幸福往往是摸得透彻，而敬业的心却常常隐藏">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
+<meta property="og:updated_time" content="2020-03-08T11:15:18.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gekoo&#39;s Notebook">
-<meta name="twitter:description" content="幸福往往是摸得透彻，而敬业的心却常常隐藏">
+<meta name="twitter:title" content="PigeonOJ">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
 <meta name="twitter:site" content="https://twitter.com/GekooC">
@@ -81,7 +80,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
+                <img src="/pics/site_logo.png" alt="PigeonOJ" height="28">
             
             </a>
         </div>
@@ -109,6 +108,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -123,38 +126,112 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        十月 2050
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-23T08:42:33.000Z">2019-10-23</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2050-10-23T08:42:33.000Z">2050-10-23</time>
-                        <a href="/2050/10/23/pigeonoj/" class="title has-link-black-ter is-size-6 has-text-weight-normal">PigeonOJ</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/项目/">项目</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/项目/">项目</a>
                 </div>
-            </article>
-        
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 138 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                PigeonOJ
+            
+        </h1>
+        <div class="content">
+            <p><img src="https://img.paulzzh.tech/touhou/random" alt="Welcome to Gekoo&#39;s Blog"></p>
+<a id="more"></a>
+<p><img src="/pics/OJLogo.PNG" alt="PigeonOJ"></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Pigeon Online Judge System，一个用于算法竞赛的在线评测系统。</p>
+<p>主要代码使用Python。</p>
+<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>PigeonOJ的架构参考了<a href="https://github.com/syzoj/syzoj" target="_blank" rel="noopener">SYZOJ</a>，分为Web端和Judge端。</p>
+<p>Web端前后端分离，前端使用Vue，后端使用Flask，前后端通过Ajax完成数据交互。</p>
+<p>使用Celery+Redis作为消息队列，Judge端通过消息队列获取任务，通过Http回传评测结果。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/项目/">项目</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/23/luogu-p3953/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Luogu P3953 [NOIP 2017] 逛公园</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/21/luogu-p3959/">
+                <span class="level-item">Luogu P3959 [NOIP 2017] 宝藏</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '05RiuFrnlnB47YsbQox8oy8M-gzGzoHsz',
+        app_key: '7ft8sFltyxrQmh2z60MsMKdN',
+        placeholder: '你知道吗,这个博客是有评论系统的 QwQ'
+    });
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -275,6 +352,26 @@
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#简介">
+        <span class="has-mr-6">1</span>
+        <span>简介</span>
+        </a></li><li>
+        <a class="is-flex" href="#架构">
+        <span class="has-mr-6">2</span>
+        <span>架构</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content level-item">
@@ -453,7 +550,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt="Gekoo&#39;s Notebook" height="28">
+                    <img src="/pics/site_logo.png" alt="PigeonOJ" height="28">
                 
                 </a>
                 <p class="is-size-7">
@@ -629,5 +726,21 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>
