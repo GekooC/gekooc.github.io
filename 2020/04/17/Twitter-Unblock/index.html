@@ -18,7 +18,7 @@
 <meta property="og:description" content="老子再也不拉清单了">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2020-04-17T05:13:11.303Z">
+<meta property="og:updated_time" content="2020-04-17T05:23:22.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Twitter批量Unblock">
 <meta name="twitter:description" content="老子再也不拉清单了">
@@ -140,7 +140,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 198 个字)
+                    1 分钟 读完 (大约 196 个字)
                 </span>
                 
                 
@@ -160,7 +160,7 @@
         <div class="content">
             <p>老子再也不拉清单了</p>
 <a id="more"></a>
-<p>在Twitter上看到了smzdban，声称可以block小粉红，于是就试着用了，准备拉清单把Twitter上的小粉红b了。结果发现误b率极高，搜了一下才发现这玩意臭名昭著。面对5w+的block我属实unblock不过来，Google了下发现好像只能用js或者Python。由于Python库需要申请Twitter开发者，而我着急用，于是就用js写了个解ban目前可见账号+自动翻页。</p>
+<p>在Twitter上看到了smzdban，声称可以block小粉红，于是就试着用了，准备拉清单把Twitter上的nmslese b了。结果发现误b率好高，太多我觉得还好的账号也被b了。面对5w+的block我属实unblock不过来，Google了下发现好像只能用js或者Python。由于Python库需要申请Twitter开发者，而我着急用，于是就用js写了个解ban目前可见账号+自动翻页。</p>
 <figure class="highlight lisp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let autoUnblock = setInterval(<span class="hljs-name">function</span>() &#123;</span><br><span class="line">    window.scrollBy(<span class="hljs-number">0</span>, window.innerHeight)<span class="hljs-comment">;</span></span><br><span class="line">    document.querySelectorAll('[class=<span class="hljs-string">"css-18t94o4 css-1dbjc4n r-1dgebii r-42olwf r-sdzlij r-1phboty r-rs99b7 r-1w2pmg r-1vuscfd r-1dhvaqw r-1fneopy r-o7ynqc r-6416eg r-lrvibr"</span>]').forEach(<span class="hljs-name">function</span>(<span class="hljs-name">account</span>) &#123;</span><br><span class="line">        if (<span class="hljs-name">account</span>.textContent == <span class="hljs-string">"已屏蔽"</span>) &#123;</span><br><span class="line">            account.click()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)<span class="hljs-comment">;</span></span><br><span class="line">&#125;, <span class="hljs-number">1000</span>)<span class="hljs-comment">;</span></span><br></pre></td></tr></table></figure>
         </div>
         
@@ -706,21 +706,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>
