@@ -136,7 +136,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 933 个字)
+                    6 分钟 读完 (大约 971 个字)
                 </span>
                 
                 
@@ -149,105 +149,19 @@
             
         </h1>
         <div class="content">
-            <a id="more"></a>
-<h2 id="机器配置"><a href="#机器配置" class="headerlink" title="机器配置"></a>机器配置</h2><table>
-<thead>
-<tr>
-<th>规格</th>
-<th>信息</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CPU</td>
-<td>intel core i5-8250U</td>
-</tr>
-<tr>
-<td>RAM</td>
-<td>三星 DDR4 2400MHz</td>
-</tr>
-<tr>
-<td>SSD</td>
-<td>三星 PM961</td>
-</tr>
-<tr>
-<td>集成显卡</td>
-<td>intel UHD 620</td>
-</tr>
-<tr>
-<td>独立显卡</td>
-<td>Nvidia MX150</td>
-</tr>
-<tr>
-<td>显示器</td>
-<td>BOE NV156FHM-N61 FHD 1920x1080 (15.6 inch)</td>
-</tr>
-<tr>
-<td>声卡</td>
-<td>realtek ALC298 (节点:30/99)</td>
-</tr>
-<tr>
-<td>网卡</td>
-<td>Intel Dual Band Wireless-AC 8265</td>
-</tr>
-<tr>
-<td>读卡器</td>
-<td>realtek RTS5129</td>
-</tr>
-</tbody>
-</table>
-<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><p>首先目前黑苹果分为 Clover 和 OpenCore 两个版本，OC是趋势，但还有很多问题，于是我安装了问题相对较少的 Clover 版本。</p>
-<p>根据 GitHub issue，目前 Clover 版本存在以下问题：</p>
-<ul>
-<li>有线网在macOS 10.15下可能无法工作<ul>
-<li>我没有遇到</li>
-</ul>
-</li>
-<li>指纹传感器无法工作<ul>
-<li>直接禁用</li>
-</ul>
-</li>
-<li>英特尔蓝牙可能会导致睡眠问题，并且不支持部分蓝牙设备<ul>
-<li>我没有遇到</li>
-</ul>
-</li>
-<li>独立显卡无法工作<ul>
-<li>黑苹果老问题了，直接禁用</li>
-</ul>
-</li>
-<li>英特尔无线网卡无法工作<ul>
-<li>同样老问题，需要另买网卡</li>
-</ul>
-</li>
-<li>瑞昱USB SD读卡器无法工作<ul>
-<li>直接禁用</li>
-</ul>
-</li>
-</ul>
-<p>具体可以上<a href="https://github.com/daliansky/XiaoMi-Pro-Hackintosh/blob/master/README_CN.md#clover%E7%89%88%E6%9C%AC%E7%9A%84%E7%9B%AE%E5%89%8D%E6%83%85%E5%86%B5" target="_blank" rel="noopener">GitHub仓库</a>看。</p>
-<h2 id="安装黑苹果"><a href="#安装黑苹果" class="headerlink" title="安装黑苹果"></a>安装黑苹果</h2><h3 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h3><ul>
-<li>一个8GiB以上容量的U盘，建议USB3.0。</li>
-<li>下载黑苹果镜像 <a href="https://blog.daliansky.net/" target="_blank" rel="noopener">@黑果小兵</a></li>
-<li>来自 <a href="https://bbs.xiaomi.cn/u-detail-72012316" target="_blank" rel="noopener">小米社区@jiajieit</a> 的Windows工具合集 <a href="https://mega.nz/#F!gNYEjKYK!qkdOH9dirKu96_SZ8cK95A" target="_blank" rel="noopener">MEGA网盘</a></li>
-<li>在 <a href="https://github.com/daliansky/XiaoMi-Pro" target="_blank" rel="noopener">GitHub releases页面</a> 下载最新的EFI</li>
-<li>用磁盘管理压缩一个空白分区用来安装黑苹果，我分了60G。</li>
-</ul>
-<h3 id="制作安装盘"><a href="#制作安装盘" class="headerlink" title="制作安装盘"></a>制作安装盘</h3><p>用管理员权限打开TransMac。右键点击你要制作的安装盘，选择Restore with Disk Image，选择下载好的镜像，提示格式化磁盘，选择OK。之后只需等待写盘完成。黑果小兵现在的镜像都自带了WEPE，很方便。</p>
-<p>写盘完成后，打开DiskGenius，打开安装盘的ESP分区，删除EFI目录。把下载好的EFI解压后拷贝进去。</p>
-<p>安装盘制作完成。</p>
-<h3 id="添加引导"><a href="#添加引导" class="headerlink" title="添加引导"></a>添加引导</h3><p>打开硬盘的ESP分区，把下载好的EFI拷贝进去，此时EFI文件夹中应该多出来了一个CLOVER文件夹。</p>
-<p>打开BOOTICE，选择磁盘。点击分区管理，给ESP分区分配一个盘符。关闭分区管理，选择UEFI，添加一个启动项，启动文件选择ESP分区下的\EFI\CLOVER\CLOVERX64.EFI。把CLOVER移到最上面。保存设置。</p>
-<p>进入BIOS，在Security 中给BIOS设置一个密码。点击Secure Boot Mode，改为Disabled，关闭安全启动。记得保存设置。</p>
-<h3 id="Extra：ESP分区扩容"><a href="#Extra：ESP分区扩容" class="headerlink" title="Extra：ESP分区扩容"></a>Extra：ESP分区扩容</h3><p>macOS需要EFI分区容量大于200M，如果容量不足，就需要扩容了。</p>
-<p>U盘启动到PE，使用分区工具删除MSR分区，把多出来的空间全部扩容到ESP分区。</p>
-<h3 id="安装macOS"><a href="#安装macOS" class="headerlink" title="安装macOS"></a>安装macOS</h3><p>U盘启动到macOS安装程序。先使用磁盘工具，把用来安装macOS的分区格式化成APFS格式。退出磁盘工具，开始按步骤安装，可能会重启数次，be patient。</p>
-<h2 id="后续工作"><a href="#后续工作" class="headerlink" title="后续工作"></a>后续工作</h2><p>最大的问题就是无线网卡驱动了，<a href="https://github.com/chris1111/Wireless-USB-Adapter-Clover" target="_blank" rel="noopener">https://github.com/chris1111/Wireless-USB-Adapter-Clover</a> 这个仓库可以解决绝大多数网卡的驱动问题。</p>
-<p>无线网卡的选购我推荐COMFAST-811ac，也就二十多块。</p>
-<p>我踩了坑：360随身WiFi就是个垃圾，闲置不如扔了: )</p>
-<p>其他优化之类可以去看其他博客了（（（</p>
-
+            <p>微软的设计语言，不好！</p>
+<p>加了苹果的设计语言，好！！</p>
+<p>我们苹果真的是太厉害了！！！</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/04/23/badapple/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -1248,5 +1162,21 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 </body>
 </html>
