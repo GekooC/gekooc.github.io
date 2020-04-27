@@ -165,10 +165,10 @@
         <div class="content">
             <p>poi~~~</p>
 <a id="more"></a>
-<h1 id="Luogu-P3469-POI2008-BLO-Blockade"><a href="#Luogu-P3469-POI2008-BLO-Blockade" class="headerlink" title="Luogu P3469 [POI2008]BLO-Blockade"></a><a href="https://www.luogu.org/problemnew/show/P3469" target="_blank" rel="noopener">Luogu P3469 [POI2008]BLO-Blockade</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目LYD翻译版"><a href="#题目LYD翻译版" class="headerlink" title="题目LYD翻译版:"></a>题目LYD翻译版:</h4><p>Byteotia 城市有 n 个城镇, m 条双向道路, 其中 $ n \le 10 ^ 5, m \le 5 * 10 ^ 5$.每条道路连接两个不同的城镇,没有重复的道路,所有城镇联通.把城镇看作节点,把道路看作边.容易发现,整个城市构成一张无向图. 你需要输出 n 个整数,其中第 i 个整数表示把与节点 i 关联的所有边去掉之后(不去掉节点 i 本身),无向图中有多少有序点对 (x, y), 满足 x 和 y 不联通.</p>
+<h1 id="Luogu-P3469-POI2008-BLO-Blockade"><a href="#Luogu-P3469-POI2008-BLO-Blockade" class="headerlink" title="Luogu P3469 [POI2008]BLO-Blockade"></a><a href="https://www.luogu.org/problemnew/show/P3469" target="_blank" rel="noopener">Luogu P3469 [POI2008]BLO-Blockade</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目LYD翻译版"><a href="#题目LYD翻译版" class="headerlink" title="题目LYD翻译版:"></a>题目LYD翻译版:</h4><p>Byteotia 城市有 n 个城镇, m 条双向道路, 其中 $ n \\le 10 ^ 5, m \\le 5 * 10 ^ 5$.每条道路连接两个不同的城镇,没有重复的道路,所有城镇联通.把城镇看作节点,把道路看作边.容易发现,整个城市构成一张无向图. 你需要输出 n 个整数,其中第 i 个整数表示把与节点 i 关联的所有边去掉之后(不去掉节点 i 本身),无向图中有多少有序点对 (x, y), 满足 x 和 y 不联通.</p>
 <h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行读入n，m，分别是城镇数目和道路数目 城镇编号1~n 接下来m行每行两个数字a,b，表示a和b之间有一条无向边</p>
 <h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>输出n行，每行一个数字，为第i个城镇被锁时不能发生的访问的数量。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>$ 1\le n\le 100,000, 1\le m\le 500,000 $.</p>
+<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>$ 1\\le n\\le 100,000, 1\\le m\\le 500,000 $.</p>
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>首先,如果 i 是割点,去掉 i 后其余城市仍然联通, <code>ans[i] = 2 * (i - 1)</code>.(点对是有序的) 若 i 不是割点,显然,原图会裂成多个联通块. 1.i自己就是一个联通块 2.i的子树上的联通块 3.不在i子树的联通块 分开求和即可. 但分别去求复杂度过高,无法承受.可以在Tarjan过程中求出每个子树的大小,计算时直接使用. 注释里还有丶东西</p>
 <hr>

@@ -168,7 +168,7 @@
 <h1 id="Luogu-P4503-CTSC2014-企鹅QQ"><a href="#Luogu-P4503-CTSC2014-企鹅QQ" class="headerlink" title="Luogu P4503 [CTSC2014] 企鹅QQ"></a><a href="https://www.luogu.org/problemnew/show/P4503" target="_blank" rel="noopener">Luogu P4503 [CTSC2014] 企鹅QQ</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述:"></a>题目描述:</h4><p>小Q是PenguinQQ网站的管理员，他最近在进行一项有趣的研究——哪些账户是同一个人注册的。经过长时间的分析，小Q发现同一个人注册的账户名称总是很相似的，例如Penguin1，Penguin2，Penguin3……于是小Q决定先对这种相似的情形进行统计。 小Q定义，若两个账户名称是相似的，当且仅当这两个字符串等长且恰好只有一位不同。例如“Penguin1”和“Penguin2”是相似的，但“Penguin1”和“2Penguin”不是相似的。而小Q想知道，在给定的n 个账户名称中，有多少对是相似的。 为了简化你的工作，小Q给你的N 个字符串长度均等于L ，且只包含大小写字母、数字、下划线以及‘@’共64种字符，而且不存在两个相同的账户名称。</p>
 <h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行包含三个正整数N ，L ，S 。其中N 表示账户名称数量，L 表示账户名称长度，S 用来表示字符集规模大小，它的值只可能为2或64。 若S 等于2，账户名称中只包含字符‘0’和‘1’共2种字符； 若S 等于64，账户名称中可能包含大小写字母、数字、下划线以及‘@’共64种字符。 随后N 行，每行一个长度为L 的字符串，用来描述一个账户名称。数据保证N 个字符串是两两不同的。</p>
 <h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>仅一行一个正整数，表示共有多少对相似的账户名称。</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>$N \le 30000, L \le 200$</p>
+<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>$N \\le 30000, L \\le 200$</p>
 <hr>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>S可以直接无视（（（ 把题目转换为人话：给一堆字符串，找出只有一个字符不同的字符串对数。 由于L的范围非常小，所以我们可以枚举不同字符的位置。 先预处理字符串从左往右的hash和从右往左的hash，然后在枚举时将左右两边的hash再hash一遍，把相同hash的去重并统计一下，输出对数就OK。</p>
 <hr>
