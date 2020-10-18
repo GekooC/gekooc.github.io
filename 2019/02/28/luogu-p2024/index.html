@@ -7,21 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title> Luogu P2024 [NOI2001]食物链		 - Gekoo&#39;s Notebook</title>
+<title>Luogu P2024 [NOI2001]食物链 - Gekoo&#39;s Notebook</title>
 
 
     <meta name="description" content="并查集">
-<meta name="keywords" content="并查集">
+<meta name="keywords" content="并查集,NOIP">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" Luogu P2024 [NOI2001]食物链		">
+<meta property="og:title" content="Luogu P2024 [NOI2001]食物链">
 <meta property="og:url" content="https://gekoo.xyz/2019/02/28/luogu-p2024/index.html">
 <meta property="og:site_name" content="Gekoo&#39;s Notebook">
 <meta property="og:description" content="并查集">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gekoo.xyz/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-23T09:24:55.388Z">
+<meta property="og:updated_time" content="2020-10-18T07:27:53.241Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" Luogu P2024 [NOI2001]食物链		">
+<meta name="twitter:title" content="Luogu P2024 [NOI2001]食物链">
 <meta name="twitter:description" content="并查集">
 <meta name="twitter:image" content="https://gekoo.xyz/images/og_image.png">
 <meta name="twitter:creator" content="@GekooC">
@@ -83,7 +83,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/pics/site_logo.png" alt=" Luogu P2024 [NOI2001]食物链		" height="28">
+                <img src="/pics/site_logo.png" alt="Luogu P2024 [NOI2001]食物链" height="28">
             
             </a>
         </div>
@@ -138,14 +138,14 @@
                 <time class="level-item has-text-grey" datetime="2019-02-28T08:11:56.000Z">2019-02-28</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 631 个字)
+                    2 分钟 读完 (大约 270 个字)
                 </span>
                 
                 
@@ -159,24 +159,13 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 Luogu P2024 [NOI2001]食物链		
+                Luogu P2024 [NOI2001]食物链
             
         </h1>
         <div class="content">
             <p>并查集</p>
 <a id="more"></a>
-<h1 id="Luogu-P2024-NOI2001-食物链"><a href="#Luogu-P2024-NOI2001-食物链" class="headerlink" title="Luogu P2024 [NOI2001]食物链"></a><a href="https://www.luogu.org/problemnew/show/P2024" target="_blank" rel="noopener">Luogu P2024 [NOI2001]食物链</a></h1><h2 id="题面："><a href="#题面：" class="headerlink" title="题面："></a>题面：</h2><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>动物王国中有三类动物 A , B , C , 这三类动物的食物链构成了有趣的环形. A 吃 B , B 吃 C , C 吃 A. 现有 N 个动物,以 1 － N 编号.每个动物都是 A , B , C 中的一种,但是我们并不知道 它到底是哪一种. 有人用两种说法对这 N 个动物所构成的食物链关系进行描述: 第一种说法是“1 X Y”，表示 X 和 Y 是同类. 第二种说法是“2 X Y”，表示 X 吃 Y . 此人对 N 个动物,用上述两种说法,一句接一句地说出 K 句话,这 K 句话有的是真 的,有的是假的.当一句话满足下列三条之一时,这句话就是假话,否则就是真话.</p>
-<ul>
-<li>当前的话与前面的某些真的话冲突,就是假话</li>
-<li>当前的话中 X 或 Y 比 N 大,就是假话</li>
-<li>当前的话表示 X 吃 X,就是假话</li>
-</ul>
-<p>你的任务是根据给定的 N 和 K 句话,输出假话的总数.</p>
-<h4 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h4><p>第一行两个整数 , N , K , 表示有 N 个动物, K 句话. 第二行开始每行一句话.</p>
-<h4 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h4><p>一行,一个整数,表示假话的总数.</p>
-<h4 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h4><p>1 ≤ N ≤ 5 ∗ 10^4 1 ≤ K ≤ 10^5</p>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h2><p>事拓展域并查集.将每个动物分成同类食物和敌人三个域. 设每句话第一个数为a, 矛盾的几种情况:</p>
+<p>事拓展域并查集.将每个动物分成同类食物和敌人三个域. 设每句话第一个数为a, 矛盾的几种情况:</p>
 <ul>
 <li>$x &gt; n || y &gt; n$</li>
 <li>$a = 1,x_{self} = y_{eat}$</li>
@@ -185,16 +174,14 @@
 <li>$a = 2, x_{self} = y_{eat}$</li>
 <li>$a = 2, x = y$</li>
 </ul>
-<hr>
-<p>代码:<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">50005</span>; </span><br><span class="line">    <span class="hljs-keyword">int</span> n, k, fa[N*<span class="hljs-number">3</span>], ans;<span class="hljs-comment">//1~n事同类,n~2n事食物,2n~3n事敌人.</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (x == fa[x]) <span class="hljs-keyword">return</span> x;</span><br><span class="line">        <span class="hljs-keyword">return</span> fa[x] = get(fa[x]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n * <span class="hljs-number">3</span>; i++) &#123;</span><br><span class="line">            fa[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a, x, y;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;a, &amp;x, &amp;y);</span><br><span class="line">            <span class="hljs-keyword">if</span> (x &gt; n || y &gt; n) &#123;</span><br><span class="line">                ++ans;</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">int</span> x_self = x, x_eat = x + n, x_enemy = x + <span class="hljs-number">2</span> * n;</span><br><span class="line">            <span class="hljs-keyword">int</span> y_self = y, y_eat = y + n, y_enemy = y + <span class="hljs-number">2</span> * n;</span><br><span class="line">            <span class="hljs-keyword">if</span> (a == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (get(x_self) == get(y_eat) || get(x_eat) == get(y_self)) &#123;</span><br><span class="line">                    ++ans;</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    fa[get(x_self)] = get(y_self);</span><br><span class="line">                    fa[get(x_eat)] = get(y_eat);</span><br><span class="line">                    fa[get(x_enemy)] = get(y_enemy);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (get(x_self) == get(y_self) || get(x_self) == get(y_eat) || x == y) &#123;</span><br><span class="line">                    ++ans;</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    fa[get(x_self)] = get(y_enemy);</span><br><span class="line">                    fa[get(x_eat)] = get(y_self);</span><br><span class="line">                    fa[get(x_enemy)] = get(y_eat);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    Gekoo::main();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Gekoo &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">50005</span>; </span><br><span class="line">    <span class="hljs-keyword">int</span> n, k, fa[N*<span class="hljs-number">3</span>], ans;<span class="hljs-comment">//1~n事同类,n~2n事食物,2n~3n事敌人.</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (x == fa[x]) <span class="hljs-keyword">return</span> x;</span><br><span class="line">        <span class="hljs-keyword">return</span> fa[x] = get(fa[x]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n * <span class="hljs-number">3</span>; i++) &#123;</span><br><span class="line">            fa[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a, x, y;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;a, &amp;x, &amp;y);</span><br><span class="line">            <span class="hljs-keyword">if</span> (x &gt; n || y &gt; n) &#123;</span><br><span class="line">                ++ans;</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">int</span> x_self = x, x_eat = x + n, x_enemy = x + <span class="hljs-number">2</span> * n;</span><br><span class="line">            <span class="hljs-keyword">int</span> y_self = y, y_eat = y + n, y_enemy = y + <span class="hljs-number">2</span> * n;</span><br><span class="line">            <span class="hljs-keyword">if</span> (a == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (get(x_self) == get(y_eat) || get(x_eat) == get(y_self)) &#123;</span><br><span class="line">                    ++ans;</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    fa[get(x_self)] = get(y_self);</span><br><span class="line">                    fa[get(x_eat)] = get(y_eat);</span><br><span class="line">                    fa[get(x_enemy)] = get(y_enemy);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (get(x_self) == get(y_self) || get(x_self) == get(y_eat) || x == y) &#123;</span><br><span class="line">                    ++ans;</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    fa[get(x_self)] = get(y_enemy);</span><br><span class="line">                    fa[get(x_eat)] = get(y_self);</span><br><span class="line">                    fa[get(x_enemy)] = get(y_eat);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    Gekoo::main();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/并查集/">并查集</a>
+                    <a class="has-link-grey -link" href="/tags/NOIP/">NOIP</a>, <a class="has-link-grey -link" href="/tags/并查集/">并查集</a>
                 </div>
             </div>
         </div>
@@ -214,17 +201,10 @@
         <div class="level-start">
             <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/28/luogu-p1731/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P1731 生日蛋糕		</span>
+                <span class="level-item">Luogu P1731 生日蛋糕</span>
             </a>
         </div>
         
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/28/luogu-p2880/">
-                <span class="level-item"> Luogu P2880 Balanced Lineup		</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
         
     </div>
 </div>
@@ -295,7 +275,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        117
+                        77
                     </p>
                 </div>
             </div>
@@ -305,7 +285,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        2
                     </p>
                 </div>
             </div>
@@ -315,7 +295,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        101
+                        76
                     </p>
                 </div>
             </div>
@@ -371,45 +351,6 @@
 </div>
     
         
-
-    <div class="card widget" id="toc">
-        <div class="card-content">
-            <div class="menu">
-                <h3 class="menu-label">
-                    目录
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#Luogu-P2024-NOI2001-食物链">
-        <span class="has-mr-6">1</span>
-        <span>Luogu P2024 [NOI2001]食物链</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题面：">
-        <span class="has-mr-6">1.1</span>
-        <span>题面：</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目描述">
-        <span class="has-mr-6">1.1.1</span>
-        <span>题目描述</span>
-        </a></li><li>
-        <a class="is-flex" href="#输入格式：">
-        <span class="has-mr-6">1.1.2</span>
-        <span>输入格式：</span>
-        </a></li><li>
-        <a class="is-flex" href="#输出格式：">
-        <span class="has-mr-6">1.1.3</span>
-        <span>输出格式：</span>
-        </a></li><li>
-        <a class="is-flex" href="#数据范围：">
-        <span class="has-mr-6">1.1.4</span>
-        <span>数据范围：</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#思路">
-        <span class="has-mr-6">1.2</span>
-        <span>思路:</span>
-        </a></li></ul></li></ul>
-            </div>
-        </div>
-    </div>
 
     
         <div class="card widget">
@@ -536,7 +477,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/2-pointers/" style="font-size: 10.71px;">2-pointers</a> <a href="/tags/BCC/" style="font-size: 10.71px;">BCC</a> <a href="/tags/BFS/" style="font-size: 10.71px;">BFS</a> <a href="/tags/BSGS/" style="font-size: 10px;">BSGS</a> <a href="/tags/CRT/" style="font-size: 10px;">CRT</a> <a href="/tags/DCC/" style="font-size: 11.43px;">DCC</a> <a href="/tags/DFS/" style="font-size: 10.71px;">DFS</a> <a href="/tags/DP/" style="font-size: 17.14px;">DP</a> <a href="/tags/DP优化/" style="font-size: 10px;">DP优化</a> <a href="/tags/Dijkstra/" style="font-size: 10.71px;">Dijkstra</a> <a href="/tags/EXGCD/" style="font-size: 10px;">EXGCD</a> <a href="/tags/EXLucas/" style="font-size: 10px;">EXLucas</a> <a href="/tags/FHQTreap/" style="font-size: 10px;">FHQTreap</a> <a href="/tags/Floyd/" style="font-size: 10.71px;">Floyd</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/LCA/" style="font-size: 12.14px;">LCA</a> <a href="/tags/NOIP/" style="font-size: 18.57px;">NOIP</a> <a href="/tags/Prufer序列/" style="font-size: 10px;">Prufer序列</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/SCC/" style="font-size: 13.57px;">SCC</a> <a href="/tags/SPFA/" style="font-size: 10.71px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Tarjan/" style="font-size: 17.86px;">Tarjan</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/bitset/" style="font-size: 10.71px;">bitset</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/wqs二分/" style="font-size: 10px;">wqs二分</a> <a href="/tags/三元环计数/" style="font-size: 10px;">三元环计数</a> <a href="/tags/二分/" style="font-size: 14.29px;">二分</a> <a href="/tags/二分图/" style="font-size: 10px;">二分图</a> <a href="/tags/倍增/" style="font-size: 10px;">倍增</a> <a href="/tags/分块/" style="font-size: 11.43px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/割点/" style="font-size: 10px;">割点</a> <a href="/tags/动态开点线段树/" style="font-size: 12.14px;">动态开点线段树</a> <a href="/tags/匈牙利/" style="font-size: 10px;">匈牙利</a> <a href="/tags/单调队列优化DP/" style="font-size: 10px;">单调队列优化DP</a> <a href="/tags/可回退贪心/" style="font-size: 10px;">可回退贪心</a> <a href="/tags/哈希/" style="font-size: 10px;">哈希</a> <a href="/tags/图论/" style="font-size: 19.29px;">图论</a> <a href="/tags/圆方树/" style="font-size: 11.43px;">圆方树</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/差分/" style="font-size: 10px;">差分</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/并查集/" style="font-size: 12.14px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/总结/" style="font-size: 11.43px;">总结</a> <a href="/tags/扫描线/" style="font-size: 10px;">扫描线</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 12.14px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 10.71px;">数位DP</a> <a href="/tags/数学/" style="font-size: 15.71px;">数学</a> <a href="/tags/数论/" style="font-size: 10.71px;">数论</a> <a href="/tags/整数划分/" style="font-size: 10px;">整数划分</a> <a href="/tags/斐波那契/" style="font-size: 10px;">斐波那契</a> <a href="/tags/斜率优化DP/" style="font-size: 10.71px;">斜率优化DP</a> <a href="/tags/暴力/" style="font-size: 11.43px;">暴力</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 15px;">最短路</a> <a href="/tags/期望/" style="font-size: 10px;">期望</a> <a href="/tags/期望DP/" style="font-size: 12.14px;">期望DP</a> <a href="/tags/树上启发式合并/" style="font-size: 10px;">树上启发式合并</a> <a href="/tags/树上差分/" style="font-size: 12.86px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 10.71px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 11.43px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 11.43px;">树链剖分</a> <a href="/tags/模拟/" style="font-size: 13.57px;">模拟</a> <a href="/tags/模拟退火/" style="font-size: 10px;">模拟退火</a> <a href="/tags/欧拉回路/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/欧拉路/" style="font-size: 10px;">欧拉路</a> <a href="/tags/比赛/" style="font-size: 20px;">比赛</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/点分治/" style="font-size: 10.71px;">点分治</a> <a href="/tags/状压/" style="font-size: 11.43px;">状压</a> <a href="/tags/状压DP/" style="font-size: 12.14px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 11.43px;">矩阵乘法</a> <a href="/tags/矩阵快速幂/" style="font-size: 10px;">矩阵快速幂</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/离线/" style="font-size: 10px;">离线</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/线性筛/" style="font-size: 10px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 16.43px;">线段树</a> <a href="/tags/线段树优化DP/" style="font-size: 10px;">线段树优化DP</a> <a href="/tags/线段树优化建图/" style="font-size: 11.43px;">线段树优化建图</a> <a href="/tags/线段树合并/" style="font-size: 10px;">线段树合并</a> <a href="/tags/组合计数/" style="font-size: 10px;">组合计数</a> <a href="/tags/缩点/" style="font-size: 15px;">缩点</a> <a href="/tags/考试/" style="font-size: 10px;">考试</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/莫队/" style="font-size: 12.86px;">莫队</a> <a href="/tags/记忆化搜索/" style="font-size: 10.71px;">记忆化搜索</a> <a href="/tags/贪心/" style="font-size: 14.29px;">贪心</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/随笔/" style="font-size: 10.71px;">随笔</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a>
+        <a href="/tags/2-pointers/" style="font-size: 10px;">2-pointers</a> <a href="/tags/BCC/" style="font-size: 11.25px;">BCC</a> <a href="/tags/BFS/" style="font-size: 11.25px;">BFS</a> <a href="/tags/BSGS/" style="font-size: 10px;">BSGS</a> <a href="/tags/CRT/" style="font-size: 10px;">CRT</a> <a href="/tags/DFS/" style="font-size: 11.25px;">DFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/EXGCD/" style="font-size: 10px;">EXGCD</a> <a href="/tags/EXLucas/" style="font-size: 10px;">EXLucas</a> <a href="/tags/FHQTreap/" style="font-size: 10px;">FHQTreap</a> <a href="/tags/LCA/" style="font-size: 12.5px;">LCA</a> <a href="/tags/NOIP/" style="font-size: 20px;">NOIP</a> <a href="/tags/Prufer序列/" style="font-size: 10px;">Prufer序列</a> <a href="/tags/SPFA/" style="font-size: 11.25px;">SPFA</a> <a href="/tags/Tarjan/" style="font-size: 13.75px;">Tarjan</a> <a href="/tags/bitset/" style="font-size: 11.25px;">bitset</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/三元环计数/" style="font-size: 10px;">三元环计数</a> <a href="/tags/二分/" style="font-size: 15px;">二分</a> <a href="/tags/倍增/" style="font-size: 10px;">倍增</a> <a href="/tags/分块/" style="font-size: 12.5px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/动态开点线段树/" style="font-size: 11.25px;">动态开点线段树</a> <a href="/tags/单调队列优化DP/" style="font-size: 10px;">单调队列优化DP</a> <a href="/tags/可回退贪心/" style="font-size: 10px;">可回退贪心</a> <a href="/tags/哈希/" style="font-size: 10px;">哈希</a> <a href="/tags/圆方树/" style="font-size: 11.25px;">圆方树</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/差分/" style="font-size: 10px;">差分</a> <a href="/tags/差分约束/" style="font-size: 10px;">差分约束</a> <a href="/tags/带修莫队/" style="font-size: 10px;">带修莫队</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/并查集/" style="font-size: 12.5px;">并查集</a> <a href="/tags/快速幂/" style="font-size: 10px;">快速幂</a> <a href="/tags/扫描线/" style="font-size: 10px;">扫描线</a> <a href="/tags/拓展欧拉定理/" style="font-size: 10px;">拓展欧拉定理</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/数位DP/" style="font-size: 11.25px;">数位DP</a> <a href="/tags/数学/" style="font-size: 13.75px;">数学</a> <a href="/tags/数论/" style="font-size: 11.25px;">数论</a> <a href="/tags/整数划分/" style="font-size: 10px;">整数划分</a> <a href="/tags/斜率优化DP/" style="font-size: 11.25px;">斜率优化DP</a> <a href="/tags/暴力/" style="font-size: 11.25px;">暴力</a> <a href="/tags/最短路/" style="font-size: 13.75px;">最短路</a> <a href="/tags/期望/" style="font-size: 10px;">期望</a> <a href="/tags/期望DP/" style="font-size: 11.25px;">期望DP</a> <a href="/tags/树上差分/" style="font-size: 15px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 11.25px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 11.25px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 11.25px;">树链剖分</a> <a href="/tags/模拟/" style="font-size: 16.25px;">模拟</a> <a href="/tags/欧拉回路/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/欧拉路/" style="font-size: 10px;">欧拉路</a> <a href="/tags/游记/" style="font-size: 10px;">游记</a> <a href="/tags/点分治/" style="font-size: 11.25px;">点分治</a> <a href="/tags/状压/" style="font-size: 12.5px;">状压</a> <a href="/tags/状压DP/" style="font-size: 13.75px;">状压DP</a> <a href="/tags/生成树/" style="font-size: 10px;">生成树</a> <a href="/tags/矩阵乘法/" style="font-size: 10px;">矩阵乘法</a> <a href="/tags/离散化/" style="font-size: 10px;">离散化</a> <a href="/tags/线性筛/" style="font-size: 10px;">线性筛</a> <a href="/tags/线段树/" style="font-size: 16.25px;">线段树</a> <a href="/tags/线段树优化DP/" style="font-size: 10px;">线段树优化DP</a> <a href="/tags/线段树优化建图/" style="font-size: 11.25px;">线段树优化建图</a> <a href="/tags/线段树合并/" style="font-size: 10px;">线段树合并</a> <a href="/tags/考试/" style="font-size: 18.75px;">考试</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/莫队/" style="font-size: 13.75px;">莫队</a> <a href="/tags/记忆化搜索/" style="font-size: 10px;">记忆化搜索</a> <a href="/tags/贪心/" style="font-size: 17.5px;">贪心</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a> <a href="/tags/黑苹果/" style="font-size: 10px;">黑苹果</a>
     </div>
 </div>
     
@@ -549,20 +490,12 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/总结/">
+        <a class="level is-marginless" href="/categories/OI/">
             <span class="level-start">
-                <span class="level-item">总结</span>
+                <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/比赛/">
-            <span class="level-start">
-                <span class="level-item">比赛</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">19</span>
+                <span class="level-item tag">73</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/随笔/">
@@ -570,23 +503,7 @@
                 <span class="level-item">随笔</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/项目/">
-            <span class="level-start">
-                <span class="level-item">项目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/题解/">
-            <span class="level-start">
-                <span class="level-item">题解</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">87</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li>
             </ul>
@@ -611,7 +528,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/pics/site_logo.png" alt=" Luogu P2024 [NOI2001]食物链		" height="28">
+                    <img src="/pics/site_logo.png" alt="Luogu P2024 [NOI2001]食物链" height="28">
                 
                 </a>
                 <p class="is-size-7">
